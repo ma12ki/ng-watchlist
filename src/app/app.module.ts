@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgReduxModule } from 'ng2-redux';
 
-import { ApolloModule } from 'angular2-apollo';
+import { ApolloModule } from 'apollo-angular';
 
 import { AppComponent } from './app.component';
 import { AppActions } from './app.actions';

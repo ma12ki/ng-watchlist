@@ -7,7 +7,7 @@ import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
 import { client } from './apollo-client-store';
 
-import { Angular2Apollo } from 'angular2-apollo';
+import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
 
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   cities$: Observable<any>;
 
   constructor(
-    private apollo: Angular2Apollo,
+    private apollo: Apollo,
     private ngRedux: NgRedux<any>,
     private actions: AppActions,
     devTools: DevToolsExtension,
