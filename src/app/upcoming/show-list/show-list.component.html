@@ -1,0 +1,11 @@
+<div *ngIf="isFetching$ | async">
+  loading...
+</div>
+
+<ul>
+  <li *ngFor="let item of items$ | async; trackBy:getItemId">
+    {{ item.title }}
+  </li>
+</ul>
+
+<button (click)="reload()">Reload upcoming</button>

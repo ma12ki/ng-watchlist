@@ -18,6 +18,9 @@ import { elephantsReducer } from './elephants/elephants.reducer';
 import { LionsEpics } from './lions/lions.epics';
 import { lionsReducer } from './lions/lions.reducer';
 
+import { UpcomingEpics } from './upcoming/upcoming.epics';
+import { upcomingReducer } from './upcoming/upcoming.reducer';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -32,11 +35,13 @@ export class AppComponent implements OnInit {
     private actions: AppActions,
     devTools: DevToolsExtension,
     elephantsEpics: ElephantsEpics,
-    lionsEpics: LionsEpics
+    lionsEpics: LionsEpics,
+    upcomingEpics: UpcomingEpics
   ) {
     const rootReducer = combineReducers({
       elephants: elephantsReducer,
       lions: lionsReducer,
+      upcoming: upcomingReducer,
       apollo: client.reducer() as any,
     });
 
@@ -46,6 +51,7 @@ export class AppComponent implements OnInit {
       [
         createEpicMiddleware(combineEpics(...elephantsEpics.epics)),
         createEpicMiddleware(combineEpics(...lionsEpics.epics)),
+        createEpicMiddleware(combineEpics(...upcomingEpics.epics)),
       ],
       [
         applyMiddleware(client.middleware()),
@@ -72,6 +78,8 @@ export class AppComponent implements OnInit {
         }
       }
     `;
+
+    console.log(query);
 
     this.cities$ = this.apollo.watchQuery<any>({
       query: query
