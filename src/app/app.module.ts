@@ -8,6 +8,7 @@ import { ApolloModule } from 'apollo-angular';
 
 import { AppComponent } from './app.component';
 import { AppActions } from './app.actions';
+import { ReduxRoots } from './app.redux-roots';
 
 import { ElephantsModule } from './elephants/elephants.module';
 import { LionsModule } from './lions/lions.module';
@@ -27,7 +28,7 @@ import { provideClient } from './apollo-client-store';
     UpcomingModule,
     ApolloModule.withClient(provideClient),
   ],
-  providers: [ AppActions ],
+  providers: [ AppActions, ReduxRoots ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

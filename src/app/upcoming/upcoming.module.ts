@@ -5,6 +5,7 @@ import { ShowListComponent } from './show-list/show-list.component';
 import { UpcomingEpics } from './upcoming.epics';
 import { UpcomingService } from './upcoming.service';
 import { UpcomingActions } from './upcoming.actions';
+import { UpcomingReducer } from './upcoming.reducer';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { UpcomingActions } from './upcoming.actions';
     UpcomingEpics,
     UpcomingService,
     UpcomingActions,
+    UpcomingReducer,
   ],
   declarations: [ShowListComponent],
   exports: [

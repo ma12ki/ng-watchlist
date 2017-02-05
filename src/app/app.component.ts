@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 import { NgRedux, DevToolsExtension } from '@angular-redux/store';
 import { Action, combineReducers, applyMiddleware, ReducersMapObject } from 'redux';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
@@ -10,6 +10,8 @@ import { client } from './apollo-client-store';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
+
+import { IRootState, ReduxRoots } from './app.redux-roots';
 
 import { AppActions } from './app.actions';
 import { ElephantsEpics } from './elephants/elephants.epics';
@@ -31,32 +33,16 @@ export class AppComponent implements OnInit {
 
   constructor(
     private apollo: Apollo,
-    private ngRedux: NgRedux<any>,
+    private ngRedux: NgRedux<IRootState>,
     private actions: AppActions,
-    devTools: DevToolsExtension,
-    elephantsEpics: ElephantsEpics,
-    lionsEpics: LionsEpics,
-    upcomingEpics: UpcomingEpics
+    reduxRoots: ReduxRoots,
   ) {
-    const rootReducer = combineReducers({
-      elephants: elephantsReducer,
-      lions: lionsReducer,
-      upcoming: upcomingReducer,
-      apollo: client.reducer() as any,
-    });
 
     ngRedux.configureStore(
-      rootReducer,
+      reduxRoots.rootReducer,
       {},
-      [
-        createEpicMiddleware(combineEpics(...elephantsEpics.epics)),
-        createEpicMiddleware(combineEpics(...lionsEpics.epics)),
-        createEpicMiddleware(combineEpics(...upcomingEpics.epics)),
-      ],
-      [
-        applyMiddleware(client.middleware()),
-        devTools.isEnabled() ? devTools.enhancer() : null
-      ]
+      reduxRoots.rootEpic,
+      reduxRoots.middlewares
     );
   }
 

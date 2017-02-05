@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import * as immutable from 'seamless-immutable';
 import { ImmutableObject } from 'seamless-immutable';
 
@@ -10,13 +11,25 @@ interface IUpcomingState {
   error: Object;
 }
 
-const defaultState: ImmutableObject<IUpcomingState> = immutable.from({
+/* tslint:disable:no-empty-interface */
+export interface IImmutableUpcomingState extends ImmutableObject<IUpcomingState> {};
+
+const defaultState: IImmutableUpcomingState = immutable.from({
   items: [],
   isFetching: false,
   error: null
 });
 
-export function upcomingReducer(state = defaultState, action: IPayloadAction): ImmutableObject<IUpcomingState> {
+@Injectable()
+export class UpcomingReducer {
+  reducer: (state: IImmutableUpcomingState, action: IPayloadAction) => IImmutableUpcomingState;
+
+  constructor() {
+    this.reducer = upcomingReducer;
+  }
+}
+
+export function upcomingReducer(state = defaultState, action: IPayloadAction): IImmutableUpcomingState {
   switch (action.type) {
     case UpcomingActions.LOAD_START:
       return state.merge({
