@@ -1,6 +1,5 @@
-import { NgRedux } from 'ng2-redux/lib/components/ng-redux';
 import { Component, OnInit } from '@angular/core';
-import { select } from 'ng2-redux';
+import { NgRedux, select } from '@angular-redux/store';
 
 import { UpcomingActions } from '../upcoming.actions';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NgRedux, DevToolsExtension } from 'ng2-redux';
+import { NgRedux, DevToolsExtension } from '@angular-redux/store';
 import { Action, combineReducers, applyMiddleware, ReducersMapObject } from 'redux';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 
@@ -78,8 +78,6 @@ export class AppComponent implements OnInit {
         }
       }
     `;
-
-    console.log(query);
 
     this.cities$ = this.apollo.watchQuery<any>({
       query: query

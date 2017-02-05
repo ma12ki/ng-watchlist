@@ -15,6 +15,10 @@
   version "1.0.16"
   resolved "https://registry.yarnpkg.com/@angular-cli/base-href-webpack/-/base-href-webpack-1.0.16.tgz#4296a2ff7db84ddc2e67c2a107e276f72463ff8d"
 
+"@angular-redux/store@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-redux/store/-/store-6.0.0.tgz#9cf6fedcb827ec49e251ae2f99692d2667c76846"
+
 "@angular/cli@1.0.0-beta.30":
   version "1.0.0-beta.30"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-1.0.0-beta.30.tgz#2236353c07deaf0a3f18c8ee909929b222e7c057"
@@ -2233,6 +2237,10 @@ image-size@~0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.1.tgz#28eea8548a4b1443480ddddc1e083ae54652439f"
 
+immutable@^3.8.1:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.1.tgz#200807f11ab0f72710ea485542de088075f68cd2"
+
 imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
@@ -4329,6 +4337,10 @@ script-loader@^0.7.0:
   resolved "https://registry.yarnpkg.com/script-loader/-/script-loader-0.7.0.tgz#685dc7e7069e0dee7a92674f0ebc5b0f55baa5ec"
   dependencies:
     raw-loader "~0.5.1"
+
+seamless-immutable@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/seamless-immutable/-/seamless-immutable-7.0.1.tgz#ac1bca1a3ff6c6abfa7c4809af6cd2fe5a21052b"
 
 select-hose@^2.0.0:
   version "2.0.0"
