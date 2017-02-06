@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { animate, Component, OnInit, state, style, transition, trigger } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 
 import { UpcomingActions } from '../upcoming.actions';
@@ -6,7 +6,25 @@ import { UpcomingActions } from '../upcoming.actions';
 @Component({
   selector: 'app-show-list',
   templateUrl: './show-list.component.html',
-  styleUrls: ['./show-list.component.css']
+  styleUrls: ['./show-list.component.css'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({opacity: 1, transform: 'translateX(0)'})),
+      transition('void => *', [
+        style({
+          opacity: 0,
+          transform: 'translateX(-100%)'
+        }),
+        animate('0.2s ease-in')
+      ]),
+      transition('* => void', [
+        animate('0.2s 10 ease-out', style({
+          opacity: 0,
+          transform: 'translateX(100%)'
+        }))
+      ])
+    ])
+  ]
 })
 export class ShowListComponent implements OnInit {
   @select(['upcoming', 'items'])
@@ -31,7 +49,7 @@ export class ShowListComponent implements OnInit {
     this.ngRedux.dispatch(this.actions.loadStart());
   }
 
-  getItemName(index, item) {
+  getItemId(index, item) {
     return item._id;
   }
 
