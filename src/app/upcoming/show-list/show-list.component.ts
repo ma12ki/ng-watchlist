@@ -6,7 +6,7 @@ import { UpcomingActions } from '../upcoming.actions';
 @Component({
   selector: 'app-show-list',
   templateUrl: './show-list.component.html',
-  styleUrls: ['./show-list.component.css'],
+  styleUrls: ['./show-list.component.scss'],
   animations: [
     trigger('flyInOut', [
       state('in', style({opacity: 1, transform: 'translateX(0)'})),

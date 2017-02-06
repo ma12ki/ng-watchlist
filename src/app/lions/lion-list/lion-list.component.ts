@@ -4,7 +4,7 @@ import { select } from '@angular-redux/store';
 @Component({
   selector: 'app-lion-list',
   templateUrl: './lion-list.component.html',
-  styleUrls: ['./lion-list.component.css']
+  styleUrls: ['./lion-list.component.scss']
 })
 export class LionListComponent {
   // Shorthand for
