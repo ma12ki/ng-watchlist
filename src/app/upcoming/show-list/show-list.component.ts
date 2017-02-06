@@ -4,7 +4,7 @@ import { NgRedux, select } from '@angular-redux/store';
 import { UpcomingActions } from '../upcoming.actions';
 
 @Component({
-  selector: 'app-show-list',
+  selector: 'st-show-list',
   templateUrl: './show-list.component.html',
   styleUrls: ['./show-list.component.scss'],
   animations: [

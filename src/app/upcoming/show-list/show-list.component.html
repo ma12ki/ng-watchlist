@@ -1,6 +1,4 @@
-<div *ngIf="isFetching$ | async">
-  loading...
-</div>
+<md-spinner *ngIf="isFetching$ | async"></md-spinner>
 
 <ul>
   <li *ngFor="let item of items$ | async; trackBy:getItemId" [@flyInOut]>

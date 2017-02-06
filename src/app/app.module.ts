@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgReduxModule } from '@angular-redux/store';
+import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ApolloModule } from 'apollo-angular';
 
@@ -27,6 +29,8 @@ import { provideClient } from './apollo-client-store';
     LionsModule,
     UpcomingModule,
     ApolloModule.withClient(provideClient),
+    MaterialModule.forRoot(),
+    FlexLayoutModule.forRoot()
   ],
   providers: [ AppActions, ReduxRoots ],
   bootstrap: [ AppComponent ]

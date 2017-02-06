@@ -1,28 +1,9 @@
 <header>
-  <h1>Angular Redux Apollo Example</h1>
-
-  <p>
-    Demonstrates the integration of the Apollo client store with an existing
-    Redux store.
-  </p>
-  <p class="highlight">
-    Use <a href="https://github.com/gaearon/redux-devtools">Redux DevTools</a>
-    to inspect the current store state!
-  </p>
-  <button (click)=reload()>Reload</button>
+  Header
 </header>
-<div class="flexbox-container">
-  <nav class="sidebar">
-    <p>Local state from @angular-redux/store store:</p>
-    <app-elephant-list></app-elephant-list>
-    <app-lion-list></app-lion-list>
-    <app-show-list></app-show-list>
-  </nav>
-  <article class="main">
-    <p>Pulled from a remote GraphQL endpoint via Apollo client:</p>
-    <h2>World Cities</h2>
-    <ul>
-      <li *ngFor="let city of cities$ | async">{{city.name}}, {{city.country}}</li>
-    </ul>
-  </article>
-</div>
+<main>
+  <st-show-list></st-show-list>
+</main>
+<footer>
+  Footer
+</footer>
