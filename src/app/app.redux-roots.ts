@@ -7,12 +7,6 @@ import { client } from './apollo-client-store';
 import { IImmutableUpcomingState, upcomingReducer, UpcomingReducer } from './upcoming/upcoming.reducer';
 import { UpcomingEpics } from './upcoming/upcoming.epics';
 
-import { lionsReducer } from './lions/lions.reducer';
-import { LionsEpics } from './lions/lions.epics';
-
-import { elephantsReducer } from './elephants/elephants.reducer';
-import { ElephantsEpics } from './elephants/elephants.epics';
-
 export interface IRootState {
   elephants?: any;
   lions?: any;
@@ -23,9 +17,6 @@ export interface IRootState {
 @Injectable()
 export class ReduxRoots {
   constructor(
-    private lionsEpics: LionsEpics,
-    private elephantsEpics: ElephantsEpics,
-
     private upcomingReducer: UpcomingReducer,
     private upcomingEpics: UpcomingEpics,
     private devTools: DevToolsExtension,
@@ -33,8 +24,6 @@ export class ReduxRoots {
 
   get rootReducer() {
     return combineReducers({
-      elephants: elephantsReducer,
-      lions: lionsReducer,
       upcoming: this.upcomingReducer.reducer,
       apollo: client.reducer() as any,
     });
@@ -43,8 +32,6 @@ export class ReduxRoots {
   get rootEpic() {
     return [ createEpicMiddleware(
       combineEpics(
-        ...this.elephantsEpics.epics,
-        ...this.lionsEpics.epics,
         ...this.upcomingEpics.epics,
       )
     ) ];

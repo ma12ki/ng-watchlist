@@ -12,8 +12,6 @@ import { AppComponent } from './app.component';
 import { AppActions } from './app.actions';
 import { ReduxRoots } from './app.redux-roots';
 
-import { ElephantsModule } from './elephants/elephants.module';
-import { LionsModule } from './lions/lions.module';
 import { UpcomingModule } from './upcoming/upcoming.module';
 
 import { provideClient } from './apollo-client-store';
@@ -25,8 +23,6 @@ import { provideClient } from './apollo-client-store';
     FormsModule,
     HttpModule,
     NgReduxModule,
-    ElephantsModule,
-    LionsModule,
     UpcomingModule,
     ApolloModule.withClient(provideClient),
     MaterialModule.forRoot(),

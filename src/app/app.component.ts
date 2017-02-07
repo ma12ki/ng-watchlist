@@ -14,11 +14,6 @@ import gql from 'graphql-tag';
 import { IRootState, ReduxRoots } from './app.redux-roots';
 
 import { AppActions } from './app.actions';
-import { ElephantsEpics } from './elephants/elephants.epics';
-import { elephantsReducer } from './elephants/elephants.reducer';
-
-import { LionsEpics } from './lions/lions.epics';
-import { lionsReducer } from './lions/lions.reducer';
 
 import { UpcomingEpics } from './upcoming/upcoming.epics';
 import { upcomingReducer } from './upcoming/upcoming.reducer';
