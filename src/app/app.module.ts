@@ -1,20 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { NgReduxModule } from '@angular-redux/store';
-import { MaterialModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+
+import { NgReduxModule, NgRedux } from '@angular-redux/store';
+import { NgReduxRouterModule, NgReduxRouter } from '@angular-redux/router';
+import { NgReduxFormModule } from '@angular-redux/form';
+
+import { ApolloModule, Apollo } from 'apollo-angular';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-import { ApolloModule } from 'apollo-angular';
-
-import { AppComponent } from './app.component';
-import { AppActions } from './app.actions';
-import { ReduxRoots } from './app.redux-roots';
-
-import { UpcomingModule } from './upcoming/upcoming.module';
+import { MaterialModule } from '@angular/material';
 
 import { provideClient } from './apollo-client-store';
+import { AppActions } from './app.actions';
+import { AppComponent } from './app.component';
+import { IRootState, ReduxRoots } from './app.redux-roots';
+import { UpcomingModule } from './upcoming/upcoming.module';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -22,13 +25,32 @@ import { provideClient } from './apollo-client-store';
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgReduxModule,
     UpcomingModule,
     ApolloModule.withClient(provideClient),
+    RouterModule.forRoot([]),
+    NgReduxModule,
+    NgReduxRouterModule,
+    NgReduxFormModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot()
   ],
   providers: [ AppActions, ReduxRoots ],
   bootstrap: [ AppComponent ]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(
+    private apollo: Apollo,
+    private ngRedux: NgRedux<IRootState>,
+    ngReduxRouter: NgReduxRouter,
+    private actions: AppActions,
+    reduxRoots: ReduxRoots,
+  ) {
+    ngRedux.configureStore(
+      reduxRoots.rootReducer,
+      {},
+      reduxRoots.rootEpic,
+      reduxRoots.middlewares
+    );
+    ngReduxRouter.initialize();
+  }
+}

@@ -1,17 +1,17 @@
-import { DevToolsExtension } from '@angular-redux/store/lib/components/dev-tools';
+import { DevToolsExtension } from '@angular-redux/store';
 import { Injectable } from '@angular/core';
 import { applyMiddleware, combineReducers } from 'redux';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import { routerReducer } from '@angular-redux/router';
 
 import { client } from './apollo-client-store';
 import { IImmutableUpcomingState, upcomingReducer, UpcomingReducer } from './upcoming/upcoming.reducer';
 import { UpcomingEpics } from './upcoming/upcoming.epics';
 
 export interface IRootState {
-  elephants?: any;
-  lions?: any;
   upcoming?: IImmutableUpcomingState;
   apollo?: any;
+  router?: any;
 }
 
 @Injectable()
@@ -23,9 +23,10 @@ export class ReduxRoots {
   ) { }
 
   get rootReducer() {
-    return combineReducers({
+    return combineReducers<IRootState>({
       upcoming: this.upcomingReducer.reducer,
       apollo: client.reducer() as any,
+      router: routerReducer
     });
   }
 
