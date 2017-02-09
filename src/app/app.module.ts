@@ -17,7 +17,10 @@ import { provideClient } from './apollo-client-store';
 import { AppActions } from './app.actions';
 import { AppComponent } from './app.component';
 import { IRootState, ReduxRoots } from './app.redux-roots';
+
+import { DictionariesModule } from './dictionaries';
 import { UpcomingModule } from './upcoming/upcoming.module';
+import { NewShowModule } from './new-show/new-show.module';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -25,7 +28,9 @@ import { UpcomingModule } from './upcoming/upcoming.module';
     BrowserModule,
     FormsModule,
     HttpModule,
+    DictionariesModule,
     UpcomingModule,
+    NewShowModule,
     ApolloModule.withClient(provideClient),
     RouterModule.forRoot([]),
     NgReduxModule,

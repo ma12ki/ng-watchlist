@@ -3,7 +3,7 @@ import * as immutable from 'seamless-immutable';
 import { ImmutableObject } from 'seamless-immutable';
 
 import { UpcomingActions } from './upcoming.actions';
-import { IPayloadAction } from '../utils/payload-action';
+import { IPayloadErrorAction } from '../utils/payload-action';
 
 interface IUpcomingState {
   items: Array<any>;
@@ -22,14 +22,14 @@ const defaultState: IImmutableUpcomingState = immutable.from({
 
 @Injectable()
 export class UpcomingReducer {
-  reducer: (state: IImmutableUpcomingState, action: IPayloadAction) => IImmutableUpcomingState;
+  reducer: (state: IImmutableUpcomingState, action: IPayloadErrorAction) => IImmutableUpcomingState;
 
   constructor() {
     this.reducer = upcomingReducer;
   }
 }
 
-export function upcomingReducer(state = defaultState, action: IPayloadAction): IImmutableUpcomingState {
+export function upcomingReducer(state = defaultState, action: IPayloadErrorAction): IImmutableUpcomingState {
   switch (action.type) {
     case UpcomingActions.LOAD_START:
       return state.merge({
