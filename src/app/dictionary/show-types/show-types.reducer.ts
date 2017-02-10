@@ -6,7 +6,7 @@ import { FSA } from 'flux-standard-action';
 import { ShowTypesActions } from './show-types.actions';
 import { IImmutableShowTypes, IShowType } from './show-types.interfaces';
 
-export const defaultState: IImmutableShowTypes = immutable.from({
+export const showTypesDefaultState: IImmutableShowTypes = immutable.from({
   items: [],
   isFetching: false,
   error: null
@@ -21,7 +21,7 @@ export class ShowTypesReducer {
   }
 }
 
-export function showTypesReducer(state = defaultState, action: FSA<any, any>): IImmutableShowTypes {
+export function showTypesReducer(state = showTypesDefaultState, action: FSA<any, any>): IImmutableShowTypes {
   switch (action.type) {
     case ShowTypesActions.LOAD_START:
       return state.merge({
