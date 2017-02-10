@@ -1,3 +1,29 @@
+<form>
+  <md-input-container>
+    <input md-input placeholder="Name" name="name" [(ngModel)]="name">
+  </md-input-container>
+
+  <md-input-container>
+    <input md-input placeholder="Premiere date" name="premiereDate" [(ngModel)]="premiereDate" type="date">
+  </md-input-container>
+
+  <md-radio-group [(ngModel)]="showType" name="st">
+    <md-radio-button *ngFor="let st of showTypes" [value]="st.code">
+      {{st.label}}
+    </md-radio-button>
+  </md-radio-group>
+
+  <md-input-container>
+    <input md-input placeholder="Season #" name="season" [(ngModel)]="season" type="number" min="1" max="99" size="2">
+  </md-input-container>
+
+  <md-input-container>
+    <input md-input placeholder="# of episodes" name="episodes" [(ngModel)]="episodes" type="number" min="1" max="999" size="3">
+  </md-input-container>
+</form>
+
 <p>
   new-show works!
+
+  {{ showTypes | json }}
 </p>
