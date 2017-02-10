@@ -7,6 +7,11 @@ import { NewShowContainerComponent } from './new-show-container/new-show-contain
   imports: [
     CommonModule
   ],
-  declarations: [NewShowComponent, NewShowContainerComponent]
+  declarations: [
+    NewShowComponent, NewShowContainerComponent
+  ],
+  exports: [
+    NewShowContainerComponent
+  ]
 })
 export class NewShowModule { }

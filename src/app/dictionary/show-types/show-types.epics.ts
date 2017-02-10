@@ -21,10 +21,6 @@ export class ShowTypesEpics {
   }
 
   loadUpcoming = (action$, store) => action$
-    .map(a => {
-      console.log(store);
-      return a;
-    })
     .ofType(ShowTypesActions.LOAD_START)
     .switchMap((_) => this.service.load()
       .map(data => this.actions.loadSuccess(data))

@@ -6,6 +6,7 @@ import { routerReducer } from '@angular-redux/router';
 
 import { client } from './apollo-client-store';
 import { IImmutableDictionaryState, DictionaryReducer } from './dictionary';
+import { DictionaryEpics } from './dictionary/dictionary.epics';
 import { IImmutableUpcomingState, UpcomingReducer } from './upcoming/upcoming.reducer';
 import { UpcomingEpics } from './upcoming/upcoming.epics';
 
@@ -20,6 +21,7 @@ export interface IRootState {
 export class ReduxRoots {
   constructor(
     private dictionaryReducer: DictionaryReducer,
+    private dictionaryEpics: DictionaryEpics,
     private upcomingReducer: UpcomingReducer,
     private upcomingEpics: UpcomingEpics,
     private devTools: DevToolsExtension,
@@ -37,6 +39,7 @@ export class ReduxRoots {
   get rootEpic() {
     return [ createEpicMiddleware(
       combineEpics(
+        ...this.dictionaryEpics.epics,
         ...this.upcomingEpics.epics,
       )
     ) ];
