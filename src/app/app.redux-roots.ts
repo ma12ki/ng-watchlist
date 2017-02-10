@@ -5,10 +5,12 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { routerReducer } from '@angular-redux/router';
 
 import { client } from './apollo-client-store';
-import { IImmutableUpcomingState, upcomingReducer, UpcomingReducer } from './upcoming/upcoming.reducer';
+import { IImmutableDictionaryState, DictionaryReducer } from './dictionary';
+import { IImmutableUpcomingState, UpcomingReducer } from './upcoming/upcoming.reducer';
 import { UpcomingEpics } from './upcoming/upcoming.epics';
 
 export interface IRootState {
+  dictionary?: IImmutableDictionaryState;
   upcoming?: IImmutableUpcomingState;
   apollo?: any;
   router?: any;
@@ -17,6 +19,7 @@ export interface IRootState {
 @Injectable()
 export class ReduxRoots {
   constructor(
+    private dictionaryReducer: DictionaryReducer,
     private upcomingReducer: UpcomingReducer,
     private upcomingEpics: UpcomingEpics,
     private devTools: DevToolsExtension,
@@ -24,6 +27,7 @@ export class ReduxRoots {
 
   get rootReducer() {
     return combineReducers<IRootState>({
+      dictionary: this.dictionaryReducer.reducer,
       upcoming: this.upcomingReducer.reducer,
       apollo: client.reducer() as any,
       router: routerReducer

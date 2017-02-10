@@ -1,21 +1,12 @@
 import { Injectable } from '@angular/core';
 import * as immutable from 'seamless-immutable';
 import { ImmutableObject } from 'seamless-immutable';
+import { FSA } from 'flux-standard-action';
 
 import { ShowTypesActions } from './show-types.actions';
-import { IShowType } from './show-types.interfaces';
-import { IPayloadErrorAction } from '../../utils/payload-action';
+import { IImmutableShowTypes, IShowType } from './show-types.interfaces';
 
-interface IShowTypesState {
-  items: Array<IShowType>;
-  isFetching: Boolean;
-  error: Object;
-}
-
-/* tslint:disable:no-empty-interface */
-export interface IImmutableShowTypesState extends ImmutableObject<IShowTypesState> {};
-
-const defaultState: IImmutableShowTypesState = immutable.from({
+export const defaultState: IImmutableShowTypes = immutable.from({
   items: [],
   isFetching: false,
   error: null
@@ -23,24 +14,24 @@ const defaultState: IImmutableShowTypesState = immutable.from({
 
 @Injectable()
 export class ShowTypesReducer {
-  reducer: (state: IImmutableShowTypesState, action: IPayloadErrorAction) => IImmutableShowTypesState;
+  reducer: (state: IImmutableShowTypes, action: FSA<any, any>) => IImmutableShowTypes;
 
   constructor() {
     this.reducer = showTypesReducer;
   }
 }
 
-export function showTypesReducer(state = defaultState, action: IPayloadErrorAction): IImmutableShowTypesState {
+export function showTypesReducer(state = defaultState, action: FSA<any, any>): IImmutableShowTypes {
   switch (action.type) {
     case ShowTypesActions.LOAD_START:
       return state.merge({
         isFetching: true,
-        error: null
+        error: false
       });
     case ShowTypesActions.LOAD_SUCCESS:
       return state.merge({
         items: action.payload,
-        error: null,
+        error: false,
         isFetching: false
       });
     case ShowTypesActions.LOAD_ERROR:

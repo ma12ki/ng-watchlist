@@ -18,7 +18,7 @@ import { AppActions } from './app.actions';
 import { AppComponent } from './app.component';
 import { IRootState, ReduxRoots } from './app.redux-roots';
 
-import { DictionariesModule } from './dictionaries';
+import { DictionaryModule } from './dictionary/dictionary.module';
 import { UpcomingModule } from './upcoming/upcoming.module';
 import { NewShowModule } from './new-show/new-show.module';
 
@@ -28,7 +28,7 @@ import { NewShowModule } from './new-show/new-show.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    DictionariesModule,
+    DictionaryModule,
     UpcomingModule,
     NewShowModule,
     ApolloModule.withClient(provideClient),
