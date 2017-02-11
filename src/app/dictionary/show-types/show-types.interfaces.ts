@@ -5,6 +5,7 @@ import { IDictionary } from '../dictionary.interfaces';
 export interface IShowType {
   code: string;
   label: string;
+  recurring: boolean;
 }
 
 /* tslint:disable:no-empty-interface */
