@@ -1,0 +1,7 @@
+<md-button-toggle [disabled]="disabled" [checked]="showPreview" (change)="togglePreview()">{{ showPreview ? 'Hide preview' : 'Show preview' }}</md-button-toggle>
+
+<md-list dense *ngIf="showPreview">
+  <md-list-item *ngFor="let item of items; trackBy:getItemId">
+    Season {{ item.season }}, episode {{ item.episode }}: {{ item.premiereDate | amCalendar:amCalendarFormat }}
+  </md-list-item>
+</md-list>

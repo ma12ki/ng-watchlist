@@ -18,6 +18,7 @@ import { AppActions } from './app.actions';
 import { AppComponent } from './app.component';
 import { IRootState, ReduxRoots } from './app.redux-roots';
 
+import { DateInputToDateModule } from './date-input-to-date/date-input-to-date.module';
 import { DictionaryModule } from './dictionary/dictionary.module';
 import { UpcomingModule } from './upcoming/upcoming.module';
 import { NewShowModule } from './new-show/new-show.module';
@@ -28,6 +29,7 @@ import { NewShowModule } from './new-show/new-show.module';
     BrowserModule,
     FormsModule,
     HttpModule,
+    DateInputToDateModule,
     DictionaryModule,
     UpcomingModule,
     NewShowModule,

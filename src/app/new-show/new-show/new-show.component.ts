@@ -17,7 +17,7 @@ export class NewShowComponent implements OnInit {
   @Input()
   showTypes: IShowType[];
 
-  newShowFormFb: FormGroup;
+  newShowForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder
@@ -26,23 +26,23 @@ export class NewShowComponent implements OnInit {
   }
 
   createForm() {
-    this.newShowFormFb = this.formBuilder.group({
+    this.newShowForm = this.formBuilder.group({
       name: [ '', [
           Validators.required,
           Validators.maxLength(100)
         ]
       ],
       type: [ '', [ Validators.required ] ],
-      premiereDate: [ '', [ Validators.required ] ],
+      premiereDate: [ null, [ Validators.required ] ],
       recurring: this.formBuilder.group({
-        season: [ '', [
+        season: [ null, [
             Validators.required,
             Validators.minLength(1),
             Validators.maxLength(2),
             Validators.pattern(/^[1-9][0-9]?$/)
           ]
         ],
-        episodes: [ '', [
+        episodes: [ null, [
             Validators.required,
             Validators.minLength(1),
             Validators.maxLength(3),
@@ -57,14 +57,14 @@ export class NewShowComponent implements OnInit {
   }
 
   setUpDisableRecurring(): void {
-    this.newShowFormFb.get('type').valueChanges.subscribe(this.enableDisableRecurring.bind(this));
+    this.newShowForm.get('type').valueChanges.subscribe(this.enableDisableRecurring.bind(this));
   }
 
   enableDisableRecurring(type: string): void {
     if (this.isRecurring(type)) {
-      this.newShowFormFb.get('recurring').enable();
+      this.newShowForm.get('recurring').enable();
     } else {
-      this.newShowFormFb.get('recurring').disable();
+      this.newShowForm.get('recurring').disable();
     }
   }
 

@@ -1,4 +1,4 @@
-<form [formGroup]="newShowFormFb" novalidate>
+<form [formGroup]="newShowForm" novalidate>
   <md-input-container>
     <input md-input placeholder="Name" formControlName="name">
   </md-input-container>
@@ -10,10 +10,10 @@
   </md-radio-group>
 
   <md-input-container>
-    <input md-input type="date" placeholder="Premiere date" formControlName="premiereDate">
+    <input md-input type="date" placeholder="Premiere date" formControlName="premiereDate" appValueToDate>
   </md-input-container>
 
-  <div formGroupName="recurring" *ngIf="isRecurring(newShowFormFb.get('type').value)">
+  <div formGroupName="recurring" *ngIf="isRecurring(newShowForm.get('type').value)">
     <md-input-container>
       <input md-input
         type="number"
@@ -32,22 +32,20 @@
         formControlName="episodes">
     </md-input-container>
 
-
     <md-radio-group formControlName="frequency">
       <md-radio-button *ngFor="let sf of showFrequencies" [value]="sf.code">
         {{sf.label}}
       </md-radio-button>
     </md-radio-group>
 
+    <app-episodes-preview
+      [disabled]="!(newShowForm.get('recurring').valid && newShowForm.get('premiereDate').valid)"
+      [premiereDate]="newShowForm.get('premiereDate').value"
+      [frequency]="newShowForm.get('recurring.frequency').value"
+      [season]="newShowForm.get('recurring.season').value"
+      [episodes]="newShowForm.get('recurring.episodes').value">
+    </app-episodes-preview>
+
   </div>
 
 </form>
-
-<pre>
-{{ newShowFormFb.value | json }}
-
----------------------------
-
-{{ newShowFormFb.valid }}
-
-</pre>
