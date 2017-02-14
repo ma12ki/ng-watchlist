@@ -8,7 +8,7 @@ import { AppActions } from './app.actions';
 import { IRootState } from './app.redux-roots';
 
 @Component({
-  selector: 'app-root',
+  selector: 'wl-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

@@ -3,7 +3,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { EpisodesPreviewService, IPreview } from './episodes-preview.service';
 
 @Component({
-  selector: 'app-episodes-preview',
+  selector: 'wl-episodes-preview',
   templateUrl: './episodes-preview.component.html',
   styleUrls: ['./episodes-preview.component.scss']
 })

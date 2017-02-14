@@ -6,7 +6,7 @@ import { IShowType } from '../../dictionary/show-types/show-types.interfaces';
 import { IShowFrequency } from '../../dictionary/show-frequencies/show-frequencies.interfaces';
 
 @Component({
-  selector: 'app-new-show',
+  selector: 'wl-new-show',
   templateUrl: './new-show.component.html',
   styleUrls: ['./new-show.component.scss']
 })

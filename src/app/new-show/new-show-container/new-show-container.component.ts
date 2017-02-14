@@ -5,7 +5,7 @@ import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 import { ShowFrequenciesActions, ShowTypesActions } from '../../dictionary';
 
 @Component({
-  selector: 'app-new-show-container',
+  selector: 'wl-new-show-container',
   templateUrl: './new-show-container.component.html',
   styleUrls: ['./new-show-container.component.scss']
 })

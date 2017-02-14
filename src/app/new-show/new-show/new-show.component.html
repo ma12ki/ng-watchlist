@@ -38,13 +38,13 @@
       </md-radio-button>
     </md-radio-group>
 
-    <app-episodes-preview
+    <wl-episodes-preview
       [disabled]="!(newShowForm.get('recurring').valid && newShowForm.get('premiereDate').valid)"
       [premiereDate]="newShowForm.get('premiereDate').value"
       [frequency]="newShowForm.get('recurring.frequency').value"
       [season]="newShowForm.get('recurring.season').value"
       [episodes]="newShowForm.get('recurring.episodes').value">
-    </app-episodes-preview>
+    </wl-episodes-preview>
 
   </div>
 
