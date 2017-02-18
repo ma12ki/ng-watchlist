@@ -21,7 +21,7 @@ import { IRootState, ReduxRoots } from './app.redux-roots';
 import { DateInputToDateModule } from './date-input-to-date/date-input-to-date.module';
 import { DictionaryModule } from './dictionary/dictionary.module';
 import { UpcomingModule } from './upcoming/upcoming.module';
-import { NewShowModule } from './new-show/new-show.module';
+import { AllShowsModule } from './all-shows/all-shows.module';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -32,7 +32,7 @@ import { NewShowModule } from './new-show/new-show.module';
     DateInputToDateModule,
     DictionaryModule,
     UpcomingModule,
-    NewShowModule,
+    AllShowsModule,
     ApolloModule.withClient(provideClient),
     RouterModule.forRoot([]),
     NgReduxModule,

@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-
-import { IShowType } from '../../dictionary/show-types/show-types.interfaces';
-import { IShowFrequency } from '../../dictionary/show-frequencies/show-frequencies.interfaces';
+import {
+  categories, ICategory,
+  frequencies, IFrequency
+} from '../../../common/dictionary';
 
 @Component({
   selector: 'wl-new-show',
@@ -11,11 +12,8 @@ import { IShowFrequency } from '../../dictionary/show-frequencies/show-frequenci
   styleUrls: ['./new-show.component.scss']
 })
 export class NewShowComponent implements OnInit {
-  @Input()
-  showFrequencies: IShowFrequency[];
-
-  @Input()
-  showTypes: IShowType[];
+  categories = categories;
+  frequencies = frequencies;
 
   newShowForm: FormGroup;
 
@@ -32,7 +30,7 @@ export class NewShowComponent implements OnInit {
           Validators.maxLength(100)
         ]
       ],
-      type: [ '', [ Validators.required ] ],
+      category: [ '', [ Validators.required ] ],
       premiereDate: [ null, [ Validators.required ] ],
       recurring: this.formBuilder.group({
         season: [ null, [
@@ -57,11 +55,11 @@ export class NewShowComponent implements OnInit {
   }
 
   setUpDisableRecurring(): void {
-    this.newShowForm.get('type').valueChanges.subscribe(this.enableDisableRecurring.bind(this));
+    this.newShowForm.get('category').valueChanges.subscribe(this.enableDisableRecurring.bind(this));
   }
 
-  enableDisableRecurring(type: string): void {
-    if (this.isRecurring(type)) {
+  enableDisableRecurring(category: string): void {
+    if (this.isRecurring(category)) {
       this.newShowForm.get('recurring').enable();
     } else {
       this.newShowForm.get('recurring').disable();
@@ -70,7 +68,7 @@ export class NewShowComponent implements OnInit {
 
   ngOnInit() { }
 
-  isRecurring(showTypeCode: string): boolean {
-    return this.showTypes.some((showType) => showType.code === showTypeCode && showType.recurring);
+  isRecurring(category: string): boolean {
+    return this.categories.some((c) => c._id === category && c.recurring);
   }
 }

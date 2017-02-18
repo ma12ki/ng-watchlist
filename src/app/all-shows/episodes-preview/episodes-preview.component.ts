@@ -29,12 +29,19 @@ export class EpisodesPreviewComponent implements OnChanges {
     private episodePreviewService: EpisodesPreviewService
   ) { }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.items = this.episodePreviewService.generatePreviewItems(this.premiereDate, this.frequency, this.season, this.episodes);
+  ngOnChanges(): void {
+    this.refreshItems();
   }
 
   togglePreview(): void {
     this.showPreview = !this.showPreview;
+    this.refreshItems();
+  }
+
+  refreshItems(): void {
+    if (this.showPreview) {
+      this.items = this.episodePreviewService.generatePreviewItems(this.premiereDate, this.frequency, this.season, this.episodes);
+    }
   }
 
   getItemId(index: number, item: IPreview): string {
