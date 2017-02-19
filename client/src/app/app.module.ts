@@ -23,6 +23,10 @@ import { DictionaryModule } from './dictionary/dictionary.module';
 import { UpcomingModule } from './upcoming/upcoming.module';
 import { AllShowsModule } from './all-shows/all-shows.module';
 
+import { environment } from '../environments/environment';
+
+console.log(environment);
+
 @NgModule({
   declarations: [ AppComponent ],
   imports: [
