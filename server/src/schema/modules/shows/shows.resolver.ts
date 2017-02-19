@@ -1,3 +1,7 @@
+import mockShows from './mock-shows';
+
 export default {
-  shows: { }
+  shows() {
+    return mockShows;
+  }
 };

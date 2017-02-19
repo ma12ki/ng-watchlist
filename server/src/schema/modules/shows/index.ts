@@ -17,11 +17,9 @@ const typeDefs = [
 ];
 
 const resolvers = {
-  shows: {
-    ...showsResolver,
-    ...showResolver,
-    ...episodeResolver,
-  }
+  ...showsResolver,
+  ...showResolver,
+  ...episodeResolver,
 };
 
 export {

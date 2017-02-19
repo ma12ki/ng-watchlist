@@ -7,6 +7,8 @@ import {
   typeDefs as modulesTypeDefs,
 } from './modules';
 
+console.log('aaa');
+
 const typeDefs = [`
   schema {
     query: RootQuery

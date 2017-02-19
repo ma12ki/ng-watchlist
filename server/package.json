@@ -43,7 +43,8 @@
     "graphql-subscriptions": "^0.3.0",
     "graphql-tools": "0.10.0",
     "helmet": "^3.4.0",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "source-map-loader": "^0.1.6"
   },
   "devDependencies": {
     "@types/es6-shim": "^0.31.32",
