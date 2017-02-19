@@ -1,13 +1,11 @@
 import { GraphQLSchema } from 'graphql';
-import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
+import { addMockFunctionsToSchema, makeExecutableSchema } from 'graphql-tools';
 
 import {
   rootQuery,
-  resolvers,
+  rootResolver,
   typeDefs as modulesTypeDefs,
 } from './modules';
-
-console.log('aaa');
 
 const typeDefs = [`
   schema {
@@ -23,8 +21,8 @@ const Schema: GraphQLSchema = makeExecutableSchema({
   resolverValidationOptions: {
     requireResolversForNonScalar: false,
   },
-  resolvers: resolvers,
-  typeDefs: typeDefs,
+  resolvers: rootResolver,
+  typeDefs,
 });
 addMockFunctionsToSchema({
   mocks: {},

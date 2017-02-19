@@ -1,11 +1,11 @@
+import showTypeResolver from './show.resolver';
 import showType from './show.type';
-import showResolver from './show.resolver';
 
 import showsQuery from './shows.query';
-import showsResolver from './shows.resolver';
+import showsQueryResolver from './shows.resolver';
 
+import episodeTypeResolver from './episode.resolver';
 import episodeType from './episode.type';
-import episodeResolver from './episode.resolver';
 
 const queries = `
   ${showsQuery}
@@ -16,14 +16,18 @@ const typeDefs = [
   episodeType,
 ];
 
-const resolvers = {
-  ...showsResolver,
-  ...showResolver,
-  ...episodeResolver,
+const typeResolvers = {
+  ...showTypeResolver,
+  ...episodeTypeResolver,
+};
+
+const queryResolvers = {
+  ...showsQueryResolver,
 };
 
 export {
   typeDefs,
-  resolvers,
+  typeResolvers,
   queries,
+  queryResolvers
 };

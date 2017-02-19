@@ -1,7 +1,8 @@
 import {
   queries as showsQueries,
-  resolvers as showsResolvers,
+  queryResolvers as showsQueryResolvers,
   typeDefs as showsTypeDefs,
+  typeResolvers as showsTypeResolvers,
 } from './shows';
 
 const rootQuery = `
@@ -10,18 +11,23 @@ const rootQuery = `
   }
 `;
 
+const rootResolver = {
+  RootQuery: {
+    ...showsQueryResolvers,
+  },
+  ...showsTypeResolvers,
+};
+
 const typeDefs = [
-  ...showsTypeDefs
+  ...showsTypeDefs,
 ];
 
-const resolvers = {
-  RootQuery: {
-    ...showsResolvers
-  }
+const typeResolvers = {
+  ...showsTypeResolvers,
 };
 
 export {
   rootQuery,
+  rootResolver,
   typeDefs,
-  resolvers,
 };
