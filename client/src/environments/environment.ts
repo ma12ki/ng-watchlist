@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  graphQlUrl: 'localhost'
+  graphQlUrl: '//localhost:3000/graphql'
 };
