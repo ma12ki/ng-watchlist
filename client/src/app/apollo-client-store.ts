@@ -1,13 +1,14 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
+import { environment } from '../environments/environment';
 
 export const client = new ApolloClient({
   networkInterface: createNetworkInterface({
     // Example endpoint
-    uri: 'https://api.graph.cool/simple/v1/ciy66vmlg00x80161cz55jn1i'
+    uri: environment.graphQlUrl
   }),
   // ID mapping required for automatic updates of objects in the store after
   // mutations.
-  dataIdFromObject: o => o['id'],
+  dataIdFromObject: o => o['_id'],
   // Enable Apollo Dev Tools Extension
   connectToDevTools: true
 });

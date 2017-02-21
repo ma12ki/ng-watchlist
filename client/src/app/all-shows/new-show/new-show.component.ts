@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { AllShowsService } from '../all-shows.service';
+
 import {
   categories, ICategory,
   frequencies, IFrequency
@@ -18,7 +20,8 @@ export class NewShowComponent implements OnInit {
   newShowForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private ass: AllShowsService
   ) {
     this.createForm();
   }

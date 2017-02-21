@@ -7,6 +7,10 @@ import { MomentModule } from 'angular2-moment';
 import { NewShowComponent } from './new-show/new-show.component';
 import { EpisodesPreviewComponent } from './episodes-preview/episodes-preview.component';
 import { EpisodesPreviewService } from './episodes-preview/episodes-preview.service';
+import { AllShowsService } from './all-shows.service';
+import { AllShowsActions } from './all-shows.actions';
+import { AllShowsEpics } from './all-shows.epics';
+import { AllShowsListComponent } from './all-shows-list/all-shows-list.component';
 
 @NgModule({
   imports: [
@@ -18,12 +22,17 @@ import { EpisodesPreviewService } from './episodes-preview/episodes-preview.serv
   declarations: [
     NewShowComponent,
     EpisodesPreviewComponent,
+    AllShowsListComponent,
   ],
   providers: [
     EpisodesPreviewService,
+    AllShowsService,
+    AllShowsActions,
+    AllShowsEpics,
   ],
   exports: [
     NewShowComponent,
+    AllShowsListComponent,
   ]
 })
 export class AllShowsModule { }
