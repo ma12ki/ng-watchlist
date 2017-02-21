@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs/Rx';
@@ -10,7 +10,8 @@ import { IRootState } from './app.redux-roots';
 @Component({
   selector: 'wl-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   cities$: Observable<any>;
