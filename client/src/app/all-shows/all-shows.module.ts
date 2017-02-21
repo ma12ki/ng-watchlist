@@ -10,6 +10,7 @@ import { EpisodesPreviewService } from './episodes-preview/episodes-preview.serv
 import { AllShowsService } from './all-shows.service';
 import { AllShowsActions } from './all-shows.actions';
 import { AllShowsEpics } from './all-shows.epics';
+import { AllShowsReducer } from './all-shows.reducer';
 import { AllShowsListComponent } from './all-shows-list/all-shows-list.component';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { AllShowsListComponent } from './all-shows-list/all-shows-list.component
     AllShowsService,
     AllShowsActions,
     AllShowsEpics,
+    AllShowsReducer,
   ],
   exports: [
     NewShowComponent,

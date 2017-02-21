@@ -1,3 +1,5 @@
-<p>
-  all-shows-list works!
-</p>
+<div>
+  <p *ngFor="let item of items$ | async; trackBy:getItemId">
+    {{ item.name }}
+  </p>
+</div>
