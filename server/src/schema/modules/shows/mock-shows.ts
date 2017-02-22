@@ -1,10 +1,12 @@
+import * as moment from 'moment';
+
 export default [
   {
     _id: '1',
     name: 'Rick and Morty',
     category: 'TVSHOW',
     frequency: 'WEEKLY',
-    premiereDate: '2017-02-19T16:16:51.637Z',
+    premiereDate: moment().subtract(10, 'days').toISOString(),
     listed: true,
     tracked: true,
     episodes: [
@@ -12,21 +14,21 @@ export default [
         _id: 'rm3.1',
         season: 3,
         episode: 1,
-        premiereDate: '2017-02-19T16:16:51.637Z',
-        watched: false,
+        premiereDate: moment().subtract(10, 'days').toISOString(),
+        watched: true,
       },
       {
         _id: 'rm3.2',
         season: 3,
         episode: 2,
-        premiereDate: '2017-02-22T16:16:51.637Z',
+        premiereDate: moment().subtract(3, 'days').toISOString(),
         watched: false,
       },
       {
         _id: 'rm3.3',
         season: 3,
         episode: 3,
-        premiereDate: '2017-02-26T16:16:51.637Z',
+        premiereDate: moment().add(3, 'days').toISOString(),
         watched: false,
       },
     ],
@@ -36,7 +38,7 @@ export default [
     name: 'Logan',
     category: 'MOVIE',
     frequency: 'INSTANTLY',
-    premiereDate: '2017-03-03T16:16:51.637Z',
+    premiereDate: moment().subtract(5, 'days').toISOString(),
     listed: true,
     tracked: true,
     episodes: [
@@ -44,7 +46,14 @@ export default [
         _id: 'l1.1',
         season: 1,
         episode: 1,
-        premiereDate: '2017-03-03T16:16:51.637Z',
+        premiereDate: moment().subtract(5, 'days').toISOString(),
+        watched: false,
+      },
+      {
+        _id: 'l1.2',
+        season: 1,
+        episode: 2,
+        premiereDate: moment().add(1, 'days').toISOString(),
         watched: false,
       },
     ],
