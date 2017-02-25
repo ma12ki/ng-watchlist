@@ -1,7 +1,7 @@
-import mockShows from './mock-shows';
+import shows from './mock-data/shows';
 
 export default {
   shows() {
-    return mockShows;
+    return shows;
   },
 };

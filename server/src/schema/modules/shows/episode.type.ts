@@ -6,5 +6,6 @@ type Episode {
   episode: Int
   premiereDate: String
   watched: Boolean
+  show: Show
 }
 `;
