@@ -10,9 +10,13 @@ import showsQueryResolver from './shows.resolver';
 import availableEpisodesQuery from './available-episodes.query';
 import availableEpisodesQueryResolver from './available-episodes.resolver';
 
+import upcomingEpisodesQuery from './upcoming-episodes.query';
+import upcomingEpisodesQueryResolver from './upcoming-episodes.resolver';
+
 const queries = `
   ${showsQuery}
   ${availableEpisodesQuery}
+  ${upcomingEpisodesQuery}
 `;
 
 const typeDefs = [
@@ -28,6 +32,7 @@ const typeResolvers = {
 const queryResolvers = {
   ...showsQueryResolver,
   ...availableEpisodesQueryResolver,
+  ...upcomingEpisodesQueryResolver,
 };
 
 export {
