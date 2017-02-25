@@ -22,6 +22,7 @@ import { DateInputToDateModule } from './date-input-to-date/date-input-to-date.m
 import { DictionaryModule } from './dictionary/dictionary.module';
 import { UpcomingModule } from './upcoming/upcoming.module';
 import { AllShowsModule } from './all-shows/all-shows.module';
+import { AvailableEpisodesModule } from './available-episodes/available-episodes.module';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -33,16 +34,17 @@ import { AllShowsModule } from './all-shows/all-shows.module';
     DictionaryModule,
     UpcomingModule,
     AllShowsModule,
+    AvailableEpisodesModule,
     ApolloModule.withClient(provideClient),
     RouterModule.forRoot([]),
     NgReduxModule,
     NgReduxRouterModule,
     NgReduxFormModule,
     MaterialModule.forRoot(),
-    FlexLayoutModule.forRoot()
+    FlexLayoutModule.forRoot(),
   ],
   providers: [ AppActions, ReduxRoots ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
 })
 export class AppModule {
   constructor(
@@ -56,7 +58,7 @@ export class AppModule {
       reduxRoots.rootReducer,
       {},
       reduxRoots.rootEpic,
-      reduxRoots.middlewares
+      reduxRoots.middlewares,
     );
     ngReduxRouter.initialize();
   }
