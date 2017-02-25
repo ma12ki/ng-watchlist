@@ -1,0 +1,5 @@
+<div>
+  <p *ngFor="let item of items$ | async; trackBy:getItemId">
+    {{ item.show.name}}: season {{ item.season }}, episode {{ item.episode }}
+  </p>
+</div>

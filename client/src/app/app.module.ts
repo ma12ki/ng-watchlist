@@ -23,6 +23,7 @@ import { DictionaryModule } from './dictionary/dictionary.module';
 import { UpcomingModule } from './upcoming/upcoming.module';
 import { AllShowsModule } from './all-shows/all-shows.module';
 import { AvailableEpisodesModule } from './available-episodes/available-episodes.module';
+import { UpcomingEpisodesModule } from './upcoming-episodes/upcoming-episodes.module';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -35,6 +36,7 @@ import { AvailableEpisodesModule } from './available-episodes/available-episodes
     UpcomingModule,
     AllShowsModule,
     AvailableEpisodesModule,
+    UpcomingEpisodesModule,
     ApolloModule.withClient(provideClient),
     RouterModule.forRoot([]),
     NgReduxModule,

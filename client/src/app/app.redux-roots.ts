@@ -13,6 +13,8 @@ import { IImmutableAllShowsState, AllShowsReducer } from './all-shows/all-shows.
 import { AllShowsEpics } from './all-shows/all-shows.epics';
 import { IImmutableAvailableEpisodesState, AvailableEpisodesReducer } from './available-episodes/available-episodes.reducer';
 import { AvailableEpisodesEpics } from './available-episodes/available-episodes.epics';
+import { IImmutableUpcomingEpisodesState, UpcomingEpisodesReducer } from './upcoming-episodes/upcoming-episodes.reducer';
+import { UpcomingEpisodesEpics } from './upcoming-episodes/upcoming-episodes.epics';
 
 export interface IRootState {
   apollo?: any;
@@ -21,6 +23,7 @@ export interface IRootState {
   upcoming?: IImmutableUpcomingState;
   allShows?: IImmutableAllShowsState;
   availableEpisodes?: IImmutableAvailableEpisodesState;
+  upcomingEpisodes?: IImmutableUpcomingEpisodesState;
 }
 
 @Injectable()
@@ -35,6 +38,8 @@ export class ReduxRoots {
     private allShowsEpics: AllShowsEpics,
     private availableEpisodesReducer: AvailableEpisodesReducer,
     private availableEpisodesEpics: AvailableEpisodesEpics,
+    private upcomingEpisodesReducer: UpcomingEpisodesReducer,
+    private upcomingEpisodesEpics: UpcomingEpisodesEpics,
   ) { }
 
   get rootReducer() {
@@ -45,6 +50,7 @@ export class ReduxRoots {
       upcoming: this.upcomingReducer.reducer,
       allShows: this.allShowsReducer.reducer,
       availableEpisodes: this.availableEpisodesReducer.reducer,
+      upcomingEpisodes: this.upcomingEpisodesReducer.reducer,
     });
   }
 
@@ -55,6 +61,7 @@ export class ReduxRoots {
         ...this.upcomingEpics.epics,
         ...this.allShowsEpics.epics,
         ...this.availableEpisodesEpics.epics,
+        ...this.upcomingEpisodesEpics.epics,
       )
     ) ];
   }
