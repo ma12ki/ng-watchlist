@@ -7,12 +7,12 @@ import episodeType from './episode.type';
 import showsQuery from './shows.query';
 import showsQueryResolver from './shows.resolver';
 
-import availableShowsQuery from './available-shows.query';
-import availableShowsQueryResolver from './available-shows.resolver';
+import availableEpisodesQuery from './available-episodes.query';
+import availableEpisodesQueryResolver from './available-episodes.resolver';
 
 const queries = `
   ${showsQuery}
-  ${availableShowsQuery}
+  ${availableEpisodesQuery}
 `;
 
 const typeDefs = [
@@ -27,7 +27,7 @@ const typeResolvers = {
 
 const queryResolvers = {
   ...showsQueryResolver,
-  ...availableShowsQueryResolver,
+  ...availableEpisodesQueryResolver,
 };
 
 export {
