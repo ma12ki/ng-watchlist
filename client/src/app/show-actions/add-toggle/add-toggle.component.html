@@ -1,7 +1,4 @@
-<p>
-  add-toggle works!
-  {{ showId }}
-  {{ isFetching$ | async }}
-  {{ error$ | async }}
-  <button md-icon-button (click)="addToggle()"><md-icon>add</md-icon></button>
-</p>
+<button md-icon-button (click)="addToggle()" [disabled]="isFetching$ | async">
+  <md-icon *ngIf="!listed">add</md-icon>
+  <md-icon *ngIf="listed">clear</md-icon>
+</button>

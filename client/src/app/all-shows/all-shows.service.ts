@@ -17,6 +17,7 @@ export class AllShowsService {
           name
           category
           listed
+          tracked
         }
       }
     `;
