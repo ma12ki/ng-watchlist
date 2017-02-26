@@ -18,10 +18,10 @@ export class AvailableEpisodesEpics {
     private service: AvailableEpisodesService,
     private actions: AvailableEpisodesActions
   ) {
-    this.epics = [ this.loadAllShows ];
+    this.epics = [ this.loadAvailableEpisodes ];
   }
 
-  loadAllShows = action$ => action$
+  loadAvailableEpisodes = action$ => action$
     .ofType(AvailableEpisodesActions.LOAD_START)
     .switchMap((_) => this.service.loadAvailableEpisodes()
       .map(data => this.actions.loadSucceeded(data))

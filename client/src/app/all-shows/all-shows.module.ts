@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { MomentModule } from 'angular2-moment';
 
+import { ShowActionsModule } from '../show-actions/show-actions.module';
 import { NewShowComponent } from './new-show/new-show.component';
 import { EpisodesPreviewComponent } from './episodes-preview/episodes-preview.component';
 import { EpisodesPreviewService } from './episodes-preview/episodes-preview.service';
@@ -19,6 +20,7 @@ import { AllShowsListComponent } from './all-shows-list/all-shows-list.component
     ReactiveFormsModule,
     MaterialModule,
     MomentModule,
+    ShowActionsModule,
   ],
   declarations: [
     NewShowComponent,

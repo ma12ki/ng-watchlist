@@ -24,6 +24,7 @@ import { UpcomingModule } from './upcoming/upcoming.module';
 import { AllShowsModule } from './all-shows/all-shows.module';
 import { AvailableEpisodesModule } from './available-episodes/available-episodes.module';
 import { UpcomingEpisodesModule } from './upcoming-episodes/upcoming-episodes.module';
+import { ShowActionsModule } from './show-actions/show-actions.module';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -31,12 +32,6 @@ import { UpcomingEpisodesModule } from './upcoming-episodes/upcoming-episodes.mo
     BrowserModule,
     FormsModule,
     HttpModule,
-    DateInputToDateModule,
-    DictionaryModule,
-    UpcomingModule,
-    AllShowsModule,
-    AvailableEpisodesModule,
-    UpcomingEpisodesModule,
     ApolloModule.withClient(provideClient),
     RouterModule.forRoot([]),
     NgReduxModule,
@@ -44,6 +39,13 @@ import { UpcomingEpisodesModule } from './upcoming-episodes/upcoming-episodes.mo
     NgReduxFormModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
+    DateInputToDateModule,
+    DictionaryModule,
+    UpcomingModule,
+    AllShowsModule,
+    AvailableEpisodesModule,
+    UpcomingEpisodesModule,
+    ShowActionsModule,
   ],
   providers: [ AppActions, ReduxRoots ],
   bootstrap: [ AppComponent ],

@@ -16,6 +16,7 @@ export class AllShowsService {
           _id
           name
           category
+          listed
         }
       }
     `;

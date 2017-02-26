@@ -4,6 +4,7 @@ import { select } from '@angular-redux/store/lib/decorators/select';
 
 import { AvailableEpisodesActions } from '../available-episodes.actions';
 import { AvailableEpisodesService } from '../available-episodes.service';
+import selectors from '../available-episodes.selectors';
 
 @Component({
   selector: 'wl-available-episodes-list',
@@ -11,13 +12,13 @@ import { AvailableEpisodesService } from '../available-episodes.service';
   styleUrls: ['./available-episodes-list.component.scss']
 })
 export class AvailableEpisodesListComponent implements OnInit {
-  @select(['availableEpisodes', 'items']) items$;
-  @select(['availableEpisodes', 'error']) error$;
-  @select(['availableEpisodes', 'isFetching']) isFetching$;
+  @select((state) => selectors.items(state)) items$;
+  @select((state) => selectors.error(state)) error$;
+  @select((state) => selectors.isFetching(state)) isFetching$;
 
   constructor(
     private ngRedux: NgRedux<any>,
-    private actions: AvailableEpisodesActions
+    private actions: AvailableEpisodesActions,
   ) { }
 
   ngOnInit() {

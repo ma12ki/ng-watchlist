@@ -1,5 +1,6 @@
 <div>
   <p *ngFor="let item of items$ | async; trackBy:getItemId">
     {{ item.name }}
+    <wl-add-toggle [showId]="item._id" [listed]="item.listed"></wl-add-toggle>
   </p>
 </div>
