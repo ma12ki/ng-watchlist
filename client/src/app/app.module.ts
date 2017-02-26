@@ -25,6 +25,7 @@ import { AllShowsModule } from './all-shows/all-shows.module';
 import { AvailableEpisodesModule } from './available-episodes/available-episodes.module';
 import { UpcomingEpisodesModule } from './upcoming-episodes/upcoming-episodes.module';
 import { ShowActionsModule } from './show-actions/show-actions.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -46,6 +47,7 @@ import { ShowActionsModule } from './show-actions/show-actions.module';
     AvailableEpisodesModule,
     UpcomingEpisodesModule,
     ShowActionsModule,
+    DashboardModule,
   ],
   providers: [ AppActions, ReduxRoots ],
   bootstrap: [ AppComponent ],
