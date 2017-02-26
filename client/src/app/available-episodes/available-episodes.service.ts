@@ -17,7 +17,9 @@ export class AvailableEpisodesService {
           season
           episode
           premiereDate
+          watched
           show {
+            _id
             name
           }
         }

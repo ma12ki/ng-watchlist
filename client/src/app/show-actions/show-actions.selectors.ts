@@ -13,7 +13,7 @@ const showIsFetching = (state, showId) => {
   const episodes = show.episodes;
   const episodeIds = Object.keys(episodes);
 
-  const isFetching = episodeIds.reduce((fetching, episodeId) => {
+  return episodeIds.reduce((fetching, episodeId) => {
     return fetching || !!episodes[episodeId].isFetching;
   }, false);
 };

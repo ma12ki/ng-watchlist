@@ -8,12 +8,14 @@ import { AvailableEpisodesReducer } from './available-episodes.reducer';
 import { AvailableEpisodesActions } from './available-episodes.actions';
 import { AvailableEpisodesEpics } from './available-episodes.epics';
 import { AvailableEpisodesService } from './available-episodes.service';
+import { ShowActionsModule } from '../show-actions/show-actions.module';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     MomentModule,
+    ShowActionsModule,
   ],
   declarations: [
     AvailableEpisodesListComponent

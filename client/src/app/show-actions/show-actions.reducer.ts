@@ -67,36 +67,36 @@ export function showActionsReducer(state = defaultState, action: IPayloadErrorAc
     case ShowActions.MARK_WATCHED_START:
     case ShowActions.UNMARK_WATCHED_START:
     {
-      const show = state[action.payload.showId] || { episodes: {} };
-      show.episodes[action.payload.episodeId] = {
+      let show = state[action.payload.showId] || immutable.from({ episodes: {} });
+      const episodes = show.episodes.set(action.payload.episodeId, {
         isFetching: true,
         error: null,
-      };
-
+      });
+      show = show.set('episodes', episodes);
       return state.set(action.payload.showId, show);
     }
 
     case ShowActions.MARK_WATCHED_SUCCEEDED:
     case ShowActions.UNMARK_WATCHED_SUCCEEDED:
     {
-      const show = state[action.payload.showId] || { episodes: {} };
-      show.episodes[action.payload.episodeId] = {
+      let show = state[action.payload.showId] || immutable.from({ episodes: {} });
+      const episodes = show.episodes.set(action.payload.episodeId, {
         isFetching: false,
         error: null,
-      };
-
+      });
+      show = show.set('episodes', episodes);
       return state.set(action.payload.showId, show);
     }
 
     case ShowActions.MARK_WATCHED_FAILED:
     case ShowActions.UNMARK_WATCHED_FAILED:
     {
-      const show = state[action.payload.showId] || { episodes: {} };
-      show.episodes[action.payload.episodeId] = {
+      let show = state[action.payload.showId] || immutable.from({ episodes: {} });
+      const episodes = show.episodes.set(action.payload.episodeId, {
         isFetching: false,
         error: action.error,
-      };
-
+      });
+      show = show.set('episodes', episodes);
       return state.set(action.payload.showId, show);
     }
   }

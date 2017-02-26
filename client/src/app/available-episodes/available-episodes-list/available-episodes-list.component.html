@@ -1,5 +1,6 @@
 <div>
   <p *ngFor="let item of items$ | async; trackBy:getItemId">
     {{ item.show.name}}: season {{ item.season }}, episode {{ item.episode }}
+    <wl-watched-toggle [showId]="item.show._id" [episodeId]="item._id" [watched]="item.watched"></wl-watched-toggle>
   </p>
 </div>

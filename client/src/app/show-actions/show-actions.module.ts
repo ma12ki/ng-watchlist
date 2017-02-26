@@ -8,6 +8,7 @@ import { ShowActions } from './show-actions.actions';
 import { ShowActionsReducer } from './show-actions.reducer';
 import { ShowActionsEpics } from './show-actions.epics';
 import { TrackToggleComponent } from './track-toggle/track-toggle.component';
+import { WatchedToggleComponent } from './watched-toggle/watched-toggle.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { TrackToggleComponent } from './track-toggle/track-toggle.component';
   declarations: [
     AddToggleComponent,
     TrackToggleComponent,
+    WatchedToggleComponent,
   ],
   providers: [
     ShowActionsService,
@@ -27,6 +29,7 @@ import { TrackToggleComponent } from './track-toggle/track-toggle.component';
   exports: [
     AddToggleComponent,
     TrackToggleComponent,
+    WatchedToggleComponent,
   ]
 })
 export class ShowActionsModule { }
