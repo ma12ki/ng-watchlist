@@ -3,6 +3,11 @@
   "rules": {
     "use-strict": true,
     "no-console": false,
+    "no-unused-variable": [
+      true,
+      "check-parameters",
+      {"ignore-pattern": "^_"}
+    ],
     "quotemark": [
       "single"
     ]
