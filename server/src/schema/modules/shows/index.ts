@@ -13,6 +13,9 @@ import availableEpisodesQueryResolver from './available-episodes.resolver';
 import upcomingEpisodesQuery from './upcoming-episodes.query';
 import upcomingEpisodesQueryResolver from './upcoming-episodes.resolver';
 
+import addShowMutation from './add-show.mutation';
+import addShowMutationResolver from './add-show.resolver';
+
 import categoryEnum from './categories.enum';
 import frequencyEnum from './frequencies.enum';
 
@@ -21,6 +24,12 @@ const queries = `
   ${availableEpisodesQuery}
   ${upcomingEpisodesQuery}
 `;
+
+const queryResolvers = {
+  ...showsQueryResolver,
+  ...availableEpisodesQueryResolver,
+  ...upcomingEpisodesQueryResolver,
+};
 
 const typeDefs = [
   showType,
@@ -34,15 +43,19 @@ const typeResolvers = {
   ...episodeTypeResolver,
 };
 
-const queryResolvers = {
-  ...showsQueryResolver,
-  ...availableEpisodesQueryResolver,
-  ...upcomingEpisodesQueryResolver,
+const mutations = `
+  ${addShowMutation}
+`;
+
+const mutationResolvers = {
+  ...addShowMutationResolver,
 };
 
 export {
   typeDefs,
   typeResolvers,
   queries,
-  queryResolvers
+  queryResolvers,
+  mutations,
+  mutationResolvers,
 };

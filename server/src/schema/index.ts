@@ -2,6 +2,7 @@ import { GraphQLSchema } from 'graphql';
 import { addMockFunctionsToSchema, makeExecutableSchema } from 'graphql-tools';
 
 import {
+  rootMutation,
   rootQuery,
   rootResolver,
   typeDefs as modulesTypeDefs,
@@ -10,9 +11,11 @@ import {
 const typeDefs = [`
   schema {
     query: RootQuery
+    mutation: RootMutation
   }
 `,
   ...modulesTypeDefs,
+  rootMutation,
   rootQuery,
 ];
 

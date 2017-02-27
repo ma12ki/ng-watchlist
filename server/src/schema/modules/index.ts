@@ -3,6 +3,8 @@ import {
   queryResolvers as showsQueryResolvers,
   typeDefs as showsTypeDefs,
   typeResolvers as showsTypeResolvers,
+  mutations as showsMutations,
+  mutationResolvers as showsMutationResolvers,
 } from './shows';
 
 const rootQuery = `
@@ -11,7 +13,16 @@ const rootQuery = `
   }
 `;
 
+const rootMutation = `
+  type RootMutation {
+    ${showsMutations}
+  }
+`;
+
 const rootResolver = {
+  RootMutation: {
+    ...showsMutationResolvers,
+  },
   RootQuery: {
     ...showsQueryResolvers,
   },
@@ -26,4 +37,5 @@ export {
   rootQuery,
   rootResolver,
   typeDefs,
+  rootMutation,
 };
