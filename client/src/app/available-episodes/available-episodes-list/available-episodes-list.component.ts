@@ -3,7 +3,6 @@ import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 import { select } from '@angular-redux/store/lib/decorators/select';
 
 import { AvailableEpisodesActions } from '../available-episodes.actions';
-import { AvailableEpisodesService } from '../available-episodes.service';
 import selectors from '../available-episodes.selectors';
 
 @Component({
@@ -12,9 +11,9 @@ import selectors from '../available-episodes.selectors';
   styleUrls: ['./available-episodes-list.component.scss']
 })
 export class AvailableEpisodesListComponent implements OnInit {
-  @select((state) => selectors.items(state)) items$;
-  @select((state) => selectors.error(state)) error$;
-  @select((state) => selectors.isFetching(state)) isFetching$;
+  @select(selectors.items) items$;
+  @select(selectors.error) error$;
+  @select(selectors.isFetching) isFetching$;
 
   constructor(
     private ngRedux: NgRedux<any>,
@@ -29,7 +28,7 @@ export class AvailableEpisodesListComponent implements OnInit {
     this.ngRedux.dispatch(this.actions.loadStart());
   }
 
-  getItemId(index, item) {
+  getItemId(_index, item) {
     return item._id;
   }
 
