@@ -13,25 +13,25 @@ const frequencies: IFrequency[] = [
         label: 'All at once',
         amountAndUnit: {
             amount: 0,
-            unit: 'days'
-        }
+            unit: 'days',
+        },
     },
     {
         _id: 'WEEKLY',
         label: 'Weekly',
         amountAndUnit: {
             amount: 1,
-            unit: 'week'
-        }
+            unit: 'week',
+        },
     },
     {
         _id: 'MONTHLY',
         label: 'Monthly',
         amountAndUnit: {
             amount: 1,
-            unit: 'month'
-        }
-    }
+            unit: 'month',
+        },
+    },
 ];
 
 export { frequencies, IFrequency };
