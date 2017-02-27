@@ -13,6 +13,9 @@ import availableEpisodesQueryResolver from './available-episodes.resolver';
 import upcomingEpisodesQuery from './upcoming-episodes.query';
 import upcomingEpisodesQueryResolver from './upcoming-episodes.resolver';
 
+import categoryEnum from './categories.enum';
+import frequencyEnum from './frequencies.enum';
+
 const queries = `
   ${showsQuery}
   ${availableEpisodesQuery}
@@ -22,6 +25,8 @@ const queries = `
 const typeDefs = [
   showType,
   episodeType,
+  categoryEnum,
+  frequencyEnum,
 ];
 
 const typeResolvers = {

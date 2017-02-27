@@ -22,10 +22,6 @@ const typeDefs = [
   ...showsTypeDefs,
 ];
 
-const typeResolvers = {
-  ...showsTypeResolvers,
-};
-
 export {
   rootQuery,
   rootResolver,

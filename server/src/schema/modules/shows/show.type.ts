@@ -3,8 +3,8 @@ export default `
 type Show {
   _id: String
   name: String
-  category: String
-  frequency: String
+  category: CATEGORY
+  frequency: FREQUENCY
   premiereDate: String
   listed: Boolean
   tracked: Boolean
