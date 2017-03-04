@@ -1,24 +1,24 @@
 import * as moment from 'moment';
 
-import { db } from '../../../db';
+import { collections } from './collections';
 
 export default {
-  addShow(root, args, ctx) {
+  async addShow(root, args, ctx) {
     console.log(root, args, ctx);
 
-    db.collection('lol').insertOne({
-      _id: 'xDDDD',
-      lol: 'mao'
-    }).then((res) => {
-      console.log('INSERT SUCCESSFUL', res);
+    const res = await collections.show.insertOne({
+      _id: 'xDDDD' + Math.random(),
+      lol: 'mao',
     });
+
+    console.log(res);
 
     return {
       _id: 'newShow' + Math.random(),
       name: args.name,
       category: args.category,
       frequency: args.frequency,
-      premiereDate: moment(args.premiereDate),
+      premiereDate: moment(),
       listed: false,
       tracked: false,
     };
