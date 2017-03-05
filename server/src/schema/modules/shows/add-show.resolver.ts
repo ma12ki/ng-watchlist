@@ -1,26 +1,55 @@
-import * as moment from 'moment';
-
-import { collections } from './collections';
+import { ShowModel } from './models/show.model';
+import { EpisodeModel } from './models/episode.model';
 
 export default {
-  async addShow(root, args, ctx) {
-    console.log(root, args, ctx);
+  async addShow(_root, {
+    name,
+    premiereDate,
+    category,
+    frequency,
+    season,
+    episodes,
+  }) {
+    const show = {
+      name,
+      premiereDate,
+      category,
+      frequency,
+    };
 
-    const res = await collections.show.insertOne({
-      _id: 'xDDDD' + Math.random(),
-      lol: 'mao',
-    });
-
-    console.log(res);
+    const createdShow = await ShowModel.create(show);
+    const createdEpisodes = await createEpisodes(
+      createdShow._id,
+      premiereDate,
+      category,
+      frequency,
+      season,
+      episodes,
+    );
 
     return {
-      _id: 'newShow' + Math.random(),
-      name: args.name,
-      category: args.category,
-      frequency: args.frequency,
-      premiereDate: moment(),
-      listed: false,
-      tracked: false,
+      ...createdShow.toObject(),
+      episodes: createdEpisodes,
     };
   },
+};
+
+
+async function createEpisodes(
+  showId: string,
+  premiereDate: string,
+  category: string,
+  frequency: string,
+  season = 0,
+  episodes = 0,
+) {
+  const eps = [{
+    showId,
+    season,
+    episode: episodes,
+    premiereDate,
+  }];
+
+  const createdEpisodes = await EpisodeModel.insertMany(eps);
+  return createdEpisodes;
 };

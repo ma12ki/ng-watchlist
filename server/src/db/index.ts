@@ -1,16 +1,14 @@
-import { Db, MongoClient } from 'mongodb';
+import { connect as mongooseConnect } from 'mongoose';
 
-let db: Db = null;
-
-const connect: () => Promise<void> = () => {
-  return MongoClient.connect('mongodb://localhost:27017/watchlist-dev')
-    .then((database) => {
-      console.log('Connected to db.');
-      db = database;
+const connect = () => {
+  console.log('Attempting to connect to db...');
+  return mongooseConnect('mongodb://localhost:27017/watchlist-dev')
+    .then(() => {
+      console.log('Successfully connected to db');
     });
 };
 
+
 export {
-  connect,
-  db
+  connect
 };

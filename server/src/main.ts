@@ -53,7 +53,10 @@ export function main(options: IMainOptions) {
       testConnector,
       persons,
       findPerson,
-      addPerson
+      addPerson,
+      user: {
+        _id: 'a123456789a123456789a123',
+      },
     },
     schema: Schema,
   }));
