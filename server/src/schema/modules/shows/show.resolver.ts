@@ -24,7 +24,7 @@ const listed = async (show, _args, {user}) => {
 };
 
 const tracked = async (show, _args, {user}) => {
-  if (show.listed == null) {
+  if (show.tracked == null) {
     const userShow: any = await UserShowModel.findOne({
       userId: Types.ObjectId(user._id),
       showId: show._id,
