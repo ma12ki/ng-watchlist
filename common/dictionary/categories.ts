@@ -1,11 +1,13 @@
+interface ICategoryVerbiage {
+    season: string;
+    episode: string;
+}
+
 interface ICategory {
     _id: string;
     label: string;
     recurring: boolean;
-    verbiage: {
-      season: string;
-      episode: string;
-    };
+    verbiage: ICategoryVerbiage;
 }
 
 const categories: ICategory[] = [
@@ -47,4 +49,21 @@ const categories: ICategory[] = [
     },
 ];
 
-export { categories, ICategory };
+const getCategory = (categoryId: string) => categories.find((category) => category._id === categoryId);
+
+const getVerbiage = (categoryId: string) => {
+  return getCategory(categoryId).verbiage;
+};
+
+const isRecurring = (categoryId: string) => {
+  return getCategory(categoryId).recurring;
+};
+
+export {
+  ICategory,
+  ICategoryVerbiage,
+  categories,
+  getCategory,
+  getVerbiage,
+  isRecurring,
+};
