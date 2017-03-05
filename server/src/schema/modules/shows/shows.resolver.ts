@@ -1,13 +1,9 @@
-import shows from './mock-data/shows';
+import { ShowModel } from './models/show.model';
+
+const shows = async (_root, _args, _ctx) => {
+  return ShowModel.find();
+};
 
 export default {
-  shows() {
-    return shows
-      .map((show: any) => {
-        show.episodes = [
-          { _id: 'xDmAO'}
-        ];
-        return show;
-      });
-  },
+  shows,
 };
