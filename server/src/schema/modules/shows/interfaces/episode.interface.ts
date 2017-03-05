@@ -1,7 +1,10 @@
-export interface IEpisode {
-  _id: any;
+export interface INewEpisode {
   showId: string;
   season: number;
   episode: number;
-  premiereDate: Date;
+  premiereDate: string;
+};
+
+export interface IEpisode extends INewEpisode {
+  _id: any;
 };

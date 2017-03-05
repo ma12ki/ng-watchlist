@@ -1,7 +1,10 @@
-export interface IShow {
-  _id: any;
+export interface INewShow {
   name: string;
-  premiereDate: Date;
+  premiereDate: string;
   category: string;
   frequency: string;
+};
+
+export interface IShow extends INewShow {
+  _id: any;
 };
