@@ -1,13 +1,15 @@
 import * as moment from 'moment';
 
-import episodes from './mock-data/episodes';
+import { EpisodeModel } from "./models/episode.model";
+
+const upcomingEpisodes = async () => {
+  const now = moment().toISOString();
+
+  return EpisodeModel.find({
+    premiereDate: { $gt: now },
+  }).lean();
+};
 
 export default {
-  upcomingEpisodes() {
-    const now = moment();
-    return episodes
-      .filter((ep) => {
-        return moment(ep.premiereDate).isAfter(now);
-      });
-  },
+  upcomingEpisodes,
 };

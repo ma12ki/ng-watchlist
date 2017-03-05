@@ -2,12 +2,14 @@ import * as moment from 'moment';
 
 import { EpisodeModel } from "./models/episode.model";
 
-export default {
-  availableEpisodes() {
-    const now = moment().toISOString();
+const availableEpisodes = async () => {
+  const now = moment().toISOString();
 
-    return EpisodeModel.find({
-      premiereDate: { $lte: now },
-    }).lean();
-  },
+  return EpisodeModel.find({
+    premiereDate: { $lte: now },
+  }).lean();
+};
+
+export default {
+  availableEpisodes,
 };
