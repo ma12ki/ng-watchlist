@@ -6,6 +6,9 @@ export default {
       return episode.premiereDate.toISOString();
     },
     show: async (episode) => {
+      if (episode.show) {
+        return episode.show;
+      }
       return ShowModel.findById(episode.showId).lean();
     },
   },
