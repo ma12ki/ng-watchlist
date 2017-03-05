@@ -1,12 +1,12 @@
-import shows from './mock-data/shows';
+import { ShowModel } from './models/show.model';
 
 export default {
   Episode: {
     premiereDate: (episode) => {
       return episode.premiereDate.toISOString();
     },
-    show: (episode) => {
-      return shows.find((show) => show._id === episode.showId);
+    show: async (episode) => {
+      return ShowModel.findById(episode.showId).lean();
     },
   },
 };
