@@ -1,0 +1,17 @@
+<button md-icon-button [mdMenuTriggerFor]="menu">
+  <md-icon>more_vert</md-icon>
+</button>
+<md-menu #menu="mdMenu">
+  <button md-menu-item disabled>
+    <md-icon>home</md-icon>
+    <span>Dashboard</span>
+  </button>
+  <button md-menu-item>
+    <md-icon>list</md-icon>
+    <span>All shows</span>
+  </button>
+  <button md-menu-item>
+    <md-icon>add</md-icon>
+    <span>Create new</span>
+  </button>
+</md-menu>

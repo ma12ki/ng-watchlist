@@ -28,9 +28,10 @@ import { ShowActionsModule } from './show-actions/show-actions.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
-  declarations: [ AppComponent, HeaderComponent, FooterComponent ],
+  declarations: [ AppComponent, HeaderComponent, FooterComponent, MenuComponent ],
   imports: [
     BrowserModule,
     FormsModule,
