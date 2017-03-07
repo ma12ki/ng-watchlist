@@ -27,9 +27,10 @@ import { UpcomingEpisodesModule } from './upcoming-episodes/upcoming-episodes.mo
 import { ShowActionsModule } from './show-actions/show-actions.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [ AppComponent, HeaderComponent ],
+  declarations: [ AppComponent, HeaderComponent, FooterComponent ],
   imports: [
     BrowserModule,
     FormsModule,
