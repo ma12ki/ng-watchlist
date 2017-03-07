@@ -13,6 +13,8 @@ import { ApolloModule, Apollo } from 'apollo-angular';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
 
+import { ROUTES } from './app.routes';
+
 import { provideClient } from './apollo-client-store';
 import { AppActions } from './app.actions';
 import { AppComponent } from './app.component';
@@ -29,15 +31,16 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [ AppComponent, HeaderComponent, FooterComponent, MenuComponent ],
+  declarations: [ AppComponent, HeaderComponent, FooterComponent, MenuComponent, NotFoundComponent ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     ApolloModule.withClient(provideClient),
-    RouterModule.forRoot([]),
+    RouterModule.forRoot(ROUTES),
     NgReduxModule,
     NgReduxRouterModule,
     NgReduxFormModule,
