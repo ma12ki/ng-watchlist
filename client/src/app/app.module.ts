@@ -26,9 +26,10 @@ import { AvailableEpisodesModule } from './available-episodes/available-episodes
 import { UpcomingEpisodesModule } from './upcoming-episodes/upcoming-episodes.module';
 import { ShowActionsModule } from './show-actions/show-actions.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent, HeaderComponent ],
   imports: [
     BrowserModule,
     FormsModule,
