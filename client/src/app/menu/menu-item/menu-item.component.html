@@ -1,0 +1,5 @@
+<a [routerLink]="[item.link]" routerLinkActive #route="routerLinkActive">
+  <md-icon>{{item.icon}}</md-icon>
+  <span>{{item.label}}</span>
+  {{ route.isActive }}
+</a>

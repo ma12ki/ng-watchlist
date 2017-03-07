@@ -32,9 +32,17 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MenuItemComponent } from './menu/menu-item/menu-item.component';
 
 @NgModule({
-  declarations: [ AppComponent, HeaderComponent, FooterComponent, MenuComponent, NotFoundComponent ],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    MenuComponent,
+    MenuItemComponent ,
+    NotFoundComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
