@@ -1,5 +1,4 @@
-<a [routerLink]="[item.link]" routerLinkActive #route="routerLinkActive">
+<button md-menu-item (click)="navigate(item.link)" [disabled]="isActive">
   <md-icon>{{item.icon}}</md-icon>
   <span>{{item.label}}</span>
-  {{ route.isActive }}
-</a>
+</button>

@@ -2,7 +2,5 @@
   <md-icon>more_vert</md-icon>
 </button>
 <md-menu #menu="mdMenu">
-  <button *ngFor="let item of items" md-menu-item>
-    <wl-menu-item [item]="item"></wl-menu-item>
-  </button>
+  <wl-menu-item *ngFor="let item of items" [item]="item"></wl-menu-item>
 </md-menu>

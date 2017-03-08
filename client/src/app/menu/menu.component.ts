@@ -14,9 +14,9 @@ export class MenuComponent implements OnInit {
 
   initMenuItems() {
     this.items = [
-      { link: '', icon: 'home', label: 'Dashboard' },
-      { link: 'all', icon: 'list', label: 'All shows' },
-      { link: 'new', icon: 'add', label: 'Add new' },
+      { link: '/', icon: 'home', label: 'Dashboard' },
+      { link: '/all', icon: 'list', label: 'All shows' },
+      { link: '/new', icon: 'add', label: 'Add new' },
     ];
   }
 
