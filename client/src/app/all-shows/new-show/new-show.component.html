@@ -1,9 +1,11 @@
-<form [formGroup]="newShowForm" novalidate>
+<form [formGroup]="newShowForm" novalidate fxLayout="column">
+  <h2>New show</h2>
   <md-input-container>
     <input md-input placeholder="Name" formControlName="name">
   </md-input-container>
 
-  <md-radio-group formControlName="category">
+  <h4>Category</h4>
+  <md-radio-group formControlName="category" fxLayout="column">
     <md-radio-button *ngFor="let c of categories" [value]="c._id">
       {{c.label}}
     </md-radio-button>
@@ -13,7 +15,7 @@
     <input md-input type="date" placeholder="Premiere date" formControlName="premiereDate" appValueToDate>
   </md-input-container>
 
-  <div formGroupName="recurring" *ngIf="isRecurring(newShowForm.get('category').value)">
+  <div formGroupName="recurring" *ngIf="isRecurring(newShowForm.get('category').value)" fxLayout="column">
     <md-input-container>
       <input md-input
         type="number"
@@ -32,7 +34,8 @@
         formControlName="episodes">
     </md-input-container>
 
-    <md-radio-group formControlName="frequency">
+    <h4>Frequency</h4>
+    <md-radio-group formControlName="frequency" fxLayout="column">
       <md-radio-button *ngFor="let f of frequencies" [value]="f._id">
         {{f.label}}
       </md-radio-button>

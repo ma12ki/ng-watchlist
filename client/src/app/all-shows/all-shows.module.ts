@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MomentModule } from 'angular2-moment';
 
 import { ShowActionsModule } from '../show-actions/show-actions.module';
@@ -19,6 +20,7 @@ import { AllShowsListComponent } from './all-shows-list/all-shows-list.component
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
+    FlexLayoutModule,
     MomentModule,
     ShowActionsModule,
   ],
