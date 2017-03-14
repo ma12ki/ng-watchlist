@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 
 import { ShowService } from '../show.service';
+import { ShowActions } from '../show.actions';
 
 import {
   categories, ICategory,
@@ -20,8 +22,10 @@ export class NewShowComponent implements OnInit {
   newShowForm: FormGroup;
 
   constructor(
+    private ngRedux: NgRedux<any>,
     private formBuilder: FormBuilder,
-    private ss: ShowService
+    private showService: ShowService,
+    private showActions: ShowActions,
   ) {
     this.createForm();
   }
@@ -76,6 +80,26 @@ export class NewShowComponent implements OnInit {
   }
 
   save() {
-    console.log('save');
+    const {
+      name,
+      category,
+      premiereDate,
+      recurring,
+    } = this.newShowForm.value;
+
+    const show: any = {
+      name,
+      category,
+      premiereDate,
+    };
+
+    // TODO: replace with object spread once "Cannot read property 'kind' of undefined" is resolved
+    if (recurring) {
+      show.season = recurring.season;
+      show.episodes = recurring.episodes;
+      show.frequency = recurring.frequency;
+    }
+
+    this.ngRedux.dispatch(this.showActions.saveStart(show));
   }
 }

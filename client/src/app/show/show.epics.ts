@@ -22,16 +22,8 @@ export class ShowEpics {
 
   saveShow = action$ => action$
     .ofType(ShowActions.SAVE_START)
-    .switchMap((...args) => {
-      console.log(args);
-      return this.service.saveShow({
-        category: 'aaa',
-        episodes: -20,
-        frequency: 'asdasd',
-        name: 'asdasdg',
-        premiereDate: 'sadasdas',
-        season: -100,
-      });
+    .switchMap(({payload}) => {
+      return this.service.saveShow(payload);
     })
       .map(data => this.actions.saveSucceeded(data))
       .catch(err => of(this.actions.saveFailed(err)));
