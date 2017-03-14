@@ -18,7 +18,7 @@ export class AllShowsEpics {
     private service: AllShowsService,
     private actions: AllShowsActions
   ) {
-    this.epics = [ this.loadAllShows ];
+    this.epics = [ this.loadAllShows, this.saveShow ];
   }
 
   loadAllShows = action$ => action$
@@ -26,4 +26,20 @@ export class AllShowsEpics {
     .switchMap((_) => this.service.loadAllShows()
       .map(data => this.actions.loadSucceeded(data))
       .catch(err => of(this.actions.loadFailed(err))));
+
+  saveShow = action$ => action$
+    .ofType(AllShowsActions.SAVE_START)
+    .switchMap((...args) => {
+      console.log(args);
+      return this.service.saveShow({
+        category: 'aaa',
+        episodes: -20,
+        frequency: 'asdasd',
+        name: 'asdasdg',
+        premiereDate: 'sadasdas',
+        season: -100,
+      });
+    })
+      .map(data => this.actions.loadSucceeded(data))
+      .catch(err => of(this.actions.loadFailed(err)));
 }

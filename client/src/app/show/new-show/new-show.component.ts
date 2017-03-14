@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AllShowsService } from '../all-shows.service';
+import { ShowService } from '../show.service';
 
 import {
   categories, ICategory,
@@ -21,7 +21,7 @@ export class NewShowComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private ass: AllShowsService
+    private ss: ShowService
   ) {
     this.createForm();
   }
@@ -73,5 +73,9 @@ export class NewShowComponent implements OnInit {
 
   isRecurring(category: string): boolean {
     return this.categories.some((c) => c._id === category && c.recurring);
+  }
+
+  save() {
+    console.log('save');
   }
 }

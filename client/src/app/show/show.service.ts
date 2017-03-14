@@ -4,29 +4,11 @@ import gql from 'graphql-tag';
 import * as moment from 'moment';
 
 @Injectable()
-export class AllShowsService {
+export class ShowService {
 
   constructor(
     private apollo: Apollo
   ) { }
-
-  loadAllShows() {
-    const query = gql`
-      query AllShowsQuery {
-        shows {
-          _id
-          name
-          category
-          listed
-          tracked
-        }
-      }
-    `;
-
-    return this.apollo.watchQuery<any>({
-      query: query
-    }).map(({data}) => data.shows);
-  }
 
   saveShow({
     name,

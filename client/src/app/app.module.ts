@@ -28,6 +28,8 @@ import { AvailableEpisodesModule } from './available-episodes/available-episodes
 import { UpcomingEpisodesModule } from './upcoming-episodes/upcoming-episodes.module';
 import { ShowActionsModule } from './show-actions/show-actions.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ShowModule } from './show/show.module';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
@@ -62,6 +64,7 @@ import { MenuItemComponent } from './menu/menu-item/menu-item.component';
     UpcomingEpisodesModule,
     ShowActionsModule,
     DashboardModule,
+    ShowModule,
   ],
   providers: [ AppActions, ReduxRoots ],
   bootstrap: [ AppComponent ],
