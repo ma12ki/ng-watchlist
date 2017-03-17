@@ -42,7 +42,7 @@ import { MenuItemComponent } from './menu/menu-item/menu-item.component';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
-    MenuItemComponent ,
+    MenuItemComponent,
     NotFoundComponent,
   ],
   imports: [

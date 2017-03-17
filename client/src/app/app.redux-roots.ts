@@ -19,7 +19,7 @@ import { IImmutableShowActionsState, ShowActionsReducer } from './show-actions/s
 import { ShowActionsEpics } from './show-actions/show-actions.epics';
 import { IImmutableShowState, ShowReducer } from './show/show.reducer';
 import { ShowEpics } from './show/show.epics';
-
+import { IImmutableShowsState } from './shows/shows.reducer';
 
 export interface IRootState {
   apollo?: any;
@@ -31,6 +31,7 @@ export interface IRootState {
   upcomingEpisodes?: IImmutableUpcomingEpisodesState;
   showActions?: IImmutableShowActionsState;
   show?: IImmutableShowState;
+  shows: IImmutableShowsState;
 }
 
 @Injectable()

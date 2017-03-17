@@ -15,7 +15,7 @@ export const DATE_VALUE_ACCESSOR: any = {
  *  `<input type="date" name="myBirthday" ngModel useValueAsDate>`
  */
 @Directive({
-  selector: '[appValueToDate]',
+  selector: '[wlValueToDate]',
   providers: [DATE_VALUE_ACCESSOR]
 })
 export class ValueToDateDirective implements ControlValueAccessor {

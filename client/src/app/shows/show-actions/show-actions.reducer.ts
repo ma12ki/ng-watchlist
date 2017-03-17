@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import * as immutable from 'seamless-immutable';
 import { ImmutableObject } from 'seamless-immutable';
+import { FSA } from 'flux-standard-action/lib';
 
 import { ShowActions } from './show-actions.actions';
-import { IPayloadErrorAction } from '../utils/payload-action';
 
 interface IEpisodeInfo {
     [episodeId: string]: {
@@ -19,18 +19,18 @@ export interface IShowActionsState {
 /* tslint:disable:no-empty-interface */
 export interface IImmutableShowActionsState extends ImmutableObject<IShowActionsState> {};
 
-const defaultState: IImmutableShowActionsState = immutable.from({});
+export const defaultState: IImmutableShowActionsState = immutable.from({});
 
 @Injectable()
 export class ShowActionsReducer {
-  reducer: (state: IImmutableShowActionsState, action: IPayloadErrorAction) => IImmutableShowActionsState;
+  reducer: (state: IImmutableShowActionsState, action: FSA<any, any>) => IImmutableShowActionsState;
 
   constructor() {
     this.reducer = showActionsReducer;
   }
 }
 
-export function showActionsReducer(state = defaultState, action: IPayloadErrorAction): IImmutableShowActionsState {
+export function showActionsReducer(state = defaultState, action: FSA<any, any>): IImmutableShowActionsState {
   switch (action.type) {
     case ShowActions.ADD_START:
     case ShowActions.REMOVE_START:
