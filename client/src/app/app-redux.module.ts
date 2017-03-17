@@ -12,8 +12,9 @@ import { client, provideClient } from './apollo-client-store';
 import { ShowsEpics } from './shows/shows.epics';
 
 import {
+  defaultState as showsDefaultState,
   IImmutableShowsState,
-  defaultState as showsDefaultState
+  ShowsReducer,
 } from './shows/shows.reducer';
 
 export interface IRootState {
@@ -46,6 +47,7 @@ export class AppReduxModule {
     private ngReduxRouter: NgReduxRouter,
     private devTools: DevToolsExtension,
     private showsEpics: ShowsEpics,
+    private showsReducer: ShowsReducer,
   ) {
     ngRedux.configureStore(
       this.rootReducer,
@@ -60,6 +62,7 @@ export class AppReduxModule {
     return combineReducers<IRootState>({
       apollo: client.reducer() as any,
       router: routerReducer,
+      shows: this.showsReducer.reducer,
     });
   }
 

@@ -18,6 +18,9 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     AppReduxModule,
   ],
+  declarations: [
+    AppComponent,
+  ],
   bootstrap: [ AppComponent ],
 })
 export class AppModule { }
