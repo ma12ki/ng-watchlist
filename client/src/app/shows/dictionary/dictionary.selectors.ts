@@ -1,4 +1,4 @@
-import { IRootState } from '../../app.redux-roots';
+import { IRootState } from '../../app-redux.module';
 import { base as showsBase } from '../shows.selectors';
 
 const base = (state: IRootState) => showsBase(state).asMutable().dictionary;
