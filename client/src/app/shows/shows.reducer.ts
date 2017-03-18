@@ -9,7 +9,7 @@ import {
   IShowDictionaryState,
   ShowDictionaryReducer,
   defaultState as showDictionaryDefaultState,
-} from './dictionary/dictionary.reducer';
+} from './shared/dictionary/dictionary.reducer';
 import {
   IShowActionsState,
   ShowActionsReducer,

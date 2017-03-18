@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import { MomentModule } from 'angular2-moment';
 
+import { ShowsSharedModule } from '../shared/shared.module';
+
 import { AvailableEpisodesReducer } from './available-episodes.reducer';
 import { AvailableEpisodesActions } from './available-episodes.actions';
 import { AvailableEpisodesEpics } from './available-episodes.epics';
@@ -15,6 +17,7 @@ import { AvailableEpisodesListComponent } from './available-episodes-list/availa
 @NgModule({
   imports: [
     CommonModule,
+    ShowsSharedModule,
     MaterialModule,
     MomentModule,
     ShowActionsModule,

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import * as immutable from 'seamless-immutable';
 
-import { FlexibleImmutableObject } from '../../shared/shared.typings';
+import { FlexibleImmutableObject } from '../../../shared/shared.typings';
 
-import { categories, frequencies, ICategory, IFrequency } from '../../../../../common/dictionary';
-export { categories, frequencies, ICategory, IFrequency };
+import { categories, frequencies, ICategory, IFrequency } from '../../../../../../common/dictionary';
 
 export interface IShowDictionaryState {
   categories: ICategory[];

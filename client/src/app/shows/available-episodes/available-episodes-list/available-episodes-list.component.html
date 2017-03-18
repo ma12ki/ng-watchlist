@@ -4,12 +4,14 @@
   </header>
   <section>
     <md-list>
-      <md-list-item *ngFor="let item of items$ | async; trackBy:getItemId">
-        <md-icon md-list-avatar>local_movies</md-icon>
-        <h4 md-line>{{ item.show.name }}</h4>
-        <h6 md-line>Season {{ item.season }}, Episode {{ item.episode }}</h6>
+      <wl-episode-list-item
+        *ngFor="let item of items$ | async; trackBy:getItemId"
+        [name]="item.show.name"
+        [category]="item.show.category"
+        [season]="item.season"
+        [episode]="item.episode">
         <wl-watched-toggle [showId]="item.show._id" [episodeId]="item._id" [watched]="item.watched"></wl-watched-toggle>
-      </md-list-item>
+      </wl-episode-list-item>
     </md-list>
   </section>
 </div>

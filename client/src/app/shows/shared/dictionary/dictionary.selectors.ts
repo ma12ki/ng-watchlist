@@ -1,7 +1,6 @@
-import { IRootState } from '../../app-redux.module';
-import { base as showsBase } from '../shows.selectors';
+import { base as showsBase } from '../../shows.selectors';
 
-const base = (state: IRootState) => showsBase(state).asMutable().dictionary;
+const base = (state) => showsBase(state).dictionary;
 
 const categories = (state) => {
   return base(state).asMutable().categories;

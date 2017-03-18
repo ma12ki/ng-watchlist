@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import { MomentModule } from 'angular2-moment';
 
+import { ShowsSharedModule } from '../shared/shared.module';
+
 import { UpcomingEpisodesComponent } from './upcoming-episodes/upcoming-episodes.component';
 import { UpcomingEpisodesListComponent } from './upcoming-episodes-list/upcoming-episodes-list.component';
 
@@ -14,6 +16,7 @@ import { UpcomingEpisodesService } from './upcoming-episodes.service';
 @NgModule({
   imports: [
     CommonModule,
+    ShowsSharedModule,
     MaterialModule,
     MomentModule,
   ],

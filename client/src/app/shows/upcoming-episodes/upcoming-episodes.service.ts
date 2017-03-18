@@ -19,6 +19,7 @@ export class UpcomingEpisodesService {
           premiereDate
           show {
             name
+            category
           }
         }
       }

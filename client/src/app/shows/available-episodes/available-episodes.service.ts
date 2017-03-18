@@ -21,6 +21,7 @@ export class AvailableEpisodesService {
           show {
             _id
             name
+            category
           }
         }
       }
