@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
 import * as immutable from 'seamless-immutable';
-import { ImmutableObject } from 'seamless-immutable';
+import { FSA } from 'flux-standard-action/lib';
 
 import { UpcomingEpisodesActions } from './upcoming-episodes.actions';
-import { IPayloadErrorAction } from '../utils/payload-action';
+import { FlexibleImmutableObject } from '../../shared/shared.typings';
 
-interface IUpcomingEpisodesState {
+export interface IUpcomingEpisodesState {
   items: Array<any>;
   isFetching: Boolean;
   error: Object;
 }
 
-/* tslint:disable:no-empty-interface */
-export interface IImmutableUpcomingEpisodesState extends ImmutableObject<IUpcomingEpisodesState> {};
-
-const defaultState: IImmutableUpcomingEpisodesState = immutable.from({
+export const defaultState: FlexibleImmutableObject<IUpcomingEpisodesState> = immutable.from({
   items: [],
   isFetching: false,
   error: null
@@ -22,31 +19,34 @@ const defaultState: IImmutableUpcomingEpisodesState = immutable.from({
 
 @Injectable()
 export class UpcomingEpisodesReducer {
-  reducer: (state: IImmutableUpcomingEpisodesState, action: IPayloadErrorAction) => IImmutableUpcomingEpisodesState;
+  reducer: (
+    state: FlexibleImmutableObject<IUpcomingEpisodesState>,
+    action: FSA<any, any>
+  ) => FlexibleImmutableObject<IUpcomingEpisodesState>;
 
   constructor() {
     this.reducer = upcomingEpisodesReducer;
   }
 }
 
-export function upcomingEpisodesReducer(state = defaultState, action: IPayloadErrorAction): IImmutableUpcomingEpisodesState {
+export function upcomingEpisodesReducer(state = defaultState, action: FSA<any, any>): FlexibleImmutableObject<IUpcomingEpisodesState> {
   switch (action.type) {
     case UpcomingEpisodesActions.LOAD_START:
       return state.merge({
         isFetching: true,
         error: null
-      });
+      }) as FlexibleImmutableObject<IUpcomingEpisodesState>;
     case UpcomingEpisodesActions.LOAD_SUCCEEDED:
       return state.merge({
         items: action.payload,
         error: null,
         isFetching: false
-      });
+      }) as FlexibleImmutableObject<IUpcomingEpisodesState>;
     case UpcomingEpisodesActions.LOAD_FAILED:
       return state.merge({
         error: action.error,
         isFetching: false
-      });
+      }) as FlexibleImmutableObject<IUpcomingEpisodesState>;
   }
 
   return state;

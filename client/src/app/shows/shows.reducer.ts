@@ -25,12 +25,18 @@ import {
   AvailableEpisodesReducer,
   defaultState as availableEpisodesDefaultState,
 } from './available-episodes/available-episodes.reducer';
+import {
+  IUpcomingEpisodesState,
+  UpcomingEpisodesReducer,
+  defaultState as upcomingEpisodesDefaultState,
+} from './upcoming-episodes/upcoming-episodes.reducer';
 
 export interface IShowsState {
   dictionary: FlexibleImmutableObject<IShowDictionaryState>;
   showActions: FlexibleImmutableObject<IShowActionsState>;
   allShows: FlexibleImmutableObject<IAllShowsState>;
   availableEpisodes: FlexibleImmutableObject<IAvailableEpisodesState>;
+  upcomingEpisodes: FlexibleImmutableObject<IUpcomingEpisodesState>;
 }
 
 export const defaultState: FlexibleImmutableObject<IShowsState> = immutable.from({
@@ -38,6 +44,7 @@ export const defaultState: FlexibleImmutableObject<IShowsState> = immutable.from
   showActions: showActionsDefaultState,
   allShows: allShowsDefaultState,
   availableEpisodes: availableEpisodesDefaultState,
+  upcomingEpisodes: upcomingEpisodesDefaultState,
 });
 
 @Injectable()
@@ -49,12 +56,14 @@ export class ShowsReducer {
     private allShowsReducer: AllShowsReducer,
     private showActionsReducer: ShowActionsReducer,
     private availableEpisodesReducer: AvailableEpisodesReducer,
+    private upcomingEpisodesReducer: UpcomingEpisodesReducer,
   ) {
     this.reducer = combineReducers<FlexibleImmutableObject<IShowsState>>({
       dictionary: dictionaryReducer.reducer,
       allShows: allShowsReducer.reducer,
       showActions: showActionsReducer.reducer,
       availableEpisodes: availableEpisodesReducer.reducer,
+      upcomingEpisodes: upcomingEpisodesReducer.reducer,
     });
   }
 }

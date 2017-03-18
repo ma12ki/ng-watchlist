@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Epic } from 'redux-observable';
 import { Action } from 'redux';
-import { AppActions } from '../app.actions';
 import { of } from 'rxjs/observable/of';
 
 import 'rxjs/add/operator/catch';

@@ -4,6 +4,7 @@ import { select } from '@angular-redux/store/lib/decorators/select';
 
 import { UpcomingEpisodesActions } from '../upcoming-episodes.actions';
 import { UpcomingEpisodesService } from '../upcoming-episodes.service';
+import * as upcomingEpisodesSelectors from '../upcoming-episodes.selectors';
 
 @Component({
   selector: 'wl-upcoming-episodes-list',
@@ -11,9 +12,9 @@ import { UpcomingEpisodesService } from '../upcoming-episodes.service';
   styleUrls: ['./upcoming-episodes-list.component.scss']
 })
 export class UpcomingEpisodesListComponent implements OnInit {
-  @select(['upcomingEpisodes', 'items']) items$;
-  @select(['upcomingEpisodes', 'error']) error$;
-  @select(['upcomingEpisodes', 'isFetching']) isFetching$;
+  @select(upcomingEpisodesSelectors.items) items$;
+  @select(upcomingEpisodesSelectors.error) error$;
+  @select(upcomingEpisodesSelectors.isFetching) isFetching$;
 
   constructor(
     private ngRedux: NgRedux<any>,
@@ -28,8 +29,7 @@ export class UpcomingEpisodesListComponent implements OnInit {
     this.ngRedux.dispatch(this.actions.loadStart());
   }
 
-  getItemId(index, item) {
+  getItemId(_index, item) {
     return item._id;
   }
-
 }

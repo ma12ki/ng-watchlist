@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Action } from 'redux';
 
 const ACTION_PREFIX = 'UPCOMING_EPISODES:';
 

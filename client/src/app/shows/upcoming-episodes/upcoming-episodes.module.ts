@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import { MomentModule } from 'angular2-moment';
 
+import { UpcomingEpisodesComponent } from './upcoming-episodes/upcoming-episodes.component';
 import { UpcomingEpisodesListComponent } from './upcoming-episodes-list/upcoming-episodes-list.component';
+
 import { UpcomingEpisodesReducer } from './upcoming-episodes.reducer';
 import { UpcomingEpisodesActions } from './upcoming-episodes.actions';
 import { UpcomingEpisodesEpics } from './upcoming-episodes.epics';
@@ -16,7 +18,8 @@ import { UpcomingEpisodesService } from './upcoming-episodes.service';
     MomentModule,
   ],
   declarations: [
-    UpcomingEpisodesListComponent
+    UpcomingEpisodesComponent,
+    UpcomingEpisodesListComponent,
   ],
   providers: [
     UpcomingEpisodesService,
@@ -25,7 +28,7 @@ import { UpcomingEpisodesService } from './upcoming-episodes.service';
     UpcomingEpisodesReducer,
   ],
   exports: [
-    UpcomingEpisodesListComponent
+    UpcomingEpisodesComponent,
   ],
 })
 export class UpcomingEpisodesModule { }
