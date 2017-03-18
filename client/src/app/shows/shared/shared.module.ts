@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 
+import { SharedModule } from '../../shared/shared.module';
+
 import { DictionaryService } from './dictionary/dictionary.service';
 import { ShowDictionaryReducer } from './dictionary/dictionary.reducer';
 
@@ -13,6 +15,7 @@ import { ShowListItemComponent } from './show-list-item/show-list-item.component
   imports: [
     CommonModule,
     MaterialModule,
+    SharedModule,
   ],
   providers: [
     DictionaryService,
@@ -24,6 +27,7 @@ import { ShowListItemComponent } from './show-list-item/show-list-item.component
     ShowListItemComponent,
   ],
   exports: [
+    SharedModule,
     EpisodeListItemComponent,
     ShowAvatarComponent,
     ShowListItemComponent,
