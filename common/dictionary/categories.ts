@@ -7,6 +7,7 @@ interface ICategory {
     _id: string;
     label: string;
     recurring: boolean;
+    icon: string;
     verbiage: ICategoryVerbiage;
 }
 
@@ -15,6 +16,7 @@ const categories: ICategory[] = [
         _id: 'MOVIE',
         label: 'Movie',
         recurring: false,
+        icon: 'local_movies',
         verbiage: {
           season: '',
           episode: '',
@@ -24,6 +26,7 @@ const categories: ICategory[] = [
         _id: 'TVSHOW',
         label: 'TV Show',
         recurring: true,
+        icon: 'tv',
         verbiage: {
           season: 'Season',
           episode: 'Episode',
@@ -33,6 +36,7 @@ const categories: ICategory[] = [
         _id: 'ANIME',
         label: 'Anime',
         recurring: true,
+        icon: 'tv',
         verbiage: {
           season: 'Season',
           episode: 'Episode',
@@ -42,6 +46,7 @@ const categories: ICategory[] = [
         _id: 'COMIC',
         label: 'Comic',
         recurring: true,
+        icon: 'developer_board',
         verbiage: {
           season: 'Year',
           episode: 'Issue',
@@ -52,11 +57,13 @@ const categories: ICategory[] = [
 const getCategory = (categoryId: string) => categories.find((category) => category._id === categoryId);
 
 const getVerbiage = (categoryId: string) => {
-  return getCategory(categoryId).verbiage;
+  const category = getCategory(categoryId);
+  return category ? category.verbiage : {};
 };
 
 const isRecurring = (categoryId: string) => {
-  return getCategory(categoryId).recurring;
+  const category = getCategory(categoryId);
+  return category ? category.recurring : false;
 };
 
 export {
