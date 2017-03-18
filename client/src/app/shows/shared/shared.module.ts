@@ -7,6 +7,7 @@ import { ShowDictionaryReducer } from './dictionary/dictionary.reducer';
 
 import { EpisodeListItemComponent } from './episode-list-item/episode-list-item.component';
 import { ShowAvatarComponent } from './show-avatar/show-avatar.component';
+import { ShowListItemComponent } from './show-list-item/show-list-item.component';
 
 @NgModule({
   imports: [
@@ -20,10 +21,12 @@ import { ShowAvatarComponent } from './show-avatar/show-avatar.component';
   declarations: [
     EpisodeListItemComponent,
     ShowAvatarComponent,
+    ShowListItemComponent,
   ],
   exports: [
     EpisodeListItemComponent,
     ShowAvatarComponent,
+    ShowListItemComponent,
   ],
 })
 export class ShowsSharedModule { }

@@ -1,7 +1,16 @@
 <div>
-  <p *ngFor="let item of items$ | async; trackBy:getItemId">
-    {{ item.name }}
-    <wl-add-toggle [showId]="item._id" [listed]="item.listed"></wl-add-toggle>
-    <wl-track-toggle [showId]="item._id" [tracked]="item.tracked"></wl-track-toggle>
-  </p>
+  <header>
+    <h3>All shows</h3>
+  </header>
+  <section>
+    <md-list>
+      <wl-show-list-item
+        *ngFor="let item of items$ | async; trackBy:getItemId"
+        [name]="item.name"
+        [category]="item.category">
+        <wl-add-toggle [showId]="item._id" [listed]="item.listed"></wl-add-toggle>
+        <wl-track-toggle [showId]="item._id" [tracked]="item.tracked"></wl-track-toggle>
+      </wl-show-list-item>
+    </md-list>
+  </section>
 </div>

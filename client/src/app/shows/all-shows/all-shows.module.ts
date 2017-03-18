@@ -5,6 +5,7 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MomentModule } from 'angular2-moment';
 
+import { ShowsSharedModule } from '../shared/shared.module';
 import { ShowActionsModule } from '../show-actions/show-actions.module';
 import { AllShowsService } from './all-shows.service';
 import { AllShowsActions } from './all-shows.actions';
@@ -21,6 +22,7 @@ import { AllShowsComponent } from './all-shows/all-shows.component';
     MaterialModule,
     FlexLayoutModule,
     MomentModule,
+    ShowsSharedModule,
     ShowActionsModule,
   ],
   declarations: [
