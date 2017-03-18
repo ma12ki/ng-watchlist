@@ -14,3 +14,18 @@ $theme: md-dark-theme($primary, $accent, $warn);
 
 // Include all theme styles for the components.
 @include angular-material-theme($theme);
+
+html,
+body {
+  background: md-color($primary, 900);
+  color: md-contrast($primary, 800);
+}
+
+// md-list-item {
+//   background: md-color($primary, 600);
+// }
+
+// md-list > md-list-item:nth-child(odd),
+// md-list > *:nth-child(odd) md-list-item {
+//   background: md-color($primary, 700);
+// }
