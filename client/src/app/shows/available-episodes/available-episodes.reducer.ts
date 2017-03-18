@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
 import * as immutable from 'seamless-immutable';
-import { ImmutableObject } from 'seamless-immutable';
+import { FSA } from 'flux-standard-action/lib';
 
 import { AvailableEpisodesActions } from './available-episodes.actions';
-import { IPayloadErrorAction } from '../utils/payload-action';
+import { FlexibleImmutableObject } from '../../shared/shared.typings';
 
-interface IAvailableEpisodesState {
+export interface IAvailableEpisodesState {
   items: Array<any>;
   isFetching: Boolean;
   error: Object;
 }
 
-/* tslint:disable:no-empty-interface */
-export interface IImmutableAvailableEpisodesState extends ImmutableObject<IAvailableEpisodesState> {};
-
-const defaultState: IImmutableAvailableEpisodesState = immutable.from({
+export const defaultState: FlexibleImmutableObject<IAvailableEpisodesState> = immutable.from({
   items: [],
   isFetching: false,
   error: null
@@ -22,31 +19,34 @@ const defaultState: IImmutableAvailableEpisodesState = immutable.from({
 
 @Injectable()
 export class AvailableEpisodesReducer {
-  reducer: (state: IImmutableAvailableEpisodesState, action: IPayloadErrorAction) => IImmutableAvailableEpisodesState;
+  reducer: (
+    state: FlexibleImmutableObject<IAvailableEpisodesState>,
+    action: FSA<any, any>
+  ) => FlexibleImmutableObject<IAvailableEpisodesState>;
 
   constructor() {
     this.reducer = availableEpisodesReducer;
   }
 }
 
-export function availableEpisodesReducer(state = defaultState, action: IPayloadErrorAction): IImmutableAvailableEpisodesState {
+export function availableEpisodesReducer(state = defaultState, action: FSA<any, any>): FlexibleImmutableObject<IAvailableEpisodesState> {
   switch (action.type) {
     case AvailableEpisodesActions.LOAD_START:
       return state.merge({
         isFetching: true,
-        error: null
-      });
+        error: null,
+      }) as FlexibleImmutableObject<IAvailableEpisodesState>;
     case AvailableEpisodesActions.LOAD_SUCCEEDED:
       return state.merge({
         items: action.payload,
         error: null,
-        isFetching: false
-      });
+        isFetching: false,
+      }) as FlexibleImmutableObject<IAvailableEpisodesState>;
     case AvailableEpisodesActions.LOAD_FAILED:
       return state.merge({
         error: action.error,
-        isFetching: false
-      });
+        isFetching: false,
+      }) as FlexibleImmutableObject<IAvailableEpisodesState>;
   }
 
   return state;

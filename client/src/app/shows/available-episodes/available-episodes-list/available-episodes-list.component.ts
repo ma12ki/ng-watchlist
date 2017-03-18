@@ -3,7 +3,7 @@ import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 import { select } from '@angular-redux/store/lib/decorators/select';
 
 import { AvailableEpisodesActions } from '../available-episodes.actions';
-import selectors from '../available-episodes.selectors';
+import * as selectors from '../available-episodes.selectors';
 
 @Component({
   selector: 'wl-available-episodes-list',
