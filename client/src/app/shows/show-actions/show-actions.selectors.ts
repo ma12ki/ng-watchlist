@@ -1,7 +1,6 @@
-import { IRootState } from '../../app-redux.module';
 import { base as showsBase } from '../shows.selectors';
 
-const base = (state: IRootState) => showsBase(state).asMutable().showActions;
+const base = (state) => showsBase(state).showActions;
 
 const showIsFetching = (state, showId) => {
   const baseState = base(state);

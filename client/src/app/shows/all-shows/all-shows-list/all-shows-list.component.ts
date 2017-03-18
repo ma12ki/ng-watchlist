@@ -4,6 +4,7 @@ import { select } from '@angular-redux/store/lib/decorators/select';
 
 import { AllShowsActions } from '../all-shows.actions';
 import { AllShowsService } from '../all-shows.service';
+import * as allShowsSelectors from '../all-shows.selectors';
 
 @Component({
   selector: 'wl-all-shows-list',
@@ -11,9 +12,9 @@ import { AllShowsService } from '../all-shows.service';
   styleUrls: ['./all-shows-list.component.scss']
 })
 export class AllShowsListComponent implements OnInit {
-  @select(['allShows', 'items']) items$;
-  @select(['allShows', 'error']) error$;
-  @select(['allShows', 'isFetching']) isFetching$;
+  @select(allShowsSelectors.items) items$;
+  @select(allShowsSelectors.error) error$;
+  @select(allShowsSelectors.isFetching) isFetching$;
 
   constructor(
     private ngRedux: NgRedux<any>,
@@ -28,7 +29,7 @@ export class AllShowsListComponent implements OnInit {
     this.ngRedux.dispatch(this.actions.loadStart());
   }
 
-  getItemId(index, item) {
+  getItemId(_index, item) {
     return item._id;
   }
 

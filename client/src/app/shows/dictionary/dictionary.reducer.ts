@@ -1,32 +1,30 @@
 import { Injectable } from '@angular/core';
 import * as immutable from 'seamless-immutable';
-import { ImmutableObject } from 'seamless-immutable';
+
+import { FlexibleImmutableObject } from '../../shared/shared.typings';
 
 import { categories, frequencies, ICategory, IFrequency } from '../../../../../common/dictionary';
 export { categories, frequencies, ICategory, IFrequency };
 
-interface IShowDictionaryState {
+export interface IShowDictionaryState {
   categories: ICategory[];
   frequencies: IFrequency[];
 }
 
-/* tslint:disable:no-empty-interface */
-export interface IImmutableShowDictionaryState extends ImmutableObject<IShowDictionaryState> {};
-
-export const defaultState: IImmutableShowDictionaryState = immutable.from({
+export const defaultState: FlexibleImmutableObject<IShowDictionaryState> = immutable.from({
   categories,
   frequencies,
 });
 
 @Injectable()
 export class ShowDictionaryReducer {
-  reducer: (state: IImmutableShowDictionaryState) => IImmutableShowDictionaryState;
+  reducer: (state: FlexibleImmutableObject<IShowDictionaryState>) => FlexibleImmutableObject<IShowDictionaryState>;
 
   constructor() {
-    this.reducer = upcomingEpisodesReducer;
+    this.reducer = showDictionaryReducer;
   }
 }
 
-export function upcomingEpisodesReducer(state = defaultState): IImmutableShowDictionaryState {
+export function showDictionaryReducer(state = defaultState): FlexibleImmutableObject<IShowDictionaryState> {
   return state;
 }

@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
 import * as immutable from 'seamless-immutable';
-import { ImmutableObject } from 'seamless-immutable';
+import { FSA } from 'flux-standard-action/lib';
 
 import { AllShowsActions } from './all-shows.actions';
-import { IPayloadErrorAction } from '../utils/payload-action';
+import { FlexibleImmutableObject } from '../../shared/shared.typings';
 
-interface IAllShowsState {
+export interface IAllShowsState {
   items: Array<any>;
   isFetching: Boolean;
   error: Object;
 }
 
-/* tslint:disable:no-empty-interface */
-export interface IImmutableAllShowsState extends ImmutableObject<IAllShowsState> {};
-
-const defaultState: IImmutableAllShowsState = immutable.from({
+export const defaultState: FlexibleImmutableObject<IAllShowsState> = immutable.from({
   items: [],
   isFetching: false,
   error: null
@@ -22,31 +19,31 @@ const defaultState: IImmutableAllShowsState = immutable.from({
 
 @Injectable()
 export class AllShowsReducer {
-  reducer: (state: IImmutableAllShowsState, action: IPayloadErrorAction) => IImmutableAllShowsState;
+  reducer: (state: FlexibleImmutableObject<IAllShowsState>, action: FSA<any, any>) => FlexibleImmutableObject<IAllShowsState>;
 
   constructor() {
-    this.reducer = upcomingReducer;
+    this.reducer = allShowsReducer;
   }
 }
 
-export function upcomingReducer(state = defaultState, action: IPayloadErrorAction): IImmutableAllShowsState {
+export function allShowsReducer(state = defaultState, action: FSA<any, any>): FlexibleImmutableObject<IAllShowsState> {
   switch (action.type) {
     case AllShowsActions.LOAD_START:
       return state.merge({
         isFetching: true,
         error: null
-      });
+      }) as FlexibleImmutableObject<IAllShowsState>;
     case AllShowsActions.LOAD_SUCCEEDED:
       return state.merge({
         items: action.payload,
         error: null,
         isFetching: false
-      });
+      }) as FlexibleImmutableObject<IAllShowsState>;
     case AllShowsActions.LOAD_FAILED:
       return state.merge({
         error: action.error,
         isFetching: false
-      });
+      }) as FlexibleImmutableObject<IAllShowsState>;
   }
 
   return state;

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Epic } from 'redux-observable';
 import { Action } from 'redux';
-import { AppActions } from '../app.actions';
 import { of } from 'rxjs/observable/of';
 
 import 'rxjs/add/operator/catch';
@@ -18,7 +17,7 @@ export class AllShowsEpics {
     private service: AllShowsService,
     private actions: AllShowsActions
   ) {
-    this.epics = [ this.loadAllShows, this.saveShow ];
+    this.epics = [ this.loadAllShows ];
   }
 
   loadAllShows = action$ => action$
@@ -26,20 +25,4 @@ export class AllShowsEpics {
     .switchMap((_) => this.service.loadAllShows()
       .map(data => this.actions.loadSucceeded(data))
       .catch(err => of(this.actions.loadFailed(err))));
-
-  saveShow = action$ => action$
-    .ofType(AllShowsActions.SAVE_START)
-    .switchMap((...args) => {
-      console.log(args);
-      return this.service.saveShow({
-        category: 'aaa',
-        episodes: -20,
-        frequency: 'asdasd',
-        name: 'asdasdg',
-        premiereDate: 'sadasdas',
-        season: -100,
-      });
-    })
-      .map(data => this.actions.loadSucceeded(data))
-      .catch(err => of(this.actions.loadFailed(err)));
 }

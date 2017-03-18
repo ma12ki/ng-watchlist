@@ -7,20 +7,22 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { routerReducer } from '@angular-redux/router';
 import { ApolloModule } from 'apollo-angular/build/src/ApolloModule';
 
+import { FlexibleImmutableObject } from './shared/shared.typings';
+
 import { client, provideClient } from './apollo-client-store';
 
 import { ShowsEpics } from './shows/shows.epics';
 
 import {
-  defaultState as showsDefaultState,
-  IImmutableShowsState,
+  IShowsState,
   ShowsReducer,
+  defaultState as showsDefaultState,
 } from './shows/shows.reducer';
 
 export interface IRootState {
   apollo?: any;
   router?: any;
-  shows: IImmutableShowsState;
+  shows: FlexibleImmutableObject<IShowsState>;
 }
 
 export const defaultState: IRootState = {

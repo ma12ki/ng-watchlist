@@ -1,39 +1,51 @@
 import { Injectable } from '@angular/core';
 import * as immutable from 'seamless-immutable';
-import { ImmutableObject } from 'seamless-immutable';
 import { FSA } from 'flux-standard-action/lib';
+import { combineReducers } from 'redux';
+
+import { FlexibleImmutableObject } from '../shared/shared.typings';
 
 import {
-  IImmutableShowActionsState,
+  IShowDictionaryState,
+  ShowDictionaryReducer,
+  defaultState as showDictionaryDefaultState,
+} from './dictionary/dictionary.reducer';
+import {
+  IShowActionsState,
+  ShowActionsReducer,
   defaultState as showActionsDefaultState,
 } from './show-actions/show-actions.reducer';
 import {
-  IImmutableShowDictionaryState,
-  defaultState as showDictionaryDefaultState,
-} from './dictionary/dictionary.reducer';
+  IAllShowsState,
+  AllShowsReducer,
+  defaultState as allShowsDefaultState,
+} from './all-shows/all-shows.reducer';
 
-interface IShowsState {
-  dictionary: IImmutableShowDictionaryState;
-  showActions: IImmutableShowActionsState;
+export interface IShowsState {
+  dictionary: FlexibleImmutableObject<IShowDictionaryState>;
+  showActions: FlexibleImmutableObject<IShowActionsState>;
+  allShows: FlexibleImmutableObject<IAllShowsState>;
 }
 
-/* tslint:disable:no-empty-interface */
-export interface IImmutableShowsState extends ImmutableObject<IShowsState> {};
-
-export const defaultState: IImmutableShowsState = immutable.from({
+export const defaultState: FlexibleImmutableObject<IShowsState> = immutable.from({
   dictionary: showDictionaryDefaultState,
   showActions: showActionsDefaultState,
+  allShows: allShowsDefaultState,
 });
 
 @Injectable()
 export class ShowsReducer {
-  reducer: (state: IImmutableShowsState, action: FSA<any, any>) => IImmutableShowsState;
+  reducer: (state: FlexibleImmutableObject<IShowsState>, action: FSA<any, any>) => FlexibleImmutableObject<IShowsState>;
 
-  constructor() {
-    this.reducer = showsReducer;
+  constructor(
+    private dictionaryReducer: ShowDictionaryReducer,
+    private allShowsReducer: AllShowsReducer,
+    private showActionsReducer: ShowActionsReducer,
+  ) {
+    this.reducer = combineReducers<FlexibleImmutableObject<IShowsState>>({
+      dictionary: dictionaryReducer.reducer,
+      allShows: allShowsReducer.reducer,
+      showActions: showActionsReducer.reducer,
+    });
   }
-}
-
-export function showsReducer(state = defaultState, action: FSA<any, any>): IImmutableShowsState {
-  return state;
 }

@@ -10,7 +10,9 @@ import { AllShowsService } from './all-shows.service';
 import { AllShowsActions } from './all-shows.actions';
 import { AllShowsEpics } from './all-shows.epics';
 import { AllShowsReducer } from './all-shows.reducer';
+
 import { AllShowsListComponent } from './all-shows-list/all-shows-list.component';
+import { AllShowsComponent } from './all-shows/all-shows.component';
 
 @NgModule({
   imports: [
@@ -23,6 +25,7 @@ import { AllShowsListComponent } from './all-shows-list/all-shows-list.component
   ],
   declarations: [
     AllShowsListComponent,
+    AllShowsComponent,
   ],
   providers: [
     AllShowsService,
@@ -31,7 +34,7 @@ import { AllShowsListComponent } from './all-shows-list/all-shows-list.component
     AllShowsReducer,
   ],
   exports: [
-    AllShowsListComponent,
+    AllShowsComponent,
   ]
 })
 export class AllShowsModule { }
