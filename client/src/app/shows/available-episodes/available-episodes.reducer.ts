@@ -56,6 +56,8 @@ export function availableEpisodesReducer(state = defaultState, action: FSA<any, 
           });
         }
         return item;
+      }).filter((item) => {
+        return !item.watched;
       });
       return state.merge({
         items,
