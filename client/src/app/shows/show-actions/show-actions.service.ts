@@ -11,34 +11,52 @@ export class ShowActionsService {
     private apollo: Apollo
   ) { }
 
-  // loadUpcomingEpisodes() {
-  //   const query = gql`
-  //     query UpcomingEpisodesQuery {
-  //       upcomingEpisodes {
-  //         _id
-  //         season
-  //         episode
-  //         premiereDate
-  //         show {
-  //           name
-  //         }
-  //       }
-  //     }
-  //   `;
-
-  //   return this.apollo.watchQuery<any>({
-  //     query: query
-  //   }).map(({data}) => data.upcomingEpisodes);
-  // }
-
   addShow(showId) {
-    return Observable.of({})
-      .delay(1000);
+    const mutation = gql`
+      mutation AddShowToListMutation(
+        $showId: String!,
+      ) {
+        addShowToList(
+          showId: $showId,
+        ) {
+          _id
+        }
+      }
+    `;
+
+    return this.apollo.mutate<any>({
+      mutation,
+      variables: {
+        showId,
+      }
+    }).map(({data}) => {
+      const show = data.addShowToList;
+      return show;
+    });
   }
 
   removeShow(showId) {
-    return Observable.of({})
-      .delay(1000);
+    const mutation = gql`
+      mutation RemoveShowFromListMutation(
+        $showId: String!,
+      ) {
+        removeShowFromList(
+          showId: $showId,
+        ) {
+          _id
+        }
+      }
+    `;
+
+    return this.apollo.mutate<any>({
+      mutation,
+      variables: {
+        showId,
+      }
+    }).map(({data}) => {
+      const show = data.removeShowToList;
+      return show;
+    });
   }
 
   trackShow(showId) {

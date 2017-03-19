@@ -1,3 +1,4 @@
+import { ShowActions } from '../show-actions/show-actions.actions';
 import { Injectable } from '@angular/core';
 import * as immutable from 'seamless-immutable';
 import { FSA } from 'flux-standard-action/lib';
@@ -44,6 +45,32 @@ export function allShowsReducer(state = defaultState, action: FSA<any, any>): Fl
         error: action.error,
         isFetching: false
       }) as FlexibleImmutableObject<IAllShowsState>;
+    case ShowActions.ADD_SUCCEEDED: {
+      const items = state.items.map((item) => {
+        if (item._id === action.payload.showId) {
+          item = item.merge({
+            listed: true,
+          });
+        }
+        return item;
+      });
+      return state.merge({
+        items,
+      }) as FlexibleImmutableObject<IAllShowsState>;
+    }
+    case ShowActions.REMOVE_SUCCEEDED: {
+      const items = state.items.map((item) => {
+        if (item._id === action.payload.showId) {
+          item = item.merge({
+            listed: false,
+          });
+        }
+        return item;
+      });
+      return state.merge({
+        items,
+      }) as FlexibleImmutableObject<IAllShowsState>;
+    }
   }
 
   return state;
