@@ -60,23 +60,99 @@ export class ShowActionsService {
   }
 
   trackShow(showId) {
-    return Observable.of({})
-      .delay(1000);
+    const mutation = gql`
+      mutation TrackShow(
+        $showId: String!,
+      ) {
+        trackShow(
+          showId: $showId,
+        ) {
+          _id
+        }
+      }
+    `;
+
+    return this.apollo.mutate<any>({
+      mutation,
+      variables: {
+        showId,
+      }
+    }).map(({data}) => {
+      const show = data.trackShow;
+      return show;
+    });
   }
 
   untrackShow(showId) {
-    return Observable.of({})
-      .delay(1000);
+    const mutation = gql`
+      mutation UntrackShow(
+        $showId: String!,
+      ) {
+        untrackShow(
+          showId: $showId,
+        ) {
+          _id
+        }
+      }
+    `;
+
+    return this.apollo.mutate<any>({
+      mutation,
+      variables: {
+        showId,
+      }
+    }).map(({data}) => {
+      const show = data.untrackShow;
+      return show;
+    });
   }
 
   markWatchedEpisode(episodeId) {
-    return Observable.of({})
-      .delay(1000);
+    const mutation = gql`
+      mutation MarkEpisodeWatched(
+        $episodeId: String!,
+      ) {
+        markEpisodeWatched(
+          episodeId: $episodeId,
+        ) {
+          _id
+        }
+      }
+    `;
+
+    return this.apollo.mutate<any>({
+      mutation,
+      variables: {
+        episodeId,
+      }
+    }).map(({data}) => {
+      const episode = data.markEpisodeWatched;
+      return episode;
+    });
   }
 
   unmarkWatchedEpisode(episodeId) {
-    return Observable.of({})
-      .delay(1000);
+    const mutation = gql`
+      mutation UnmarkEpisodeWatched(
+        $episodeId: String!,
+      ) {
+        unmarkEpisodeWatched(
+          episodeId: $episodeId,
+        ) {
+          _id
+        }
+      }
+    `;
+
+    return this.apollo.mutate<any>({
+      mutation,
+      variables: {
+        episodeId,
+      }
+    }).map(({data}) => {
+      const episode = data.unmarkEpisodeWatched;
+      return episode;
+    });
   }
 
 }

@@ -71,6 +71,33 @@ export function allShowsReducer(state = defaultState, action: FSA<any, any>): Fl
         items,
       }) as FlexibleImmutableObject<IAllShowsState>;
     }
+    case ShowActions.TRACK_SUCCEEDED: {
+      const items = state.items.map((item) => {
+        if (item._id === action.payload.showId) {
+          item = item.merge({
+            listed: true,
+            tracked: true,
+          });
+        }
+        return item;
+      });
+      return state.merge({
+        items,
+      }) as FlexibleImmutableObject<IAllShowsState>;
+    }
+    case ShowActions.UNTRACK_SUCCEEDED: {
+      const items = state.items.map((item) => {
+        if (item._id === action.payload.showId) {
+          item = item.merge({
+            tracked: false,
+          });
+        }
+        return item;
+      });
+      return state.merge({
+        items,
+      }) as FlexibleImmutableObject<IAllShowsState>;
+    }
   }
 
   return state;

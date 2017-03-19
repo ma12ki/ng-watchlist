@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { Epic } from 'redux-observable';
 import { Action } from 'redux';
 import { of } from 'rxjs/observable/of';
-
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
+import 'rxjs';
 
 import { ShowActionsService } from './show-actions.service';
 import { ShowActions } from './show-actions.actions';
