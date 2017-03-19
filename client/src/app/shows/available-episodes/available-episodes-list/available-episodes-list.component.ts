@@ -26,8 +26,8 @@ export class AvailableEpisodesListComponent implements OnInit {
 
   ngOnInit() {
     this.reload();
-    this.groupedItems$ = this.items$.map((items) => {
-      return items.reduce((groups, item) => {
+    this.groupedItems$ = this.items$.map((items: any) => {
+      return items.asMutable({deep: true}).reduce((groups, item) => {
         const currentGroup = moment(item.premiereDate).format('YYYY-MM-DD');
         const date = moment(currentGroup, 'YYYY-MM-DD');
         const group = groups.find((g) => g.id === currentGroup) || { id: currentGroup, date, items: [] };
@@ -35,13 +35,13 @@ export class AvailableEpisodesListComponent implements OnInit {
         return groups.filter((g) => g.id !== currentGroup).concat(group);
       }, []);
     }).map((groups) => {
-      return groups.asMutable({deep: true}).map((group) => {
+      return groups.map((group) => {
         group.items = group.items.sort((a, b) => {
           return a.toLowerCase() > b.toLowerCase();
         });
         return group;
       }).sort((a, b) => {
-        return a.id > b.id;
+        return a.date - b.date;
       });
     });
   }
