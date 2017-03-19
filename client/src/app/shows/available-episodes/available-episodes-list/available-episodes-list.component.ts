@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 import { select } from '@angular-redux/store/lib/decorators/select';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs';
+import * as moment from 'moment';
 
 import { AvailableEpisodesActions } from '../available-episodes.actions';
 import * as selectors from '../available-episodes.selectors';
@@ -11,9 +14,10 @@ import * as selectors from '../available-episodes.selectors';
   styleUrls: ['./available-episodes-list.component.scss']
 })
 export class AvailableEpisodesListComponent implements OnInit {
-  @select(selectors.items) items$;
+  @select(selectors.items) items$: Observable<any[]>;
   @select(selectors.error) error$;
   @select(selectors.isFetching) isFetching$;
+  groupedItems$: Observable<any[]>;
 
   constructor(
     private ngRedux: NgRedux<any>,
@@ -22,6 +26,24 @@ export class AvailableEpisodesListComponent implements OnInit {
 
   ngOnInit() {
     this.reload();
+    this.groupedItems$ = this.items$.map((items) => {
+      return items.reduce((groups, item) => {
+        const currentGroup = moment(item.premiereDate).format('YYYY-MM-DD');
+        const date = moment(currentGroup, 'YYYY-MM-DD');
+        const group = groups.find((g) => g.id === currentGroup) || { id: currentGroup, date, items: [] };
+        group.items.push(item);
+        return groups.filter((g) => g.id !== currentGroup).concat(group);
+      }, []);
+    }).map((groups) => {
+      return groups.asMutable({deep: true}).map((group) => {
+        group.items = group.items.sort((a, b) => {
+          return a.toLowerCase() > b.toLowerCase();
+        });
+        return group;
+      }).sort((a, b) => {
+        return a.id > b.id;
+      });
+    });
   }
 
   reload() {

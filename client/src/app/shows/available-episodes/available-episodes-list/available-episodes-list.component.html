@@ -4,14 +4,17 @@
   </header>
   <section>
     <md-list>
-      <wl-episode-list-item
-        *ngFor="let item of items$ | async; trackBy:getItemId"
-        [name]="item.show.name"
-        [category]="item.show.category"
-        [season]="item.season"
-        [episode]="item.episode">
-        <wl-watched-toggle [showId]="item.show._id" [episodeId]="item._id" [watched]="item.watched"></wl-watched-toggle>
-      </wl-episode-list-item>
+      <div *ngFor="let group of groupedItems$ | async">
+        <h3 md-subheader>{{ group.date | amTimeAgo }}</h3>
+        <wl-episode-list-item
+          *ngFor="let item of group.items; trackBy:getItemId"
+          [name]="item.show.name"
+          [category]="item.show.category"
+          [season]="item.season"
+          [episode]="item.episode">
+          <wl-watched-toggle [showId]="item.show._id" [episodeId]="item._id" [watched]="item.watched"></wl-watched-toggle>
+        </wl-episode-list-item>
+      </div>
     </md-list>
   </section>
 </div>
