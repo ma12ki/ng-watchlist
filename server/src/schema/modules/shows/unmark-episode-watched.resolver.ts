@@ -1,8 +1,8 @@
 import { EpisodeModel } from './models/episode.model';
 import { UserEpisodeModel } from './models/user-episode.model';
 
-async function unmarkEpisodeWatched(_root, {showId}, {user}) {
-  return unmarkEpisodeWatchedDb(showId, user);
+async function unmarkEpisodeWatched(_root, {episodeId}, {user}) {
+  return unmarkEpisodeWatchedDb(episodeId, user);
 }
 
 async function unmarkEpisodeWatchedDb(episodeId, user) {

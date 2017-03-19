@@ -1,8 +1,8 @@
 import { EpisodeModel } from './models/episode.model';
 import { UserEpisodeModel } from './models/user-episode.model';
 
-async function markEpisodeWatched(_root, {showId}, {user}) {
-  return markEpisodeWatchedDb(showId, user);
+async function markEpisodeWatched(_root, {episodeId}, {user}) {
+  return markEpisodeWatchedDb(episodeId, user);
 }
 
 async function markEpisodeWatchedDb(episodeId, user) {
@@ -21,6 +21,12 @@ async function markEpisodeWatchedDb(episodeId, user) {
   if (userEpisode) {
     throw new Error(`Episode with ID ${episodeId} is already marked as watched for user ${user.name}`);
   }
+
+  await UserEpisodeModel.create({
+    userId: user._id,
+    showId: episode.showId,
+    episodeId: episodeId,
+  });
 
   return episode.toObject();
 }
