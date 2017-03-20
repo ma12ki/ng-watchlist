@@ -8,7 +8,6 @@
         *ngFor="let item of items$ | async; trackBy:getItemId"
         [name]="item.name"
         [category]="item.category">
-        <wl-add-toggle [showId]="item._id" [listed]="item.listed"></wl-add-toggle>
         <wl-track-toggle [showId]="item._id" [tracked]="item.tracked"></wl-track-toggle>
       </wl-show-list-item>
     </md-list>
