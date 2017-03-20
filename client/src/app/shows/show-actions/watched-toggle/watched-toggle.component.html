@@ -1,4 +1,4 @@
-<button md-icon-button (click)="watchedToggle()" [disabled]="isFetching$ | async">
+<button md-icon-button (click)="watchedToggle()" [disabled]="isFetching$ | async" [title]="watched ? 'Mark not watched' : 'Mark watched'">
   <md-icon *ngIf="!watched">check</md-icon>
-  <md-icon *ngIf="watched">check_box</md-icon>
+  <md-icon *ngIf="watched" class="watched">check</md-icon>
 </button>

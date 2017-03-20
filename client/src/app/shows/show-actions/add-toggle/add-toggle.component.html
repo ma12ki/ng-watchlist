@@ -1,4 +1,4 @@
-<button md-icon-button (click)="addToggle()" [disabled]="isFetching$ | async">
+<button md-icon-button (click)="addToggle()" [disabled]="isFetching$ | async" [title]="listed ? 'Remove from your list' : 'Add to your list'">
   <md-icon *ngIf="!listed">add</md-icon>
   <md-icon *ngIf="listed">clear</md-icon>
 </button>
