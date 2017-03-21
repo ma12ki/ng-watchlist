@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 
-import { frequencies } from '../../../common/dictionary';
+import { frequencies } from '../../shared/dictionary';
 
 export interface IPreview {
   premiereDate: Date;

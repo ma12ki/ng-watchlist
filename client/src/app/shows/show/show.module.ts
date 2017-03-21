@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MomentModule } from 'angular2-moment';
 
+import { ShowsSharedModule } from '../shared/shared.module';
 import { ShowActionsModule } from '../show-actions/show-actions.module';
 import { ShowService } from './show.service';
 import { ShowActions } from './show.actions';
@@ -17,11 +13,7 @@ import { EpisodesPreviewService } from './episodes-preview/episodes-preview.serv
 
 @NgModule({
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    FlexLayoutModule,
-    MomentModule,
+    ShowsSharedModule,
     ShowActionsModule,
   ],
   declarations: [

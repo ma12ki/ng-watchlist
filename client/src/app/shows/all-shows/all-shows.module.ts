@@ -1,9 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MomentModule } from 'angular2-moment';
 
 import { ShowsSharedModule } from '../shared/shared.module';
 import { ShowActionsModule } from '../show-actions/show-actions.module';
@@ -17,11 +12,6 @@ import { AllShowsComponent } from './all-shows/all-shows.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    FlexLayoutModule,
-    MomentModule,
     ShowsSharedModule,
     ShowActionsModule,
   ],

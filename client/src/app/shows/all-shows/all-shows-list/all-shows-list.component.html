@@ -1,15 +1,8 @@
-<div>
-  <header>
-    <wl-main-heading>All shows</wl-main-heading>
-  </header>
-  <section>
-    <md-list>
-      <wl-show-list-item
-        *ngFor="let item of items$ | async; trackBy:getItemId"
-        [name]="item.name"
-        [category]="item.category">
-        <wl-track-toggle [showId]="item._id" [tracked]="item.tracked"></wl-track-toggle>
-      </wl-show-list-item>
-    </md-list>
-  </section>
-</div>
+<md-list>
+  <wl-show-list-item
+    *ngFor="let item of items$ | async; trackBy:getItemId"
+    [name]="item.name"
+    [category]="item.category">
+    <wl-track-toggle [showId]="item._id" [tracked]="item.tracked"></wl-track-toggle>
+  </wl-show-list-item>
+</md-list>

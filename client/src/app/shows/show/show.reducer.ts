@@ -1,49 +1,46 @@
 import { Injectable } from '@angular/core';
 import * as immutable from 'seamless-immutable';
-import { ImmutableObject } from 'seamless-immutable';
+import { FSA } from 'flux-standard-action/lib';
 
 import { ShowActions } from './show.actions';
-import { IPayloadErrorAction } from '../utils/payload-action';
+import { FlexibleImmutableObject } from 'app/shared/shared.typings';
 
 interface IShowState {
   isSaving: Boolean;
   error: Object;
 }
 
-/* tslint:disable:no-empty-interface */
-export interface IImmutableShowState extends ImmutableObject<IShowState> {};
-
-const defaultState: IImmutableShowState = immutable.from({
+const defaultState: FlexibleImmutableObject<IShowState> = immutable.from({
   isSaving: false,
   error: null
 });
 
 @Injectable()
 export class ShowReducer {
-  reducer: (state: IImmutableShowState, action: IPayloadErrorAction) => IImmutableShowState;
+  reducer: (state: FlexibleImmutableObject<IShowState>, action: FSA<any, any>) => FlexibleImmutableObject<IShowState>;
 
   constructor() {
     this.reducer = showReducer;
   }
 }
 
-export function showReducer(state = defaultState, action: IPayloadErrorAction): IImmutableShowState {
+export function showReducer(state = defaultState, action: FSA<any, any>): FlexibleImmutableObject<IShowState> {
   switch (action.type) {
     case ShowActions.SAVE_START:
       return state.merge({
         isSaving: true,
         error: null,
-      });
+      }) as FlexibleImmutableObject<IShowState>;
     case ShowActions.SAVE_SUCCEEDED:
       return state.merge({
         error: null,
         isSaving: false,
-      });
+      }) as FlexibleImmutableObject<IShowState>;
     case ShowActions.SAVE_FAILED:
       return state.merge({
         error: action.error,
         isSaving: false,
-      });
+      }) as FlexibleImmutableObject<IShowState>;
   }
 
   return state;

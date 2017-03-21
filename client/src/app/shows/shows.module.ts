@@ -5,6 +5,7 @@ import { ShowActionsModule } from './show-actions/show-actions.module';
 import { AllShowsModule } from './all-shows/all-shows.module';
 import { AvailableEpisodesModule } from './available-episodes/available-episodes.module';
 import { UpcomingEpisodesModule } from './upcoming-episodes/upcoming-episodes.module';
+import { ShowModule } from './show/show.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -20,6 +21,7 @@ import { routing } from './shows.routes';
     AllShowsModule,
     AvailableEpisodesModule,
     UpcomingEpisodesModule,
+    ShowModule,
     routing,
   ],
   providers: [

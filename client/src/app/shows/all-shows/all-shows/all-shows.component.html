@@ -1,3 +1,7 @@
-<div>
-  <wl-all-shows-list></wl-all-shows-list>
-</div>
+<header>
+  <wl-main-heading>
+    All shows
+    <button md-icon-button class="add-show-btn" title="Add new" (click)="navigateToNew()"><md-icon>add</md-icon></button>
+  </wl-main-heading>
+</header>
+<wl-all-shows-list></wl-all-shows-list>

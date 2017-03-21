@@ -8,7 +8,7 @@ import { ShowActions } from '../show.actions';
 import {
   categories, ICategory,
   frequencies, IFrequency
-} from '../../../common/dictionary';
+} from '../../shared/dictionary';
 
 @Component({
   selector: 'wl-new-show',
