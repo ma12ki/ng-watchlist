@@ -19,7 +19,7 @@ const ShowSchema = new Schema({
   },
   frequency: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
