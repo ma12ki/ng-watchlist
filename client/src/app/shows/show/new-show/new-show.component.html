@@ -1,46 +1,52 @@
-<form [formGroup]="newShowForm" novalidate fxLayout="column">
-  <h2>New show</h2>
-  <md-input-container>
-    <input md-input placeholder="Name" formControlName="name">
-  </md-input-container>
+<form [formGroup]="newShowForm" novalidate>
+  <wl-main-heading>New show</wl-main-heading>
+  <div class="form-row">
+    <md-input-container class="full-width">
+      <input md-input placeholder="Name" formControlName="name" required>
+    </md-input-container>
+  </div>
 
-  <h4>Category</h4>
-  <md-radio-group formControlName="category" fxLayout="column">
-    <md-radio-button *ngFor="let c of categories" [value]="c._id">
-      {{c.label}}
-    </md-radio-button>
-  </md-radio-group>
+  <div class="form-row">
+    <md-select formControlName="category" placeholder="Category" required>
+      <md-option *ngFor="let c of categories" [value]="c._id">{{ c.label }}</md-option>
+    </md-select>
 
-  <md-input-container>
-    <input md-input type="date" placeholder="Premiere date" formControlName="premiereDate" appValueToDate>
-  </md-input-container>
+    <span formGroupName="recurring" *ngIf="isRecurring(newShowForm.get('category').value)">
+      <md-select formControlName="frequency" placeholder="Frequency" required>
+        <md-option *ngFor="let f of frequencies" [value]="f._id">{{ f.label }}</md-option>
+      </md-select>
+    </span>
+  </div>
 
-  <div formGroupName="recurring" *ngIf="isRecurring(newShowForm.get('category').value)" fxLayout="column">
+  <div class="form-row">
     <md-input-container>
+      <input md-input type="date" placeholder="Premiere date" formControlName="premiereDate" appValueToDate required>
+    </md-input-container>
+  </div>
+
+  <div formGroupName="recurring" *ngIf="isRecurring(newShowForm.get('category').value)" class="form-row">
+    <md-input-container class="w120">
       <input md-input
+        required
         type="number"
         placeholder="Season #"
-        size="2"
+        size="6"
         min="1" max="99"
         formControlName="season">
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container class="w120">
       <input md-input
+        required
         type="number"
         placeholder="# of episodes"
-        size="3"
+        size="8"
         min="1" max="999"
         formControlName="episodes">
     </md-input-container>
+  </div>
 
-    <h4>Frequency</h4>
-    <md-radio-group formControlName="frequency" fxLayout="column">
-      <md-radio-button *ngFor="let f of frequencies" [value]="f._id">
-        {{f.label}}
-      </md-radio-button>
-    </md-radio-group>
-
+  <div *ngIf="isRecurring(newShowForm.get('category').value)" class="form-row">
     <wl-episodes-preview
       [disabled]="!(newShowForm.get('recurring').valid && newShowForm.get('premiereDate').valid)"
       [premiereDate]="newShowForm.get('premiereDate').value"
@@ -48,12 +54,11 @@
       [season]="newShowForm.get('recurring.season').value"
       [episodes]="newShowForm.get('recurring.episodes').value">
     </wl-episodes-preview>
-
   </div>
 
-  <div>
-    <button md-icon-button (click)="cancel()"><md-icon>cancel</md-icon></button>
-    <button md-icon-button [disabled]="!newShowForm.valid" (click)="save()"><md-icon>save</md-icon></button>
+  <div class="text-right form-row">
+    <button md-icon-button (click)="cancel()" title="Cancel"><md-icon>cancel</md-icon></button>
+    <button md-icon-button [disabled]="!newShowForm.valid" (click)="save()" title="Save"><md-icon>save</md-icon></button>
   </div>
 
 </form>

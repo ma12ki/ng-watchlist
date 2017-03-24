@@ -11,6 +11,11 @@ import {
   defaultState as showDictionaryDefaultState,
 } from './shared/dictionary/dictionary.reducer';
 import {
+  IShowState,
+  ShowReducer,
+  defaultState as showDefaultState,
+} from './show/show.reducer';
+import {
   IShowActionsState,
   ShowActionsReducer,
   defaultState as showActionsDefaultState,
@@ -33,6 +38,7 @@ import {
 
 export interface IShowsState {
   dictionary: FlexibleImmutableObject<IShowDictionaryState>;
+  show: FlexibleImmutableObject<IShowState>;
   showActions: FlexibleImmutableObject<IShowActionsState>;
   allShows: FlexibleImmutableObject<IAllShowsState>;
   availableEpisodes: FlexibleImmutableObject<IAvailableEpisodesState>;
@@ -41,6 +47,7 @@ export interface IShowsState {
 
 export const defaultState: FlexibleImmutableObject<IShowsState> = immutable.from({
   dictionary: showDictionaryDefaultState,
+  show: showDefaultState,
   showActions: showActionsDefaultState,
   allShows: allShowsDefaultState,
   availableEpisodes: availableEpisodesDefaultState,
@@ -53,6 +60,7 @@ export class ShowsReducer {
 
   constructor(
     private dictionaryReducer: ShowDictionaryReducer,
+    private showReducer: ShowReducer,
     private allShowsReducer: AllShowsReducer,
     private showActionsReducer: ShowActionsReducer,
     private availableEpisodesReducer: AvailableEpisodesReducer,
@@ -60,6 +68,7 @@ export class ShowsReducer {
   ) {
     this.reducer = combineReducers<FlexibleImmutableObject<IShowsState>>({
       dictionary: dictionaryReducer.reducer,
+      show: showReducer.reducer,
       allShows: allShowsReducer.reducer,
       showActions: showActionsReducer.reducer,
       availableEpisodes: availableEpisodesReducer.reducer,

@@ -5,12 +5,12 @@ import { FSA } from 'flux-standard-action/lib';
 import { ShowActions } from './show.actions';
 import { FlexibleImmutableObject } from 'app/shared/shared.typings';
 
-interface IShowState {
+export interface IShowState {
   isSaving: Boolean;
   error: Object;
 }
 
-const defaultState: FlexibleImmutableObject<IShowState> = immutable.from({
+export const defaultState: FlexibleImmutableObject<IShowState> = immutable.from({
   isSaving: false,
   error: null
 });

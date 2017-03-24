@@ -1,4 +1,4 @@
-<md-button-toggle [disabled]="disabled" [checked]="showPreview" (change)="togglePreview()">{{ showPreview ? 'Hide preview' : 'Show preview' }}</md-button-toggle>
+<button md-raised-button [disabled]="disabled" (click)="togglePreview()">{{ showPreview ? 'Hide preview' : 'Preview episodes' }}</button>
 
 <md-list dense *ngIf="showPreview">
   <md-list-item *ngFor="let item of items; trackBy:getItemId">
