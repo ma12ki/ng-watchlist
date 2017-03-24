@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
+import { Router } from '@angular/router';
 
 import { ShowService } from '../show.service';
 import { ShowActions } from '../show.actions';
@@ -24,6 +25,7 @@ export class NewShowComponent implements OnInit {
   constructor(
     private ngRedux: NgRedux<any>,
     private formBuilder: FormBuilder,
+    private router: Router,
     private showService: ShowService,
     private showActions: ShowActions,
   ) {
@@ -101,5 +103,9 @@ export class NewShowComponent implements OnInit {
     }
 
     this.ngRedux.dispatch(this.showActions.saveStart(show));
+  }
+
+  cancel() {
+    this.router.navigate(['/']);
   }
 }
