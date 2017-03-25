@@ -1,10 +1,20 @@
 import * as moment from 'moment';
 
+import { UserShowModel } from './models/user-show.model';
 import { EpisodeModel } from './models/episode.model';
 import { UserEpisodeModel } from './models/user-episode.model';
 
 const availableEpisodes = async (_root, _args, {user}) => {
-  const now = moment().toISOString();
+  const now = moment().startOf('day').toISOString();
+
+  const userShows = await UserShowModel.find({
+    userId: user._id,
+    tracked: true,
+  }).select({
+    showId: 1,
+  }).lean() as Array<any>;
+
+  const userShowIds = userShows.map((s) => s.showId);
 
   const userEpisodes = await UserEpisodeModel.find({
     userId: user._id,
@@ -16,6 +26,7 @@ const availableEpisodes = async (_root, _args, {user}) => {
 
   return EpisodeModel.find({
     _id: { $nin: userEpisodeIds },
+    showId: { $in: userShowIds },
     premiereDate: { $lte: now },
   }).sort({
     premiereDate: 1,
