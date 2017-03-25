@@ -19,7 +19,7 @@ const EpisodeSchema = new Schema({
     default: 0,
   },
   episode: {
-    type: String,
+    type: Number,
     required: true,
     default: 0,
   },

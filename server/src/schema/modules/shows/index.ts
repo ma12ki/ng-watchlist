@@ -34,6 +34,9 @@ import markEpisodeWatchedMutationResolver from './mark-episode-watched.resolver'
 import unmarkEpisodeWatchedMutation from './unmark-episode-watched.mutation';
 import unmarkEpisodeWatchedMutationResolver from './unmark-episode-watched.resolver';
 
+import postponeEpisodesMutation from './postpone-episodes.mutation';
+import postponeEpisodesMutationResolver from './postpone-episodes.resolver';
+
 import categoryEnum from './categories.enum';
 import frequencyEnum from './frequencies.enum';
 
@@ -69,6 +72,7 @@ const mutations = `
   ${untrackShowMutation}
   ${markEpisodeWatchedMutation}
   ${unmarkEpisodeWatchedMutation}
+  ${postponeEpisodesMutation}
 `;
 
 const mutationResolvers = {
@@ -79,6 +83,7 @@ const mutationResolvers = {
   ...untrackShowMutationResolver,
   ...markEpisodeWatchedMutationResolver,
   ...unmarkEpisodeWatchedMutationResolver,
+  ...postponeEpisodesMutationResolver,
 };
 
 export {
