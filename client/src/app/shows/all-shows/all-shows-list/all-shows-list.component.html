@@ -1,6 +1,6 @@
 <md-list>
   <wl-show-list-item
-    *ngFor="let item of items$ | async; trackBy:getItemId"
+    *ngFor="let item of sortedItems$ | async; trackBy:getItemId"
     [name]="item.name"
     [category]="item.category">
     <wl-track-toggle [showId]="item._id" [tracked]="item.tracked"></wl-track-toggle>

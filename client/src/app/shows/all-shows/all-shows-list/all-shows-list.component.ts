@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 import { select } from '@angular-redux/store/lib/decorators/select';
+import { Observable } from '@angular-cli/ast-tools/node_modules/rxjs/Rx';
 
 import { AllShowsActions } from '../all-shows.actions';
 import { AllShowsService } from '../all-shows.service';
@@ -12,9 +13,11 @@ import * as allShowsSelectors from '../all-shows.selectors';
   styleUrls: ['./all-shows-list.component.scss']
 })
 export class AllShowsListComponent implements OnInit {
-  @select(allShowsSelectors.items) items$;
+  @select(allShowsSelectors.items) items$: Observable<any[]>;
   @select(allShowsSelectors.error) error$;
   @select(allShowsSelectors.isFetching) isFetching$;
+
+  sortedItems$: Observable<any[]>;
 
   constructor(
     private ngRedux: NgRedux<any>,
@@ -23,6 +26,12 @@ export class AllShowsListComponent implements OnInit {
 
   ngOnInit() {
     this.reload();
+
+    this.sortedItems$ = this.items$.map((items: any) => {
+      return items.asMutable().sort((a, b) => {
+        return a.name.toLowerCase() > b.name.toLowerCase();
+      });
+    });
   }
 
   reload() {

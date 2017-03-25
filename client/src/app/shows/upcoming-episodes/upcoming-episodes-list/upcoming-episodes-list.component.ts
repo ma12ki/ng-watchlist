@@ -38,7 +38,7 @@ export class UpcomingEpisodesListComponent implements OnInit {
     }).map((groups) => {
       return groups.map((group) => {
         group.items = group.items.sort((a, b) => {
-          return a.toLowerCase() > b.toLowerCase();
+          return a.show.name.toLowerCase() > b.show.name.toLowerCase();
         });
         return group;
       }).sort((a, b) => {
