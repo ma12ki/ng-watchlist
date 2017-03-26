@@ -5,7 +5,7 @@ import { EpisodeModel } from './models/episode.model';
 import { UserEpisodeModel } from './models/user-episode.model';
 
 const availableEpisodes = async (_root, _args, {user}) => {
-  const now = moment().startOf('day').toISOString();
+  const now = moment().endOf('day').toISOString();
 
   const userShows = await UserShowModel.find({
     userId: user._id,
