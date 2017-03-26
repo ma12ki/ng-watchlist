@@ -12,6 +12,21 @@
 <body>
   <wl-root>
     <style>
+      .loader-container {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+      .loader-wrapper {
+        width: 10em;
+        height: 10em;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
       .loader,
       .loader:after {
         border-radius: 50%;
@@ -54,7 +69,11 @@
         }
       }
     </style>
-    <div class="loader">Loading...</div>
+    <div class="loader-container">
+      <div class="loader-wrapper">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
   </wl-root>
 </body>
 </html>
