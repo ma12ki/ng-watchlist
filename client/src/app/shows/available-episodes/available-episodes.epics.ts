@@ -17,7 +17,6 @@ export class AvailableEpisodesEpics {
   constructor(
     private service: AvailableEpisodesService,
     private actions: AvailableEpisodesActions,
-    private showActions: ShowActions,
   ) {
     this.epics = [
       this.loadAvailableEpisodes,
