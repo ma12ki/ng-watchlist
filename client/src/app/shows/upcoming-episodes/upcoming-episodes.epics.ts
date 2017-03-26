@@ -22,6 +22,7 @@ export class UpcomingEpisodesEpics {
       this.loadAllShows,
       this.refreshOnTrack,
       this.refreshOnUntrack,
+      this.refreshOnPostpone,
     ];
   }
 
@@ -37,5 +38,9 @@ export class UpcomingEpisodesEpics {
 
   refreshOnUntrack = action$ => action$
     .ofType(ShowActions.UNTRACK_SUCCEEDED)
+    .map(() => this.actions.loadStart());
+
+  refreshOnPostpone = action$ => action$
+    .ofType(ShowActions.POSTPONE_EPISODES_SUCCEEDED)
     .map(() => this.actions.loadStart());
 }
