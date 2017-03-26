@@ -28,7 +28,8 @@ export class AvailableEpisodesService {
     `;
 
     return this.apollo.watchQuery<any>({
-      query: query
+      forceFetch: true,
+      query: query,
     }).map(({data}) => data.availableEpisodes);
   }
 

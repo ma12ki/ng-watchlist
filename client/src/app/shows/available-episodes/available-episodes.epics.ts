@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 
 import { AvailableEpisodesService } from './available-episodes.service';
 import { AvailableEpisodesActions } from './available-episodes.actions';
+import { ShowActions } from '../show-actions/show-actions.actions';
 
 @Injectable()
 export class AvailableEpisodesEpics {
@@ -15,9 +16,14 @@ export class AvailableEpisodesEpics {
 
   constructor(
     private service: AvailableEpisodesService,
-    private actions: AvailableEpisodesActions
+    private actions: AvailableEpisodesActions,
+    private showActions: ShowActions,
   ) {
-    this.epics = [ this.loadAvailableEpisodes ];
+    this.epics = [
+      this.loadAvailableEpisodes,
+      this.refreshOnTrack,
+      this.refreshOnUntrack,
+    ];
   }
 
   loadAvailableEpisodes = action$ => action$
@@ -25,4 +31,12 @@ export class AvailableEpisodesEpics {
     .switchMap((_) => this.service.loadAvailableEpisodes()
       .map(data => this.actions.loadSucceeded(data))
       .catch(err => of(this.actions.loadFailed(err))));
+
+  refreshOnTrack = action$ => action$
+    .ofType(ShowActions.TRACK_SUCCEEDED)
+    .map(() => this.actions.loadStart());
+
+  refreshOnUntrack = action$ => action$
+    .ofType(ShowActions.UNTRACK_SUCCEEDED)
+    .map(() => this.actions.loadStart());
 }
