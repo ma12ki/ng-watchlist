@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Observable } from 'rxjs/Rx';
-import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class ShowActionsService {
@@ -151,6 +149,33 @@ export class ShowActionsService {
       }
     }).map(({data}) => {
       const episode = data.unmarkEpisodeWatched;
+      return episode;
+    });
+  }
+
+  postponeEpisodes(episodeId, postponeUntil) {
+    const mutation = gql`
+      mutation PostponeEpisodes(
+        $episodeId: String!,
+        $postponeUntil: String!
+      ) {
+        postponeEpisodes(
+          episodeId: $episodeId,
+          postponeUntil: $postponeUntil,
+        ) {
+          _id
+        }
+      }
+    `;
+
+    return this.apollo.mutate<any>({
+      mutation,
+      variables: {
+        episodeId,
+        postponeUntil,
+      }
+    }).map(({data}) => {
+      const episode = data.postponeEpisodes;
       return episode;
     });
   }

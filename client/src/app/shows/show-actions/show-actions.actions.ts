@@ -7,6 +7,10 @@ export interface IShowAction {
   episodeId?: string;
 };
 
+export interface IPostponeEpisodesAction extends IShowAction {
+  postponeUntil: Date;
+};
+
 @Injectable()
 export class ShowActions {
   static ADD_START = `${ACTION_PREFIX}ADD_START`;
@@ -33,6 +37,9 @@ export class ShowActions {
   static UNMARK_WATCHED_SUCCEEDED = `${ACTION_PREFIX}UNMARK_WATCHED_SUCCEEDED`;
   static UNMARK_WATCHED_FAILED = `${ACTION_PREFIX}UNMARK_WATCHED_FAILED`;
 
+  static POSTPONE_EPISODES_START = `${ACTION_PREFIX}POSTPONE_EPISODES_START`;
+  static POSTPONE_EPISODES_SUCCEEDED = `${ACTION_PREFIX}POSTPONE_EPISODES_SUCCEEDED`;
+  static POSTPONE_EPISODES_FAILED = `${ACTION_PREFIX}POSTPONE_EPISODES_FAILED`;
 
   addStart(payload: IShowAction) {
     return {
@@ -161,6 +168,28 @@ export class ShowActions {
   unmarkWatchedFailed(payload: IShowAction, error: any) {
     return {
       type: ShowActions.UNMARK_WATCHED_FAILED,
+      payload,
+      error,
+    };
+  }
+
+  postponeEpisodesStart(payload: IPostponeEpisodesAction) {
+    return {
+      type: ShowActions.POSTPONE_EPISODES_START,
+      payload,
+    };
+  }
+
+  postponeEpisodesSucceeded(payload: IShowAction) {
+    return {
+      type: ShowActions.POSTPONE_EPISODES_SUCCEEDED,
+      payload,
+    };
+  }
+
+  postponeEpisodesFailed(payload: IShowAction, error: any) {
+    return {
+      type: ShowActions.POSTPONE_EPISODES_FAILED,
       payload,
       error,
     };

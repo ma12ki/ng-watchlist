@@ -12,6 +12,7 @@
           [category]="item.show.category"
           [season]="item.season"
           [episode]="item.episode">
+          <wl-postpone [showId]="item.show._id" [episodeId]="item._id"></wl-postpone>
           <wl-watched-toggle [showId]="item.show._id" [episodeId]="item._id" [watched]="item.watched"></wl-watched-toggle>
         </wl-episode-list-item>
       </div>

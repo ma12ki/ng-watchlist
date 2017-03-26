@@ -1,0 +1,14 @@
+<form #postponeForm="ngForm">
+    <header md-dialog-title>
+        Postpone episode
+    </header>
+    <md-dialog-content>
+      <md-input-container>
+        <input md-input type="date" placeholder="Postpone until" name="postponeUntil" [(ngModel)]="postponeUntil" wlValueToDate required>
+      </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <button md-raised-button [disabled]="postponeForm.invalid" (click)="confirm()" color="primary">Postpone</button>
+        <button md-raised-button (click)="cancel()">Cancel</button>
+    </md-dialog-actions>
+</form>

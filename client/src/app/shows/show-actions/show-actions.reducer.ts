@@ -39,7 +39,9 @@ export function showActionsReducer(state = defaultState, action: FSA<IShowAction
     case ShowActions.ADD_START:
     case ShowActions.REMOVE_START:
     case ShowActions.TRACK_START:
-    case ShowActions.UNTRACK_START: {
+    case ShowActions.UNTRACK_START:
+    case ShowActions.POSTPONE_EPISODES_START:
+    {
       return state.set(action.payload.showId, {
         isFetching: true,
         error: null,
@@ -49,7 +51,9 @@ export function showActionsReducer(state = defaultState, action: FSA<IShowAction
     case ShowActions.ADD_SUCCEEDED:
     case ShowActions.REMOVE_SUCCEEDED:
     case ShowActions.TRACK_SUCCEEDED:
-    case ShowActions.UNTRACK_SUCCEEDED: {
+    case ShowActions.UNTRACK_SUCCEEDED:
+    case ShowActions.POSTPONE_EPISODES_SUCCEEDED:
+    {
       return state.set(action.payload.showId, {
         isFetching: false,
         error: null,
@@ -60,6 +64,7 @@ export function showActionsReducer(state = defaultState, action: FSA<IShowAction
     case ShowActions.REMOVE_FAILED:
     case ShowActions.TRACK_FAILED:
     case ShowActions.UNTRACK_FAILED:
+    case ShowActions.POSTPONE_EPISODES_FAILED:
     {
       return state.set(action.payload.showId, {
         isFetching: false,

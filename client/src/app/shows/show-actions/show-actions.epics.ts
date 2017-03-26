@@ -22,6 +22,7 @@ export class ShowActionsEpics {
       this.untrackShow,
       this.markWatchedEpisode,
       this.unmarkWatchedEpisode,
+      this.postponeEpisodes,
     ];
   }
 
@@ -95,6 +96,23 @@ export class ShowActionsEpics {
         episodeId: action.payload.episodeId,
       }))
       .catch(err => of(this.actions.unmarkWatchedFailed({
+          showId: action.payload.showId,
+          episodeId: action.payload.episodeId,
+        },
+        err)
+      )));
+
+  postponeEpisodes = action$ => action$
+    .ofType(ShowActions.POSTPONE_EPISODES_START)
+    .mergeMap(action => this.service.postponeEpisodes(
+        action.payload.episodeId,
+        action.payload.postponeUntil,
+      )
+      .map(data => this.actions.postponeEpisodesSucceeded({
+        showId: action.payload.showId,
+        episodeId: action.payload.episodeId,
+      }))
+      .catch(err => of(this.actions.postponeEpisodesFailed({
           showId: action.payload.showId,
           episodeId: action.payload.episodeId,
         },

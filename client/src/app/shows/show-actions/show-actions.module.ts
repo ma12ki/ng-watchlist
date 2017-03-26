@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
+
+import { SharedModule } from '../../shared/shared.module';
 
 import { AddToggleComponent } from './add-toggle/add-toggle.component';
 import { ShowActionsService } from './show-actions.service';
@@ -9,16 +9,19 @@ import { ShowActionsReducer } from './show-actions.reducer';
 import { ShowActionsEpics } from './show-actions.epics';
 import { TrackToggleComponent } from './track-toggle/track-toggle.component';
 import { WatchedToggleComponent } from './watched-toggle/watched-toggle.component';
+import { PostponeComponent } from './postpone/postpone.component';
+import { PostponeModalComponent } from './postpone-modal/postpone-modal.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    MaterialModule,
+    SharedModule,
   ],
   declarations: [
     AddToggleComponent,
     TrackToggleComponent,
     WatchedToggleComponent,
+    PostponeComponent,
+    PostponeModalComponent,
   ],
   providers: [
     ShowActionsService,
@@ -30,6 +33,10 @@ import { WatchedToggleComponent } from './watched-toggle/watched-toggle.componen
     AddToggleComponent,
     TrackToggleComponent,
     WatchedToggleComponent,
-  ]
+    PostponeComponent,
+  ],
+  entryComponents: [
+    PostponeModalComponent,
+  ],
 })
 export class ShowActionsModule { }

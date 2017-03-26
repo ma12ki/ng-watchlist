@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MomentModule } from 'angular2-moment';
@@ -12,6 +12,7 @@ import { MainHeadingComponent } from './main-heading/main-heading.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   declarations: [
     ValueToDateDirective,
@@ -20,6 +21,7 @@ import { MainHeadingComponent } from './main-heading/main-heading.component';
   exports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     MaterialModule,
     FlexLayoutModule,
     MomentModule,
