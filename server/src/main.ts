@@ -1,11 +1,11 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import {graphqlExpress, graphiqlExpress} from 'graphql-server-express';
-import {Schema} from './schema';
 import * as cors from 'cors';
 import * as helmet from 'helmet';
 import * as morgan from 'morgan';
-import {persons, findPerson, addPerson} from './data-base/person-database';
+
+import {Schema} from './schema';
 import { connect } from './db';
 
 connect();
@@ -51,9 +51,6 @@ export function main(options: IMainOptions) {
   app.use(GRAPHQL_ROUTE, bodyParser.json(), graphqlExpress({
     context: {
       testConnector,
-      persons,
-      findPerson,
-      addPerson,
       user: {
         _id: 'a123456789a123456789a123',
       },
