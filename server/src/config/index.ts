@@ -5,13 +5,13 @@ dotenv.config({
 });
 
 const config = {
-  get production() {
+  get production(): boolean {
     return process.env.NODE_ENV === 'production';
   },
-  get mongoUri() {
+  get mongoUri(): string {
     return process.env.WL_MONGO_URI;
   },
-  get port() {
+  get port(): number {
     return process.env.WL_PORT;
   },
 };
