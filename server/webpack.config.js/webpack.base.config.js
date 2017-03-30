@@ -1,26 +1,14 @@
-var nodeExternals = require('webpack-node-externals');
 var webpack = require('webpack');
 var path = require('path');
 var fs = require('fs');
 
-/* helper function to get into build directory */
-var distPath = function ( name ) {
-  if ( undefined === name ) {
-    return path.join('dist');
-  }
-
-  return path.join('dist', name);
-};
-
-var webpack_opts = {
+var webpackConfig = {
   entry: './src/main.ts',
   target: 'node',
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
-    libraryTarget: 'commonjs2',
-    devtoolModuleFilenameTemplate        : '[absolute-resource-path]',
-    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
+    path: path.resolve(__dirname, '../', 'dist'),
+    libraryTarget: 'commonjs2'
   },
   resolve: {
     extensions: [
@@ -50,27 +38,17 @@ var webpack_opts = {
         minChunks: function (module) {
             return module.context && module.context.indexOf('node_modules') !== -1;
         }
+    }),
+    // https://webpack.js.org/guides/code-splitting-libraries/
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'manifest'
     })
   ],
-  devtool: 'source-map',
   module: {
     rules: [
      {
-       enforce: 'pre',
-       test: /\.js$/,
-       loader: 'source-map-loader',
-       exclude: /node_modules/
-     },
-     {
-       enforce: 'pre',
-       test: /\.ts?$/,
-       use: 'source-map-loader',
-       exclude: /node_modules/
-     },
-     {
        test: /\.ts$/,
        loaders: 'awesome-typescript-loader'
-      //  ,exclude: /node_modules/
      },
      {
        test: /\.json$/,
@@ -78,8 +56,6 @@ var webpack_opts = {
      }
    ]
   }
-  // ,
-  // externals: [nodeExternals()]
 };
 
-module.exports = webpack_opts;
+module.exports = webpackConfig;

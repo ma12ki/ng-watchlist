@@ -4,8 +4,10 @@
   "description": "",
   "main": "dist/main.js",
   "scripts": {
+    "prebuild": "rimraf dist",
     "build": "webpack",
     "build:watch": "webpack --watch",
+    "build:production": "cross-env NODE_ENV=production npm run build",
     "build:tsc": "tsc",
     "build:tsc:w": "tsc -w",
     "pretest": "npm run build",
@@ -54,7 +56,9 @@
     "moment": "^2.17.1",
     "mongoose": "^4.8.5",
     "morgan": "^1.7.0",
-    "source-map-loader": "^0.1.6"
+    "rimraf": "^2.6.1",
+    "source-map-loader": "^0.1.6",
+    "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
     "@types/es6-shim": "^0.31.32",
