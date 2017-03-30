@@ -32,17 +32,21 @@ var webpackConfig = {
           failOnHint: true
         }
       }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: function (module) {
-            return module.context && module.context.indexOf('node_modules') !== -1;
-        }
-    }),
-    // https://webpack.js.org/guides/code-splitting-libraries/
-    new webpack.optimize.CommonsChunkPlugin({
-        name: 'manifest'
     })
+    // TODO: fix this
+    // for some reason this makes the app un-runnable after build :(
+    // ,
+    // new webpack.optimize.CommonsChunkPlugin({
+    //     name: 'vendor',
+    //     minChunks: function (module) {
+    //         return module.context && module.context.indexOf('node_modules') !== -1;
+    //     }
+    // })
+    // ,
+    // // https://webpack.js.org/guides/code-splitting-libraries/
+    // new webpack.optimize.CommonsChunkPlugin({
+    //     name: 'manifest'
+    // })
   ],
   module: {
     rules: [
