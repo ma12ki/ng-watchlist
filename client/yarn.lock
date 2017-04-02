@@ -203,6 +203,12 @@
   version "3.4.34"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-3.4.34.tgz#d5335792823bb09cddd5e38c3d211b709183854d"
 
+"@types/dotenv@^2.0.20":
+  version "2.0.20"
+  resolved "https://registry.yarnpkg.com/@types/dotenv/-/dotenv-2.0.20.tgz#79ca51c9594cc889cc8a72427ea8db4ddfd32929"
+  dependencies:
+    "@types/node" "*"
+
 "@types/graphql@^0.8.0", "@types/graphql@^0.8.6":
   version "0.8.6"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.8.6.tgz#b34fb880493ba835b0c067024ee70130d6f9bb68"
@@ -219,7 +225,7 @@
   version "2.5.38"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.38.tgz#a4379124c4921d4e21de54ec74669c9e9b356717"
 
-"@types/node@^6.0.45", "@types/node@^6.0.46", "@types/node@^6.0.60":
+"@types/node@*", "@types/node@^6.0.45", "@types/node@^6.0.46", "@types/node@^6.0.60":
   version "6.0.62"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.62.tgz#85222c077b54f25b57417bb708b9f877bda37f89"
 
@@ -356,9 +362,9 @@ apollo-client-rxjs@~0.4.1:
   dependencies:
     lodash "^4.17.2"
 
-apollo-client@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-0.8.2.tgz#d5c5026035db4207350a16cf318a33cfc0e735bb"
+apollo-client@^0.8.7:
+  version "0.8.7"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-0.8.7.tgz#73f52d1dd6dfe0f07e8bfe05a8e47c4bcd3bf7a3"
   dependencies:
     graphql-anywhere "^2.1.0"
     graphql-tag "^1.1.1"
@@ -1870,6 +1876,10 @@ dot-prop@^3.0.0:
   dependencies:
     is-obj "^1.0.0"
 
+dotenv@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
+
 duplexer2@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.0.2.tgz#c614dcf67e2fb14995a91711e5a617e8a60a31db"
@@ -2510,6 +2520,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
 graphql-anywhere@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-2.1.0.tgz#888c0a1718db3ff866b313070747777380560f69"
+
+graphql-anywhere@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-3.0.1.tgz#73531db861174c8f212eafb9f8e84944b38b4e5a"
 
 graphql-tag@^1.1.1, graphql-tag@^1.2.3:
   version "1.2.4"
@@ -5545,6 +5559,10 @@ type-is@~1.6.14:
 typescript@^2.0.3, typescript@~2.0.3:
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.0.10.tgz#ccdd4ed86fd5550a407101a0814012e1b3fac3dd"
+
+typescript@^2.2.1:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.2.tgz#606022508479b55ffa368b58fee963a03dfd7b0c"
 
 uglify-js@2.7.x, uglify-js@^2.6, uglify-js@^2.7.5:
   version "2.7.5"

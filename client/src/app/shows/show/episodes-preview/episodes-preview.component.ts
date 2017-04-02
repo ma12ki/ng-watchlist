@@ -29,7 +29,7 @@ export class EpisodesPreviewComponent implements OnChanges {
     private episodePreviewService: EpisodesPreviewService
   ) { }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: any): void {
     this.refreshItems();
 
     if (changes.disabled && changes.disabled.currentValue && !changes.disabled.previousValue) {

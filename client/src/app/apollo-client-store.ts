@@ -3,7 +3,7 @@ import { environment } from '../environments/environment';
 
 export const client = new ApolloClient({
   networkInterface: createNetworkInterface({
-    uri: environment.graphQlUrl
+    uri: environment.serverUrl,
   }),
   // ID mapping required for automatic updates of objects in the store after
   // mutations.
