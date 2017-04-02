@@ -1,8 +1,8 @@
-import dotenv from 'dotenv';
+import { config as dotenvConfig } from 'dotenv';
 
-dotenv.config({
-  path: '../../.env',
-});
+const env = dotenvConfig();
+
+console.log(env);
 
 const config = {
   get production(): boolean {
