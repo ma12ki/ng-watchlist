@@ -1,13 +1,14 @@
-import { connect as mongooseConnect } from 'mongoose';
+import * as mongoose from 'mongoose';
 
-const connect = () => {
-  console.log('Attempting to connect to db...');
-  return mongooseConnect('mongodb://localhost:27017/watchlist-dev')
+(<any>mongoose).Promise = global.Promise;
+
+const connect = (uri) => {
+  console.log(`Attempting to connect to db at ${uri}...`);
+  return mongoose.connect(uri)
     .then(() => {
       console.log('Successfully connected to db');
     });
 };
-
 
 export {
   connect
