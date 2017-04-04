@@ -7,6 +7,8 @@ import { ShowsModule } from '../shows/shows.module';
 
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { MenuComponent } from './menu/menu.component';
+import { MenuItemComponent } from './menu/menu-item/menu-item.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
@@ -19,6 +21,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
   declarations: [
     FooterComponent,
     HeaderComponent,
+    MenuComponent,
+    MenuItemComponent,
     NotFoundComponent,
   ],
   exports: [
