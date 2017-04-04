@@ -2,23 +2,23 @@
 @import '~@angular/material/core/theming/palette';
 
 // Include non-theme styles for core.
-@include md-core();
+@include mat-core();
 
 // Define a theme.
-$primary: md-palette($md-blue-grey, 800, 700, 900);
-$accent:  md-palette($md-blue-grey, 50, 50, 300);
+$primary: mat-palette($mat-blue-grey, 800, 700, 900);
+$accent:  mat-palette($mat-blue-grey, 50, 50, 300);
 // The warn palette is optional (defaults to red).
-$warn:    md-palette($md-purple, 500, 300, 700);
+$warn:    mat-palette($mat-purple, 500, 300, 700);
 
-$theme: md-dark-theme($primary, $accent, $warn);
+$theme: mat-dark-theme($primary, $accent, $warn);
 
 // Include all theme styles for the components.
 @include angular-material-theme($theme);
 
 html,
 body {
-  background: md-color($primary, 900);
-  color: md-contrast($primary, 800);
+  background: mat-color($primary, 900);
+  color: mat-contrast($primary, 800);
 }
 
 // md-list-item {

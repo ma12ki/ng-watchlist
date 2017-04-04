@@ -26,7 +26,7 @@ export class UpcomingEpisodesService {
     `;
 
     return this.apollo.watchQuery<any>({
-      forceFetch: true,
+      fetchPolicy: 'network-only',
       query: query,
     }).map(({data}) => data.upcomingEpisodes);
   }

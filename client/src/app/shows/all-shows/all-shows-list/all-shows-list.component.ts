@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 import { select } from '@angular-redux/store/lib/decorators/select';
-import { Observable } from '@angular-cli/ast-tools/node_modules/rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 
 import { AllShowsActions } from '../all-shows.actions';
 import { AllShowsService } from '../all-shows.service';
