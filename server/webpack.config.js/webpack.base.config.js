@@ -1,8 +1,9 @@
-var webpack = require('webpack');
-var path = require('path');
-var fs = require('fs');
+const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
+const path = require('path');
+const fs = require('fs');
 
-var webpackConfig = {
+const webpackConfig = {
   entry: './src/main.ts',
   target: 'node',
   output: {
@@ -32,17 +33,15 @@ var webpackConfig = {
           failOnHint: true
         }
       }
-    })
+    }),
     // TODO: fix this
     // for some reason this makes the app un-runnable after build :(
-    // ,
     // new webpack.optimize.CommonsChunkPlugin({
     //     name: 'vendor',
     //     minChunks: function (module) {
     //         return module.context && module.context.indexOf('node_modules') !== -1;
     //     }
-    // })
-    // ,
+    // }),
     // // https://webpack.js.org/guides/code-splitting-libraries/
     // new webpack.optimize.CommonsChunkPlugin({
     //     name: 'manifest'
@@ -59,7 +58,8 @@ var webpackConfig = {
        use: 'json-loader'
      }
    ]
-  }
+  },
+  externals: [nodeExternals()],
 };
 
 module.exports = webpackConfig;

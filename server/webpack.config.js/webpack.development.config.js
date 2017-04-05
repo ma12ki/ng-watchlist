@@ -1,6 +1,4 @@
-var nodeExternals = require('webpack-node-externals');
-
-var webpackConfig = {
+const webpackConfig = {
   output: {
     devtoolModuleFilenameTemplate        : '[absolute-resource-path]',
     devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
@@ -22,7 +20,6 @@ var webpackConfig = {
      }
    ]
   },
-  externals: [nodeExternals()]
 };
 
 module.exports = webpackConfig;

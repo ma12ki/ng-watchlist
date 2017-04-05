@@ -1,10 +1,10 @@
-var webpackMerge = require('webpack-merge');
+const webpackMerge = require('webpack-merge');
 
-var baseConfig = require('./webpack.base.config');
-var developmentConfig = require('./webpack.development.config');
-var productionConfig = require('./webpack.production.config');
+const baseConfig = require('./webpack.base.config');
+const developmentConfig = require('./webpack.development.config');
+const productionConfig = require('./webpack.production.config');
 
-var environmentConfig = {};
+let environmentConfig = {};
 
 switch (process.env.NODE_ENV) {
   case 'production':
