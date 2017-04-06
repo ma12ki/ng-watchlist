@@ -1,1 +1,3 @@
-export default 'upcomingEpisodes: [Episode]';
+export default `upcomingEpisodes(
+  maxDate: String
+): [Episode]`;
