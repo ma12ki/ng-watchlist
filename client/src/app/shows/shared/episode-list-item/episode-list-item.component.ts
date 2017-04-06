@@ -1,11 +1,12 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 
 import { DictionaryService } from '../dictionary/dictionary.service';
 
 @Component({
   selector: 'wl-episode-list-item',
   templateUrl: './episode-list-item.component.html',
-  styleUrls: ['./episode-list-item.component.scss']
+  styleUrls: ['./episode-list-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EpisodeListItemComponent implements OnChanges {
   @Input() name: string;

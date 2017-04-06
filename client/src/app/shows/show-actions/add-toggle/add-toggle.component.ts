@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 import { Observable } from 'rxjs/Rx';
 
@@ -8,7 +8,8 @@ import selectors from '../show-actions.selectors';
 @Component({
   selector: 'wl-add-toggle',
   templateUrl: './add-toggle.component.html',
-  styleUrls: ['./add-toggle.component.scss']
+  styleUrls: ['./add-toggle.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddToggleComponent implements OnInit {
   @Input() showId: string;

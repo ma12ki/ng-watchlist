@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'wl-available-episodes',
   templateUrl: './available-episodes.component.html',
-  styleUrls: ['./available-episodes.component.scss']
+  styleUrls: ['./available-episodes.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AvailableEpisodesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class AvailableEpisodesComponent { }

@@ -1,11 +1,12 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 
 import { EpisodesPreviewService, IPreview } from './episodes-preview.service';
 
 @Component({
   selector: 'wl-episodes-preview',
   templateUrl: './episodes-preview.component.html',
-  styleUrls: ['./episodes-preview.component.scss']
+  styleUrls: ['./episodes-preview.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EpisodesPreviewComponent implements OnChanges {
   @Input() disabled: boolean;
@@ -48,7 +49,7 @@ export class EpisodesPreviewComponent implements OnChanges {
     }
   }
 
-  getItemId(index: number, item: IPreview): string {
+  getItemId(_index: number, item: IPreview): string {
     return `${item.season}_${item.episode}_${item.premiereDate.toISOString()}`;
   }
 

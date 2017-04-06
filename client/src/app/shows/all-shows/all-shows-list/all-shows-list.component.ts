@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 import { select } from '@angular-redux/store/lib/decorators/select';
 import { Observable } from 'rxjs/Rx';
@@ -10,7 +10,8 @@ import * as allShowsSelectors from '../all-shows.selectors';
 @Component({
   selector: 'wl-all-shows-list',
   templateUrl: './all-shows-list.component.html',
-  styleUrls: ['./all-shows-list.component.scss']
+  styleUrls: ['./all-shows-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllShowsListComponent implements OnInit {
   @select(allShowsSelectors.items) items$: Observable<any[]>;

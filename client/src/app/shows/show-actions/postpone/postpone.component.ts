@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 import { MdDialog } from '@angular/material';
 import { Observable } from 'rxjs/Rx';
@@ -10,7 +10,8 @@ import { PostponeModalComponent } from '../postpone-modal/postpone-modal.compone
 @Component({
   selector: 'wl-postpone',
   templateUrl: './postpone.component.html',
-  styleUrls: ['./postpone.component.scss']
+  styleUrls: ['./postpone.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostponeComponent implements OnInit {
   @Input() showId: string;

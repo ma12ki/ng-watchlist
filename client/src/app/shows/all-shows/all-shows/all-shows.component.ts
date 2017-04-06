@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'wl-all-shows',
   templateUrl: './all-shows.component.html',
-  styleUrls: ['./all-shows.component.scss']
+  styleUrls: ['./all-shows.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllShowsComponent implements OnInit {
 

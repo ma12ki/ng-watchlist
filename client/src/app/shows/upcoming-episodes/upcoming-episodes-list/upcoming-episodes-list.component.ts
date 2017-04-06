@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 import { select } from '@angular-redux/store/lib/decorators/select';
 import { Observable } from 'rxjs/Rx';
@@ -11,7 +11,8 @@ import * as upcomingEpisodesSelectors from '../upcoming-episodes.selectors';
 @Component({
   selector: 'wl-upcoming-episodes-list',
   templateUrl: './upcoming-episodes-list.component.html',
-  styleUrls: ['./upcoming-episodes-list.component.scss']
+  styleUrls: ['./upcoming-episodes-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UpcomingEpisodesListComponent implements OnInit {
   @select(upcomingEpisodesSelectors.items) items$: Observable<any[]>;
