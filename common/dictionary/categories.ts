@@ -56,9 +56,9 @@ const categories: ICategory[] = [
 
 const getCategory = (categoryId: string) => categories.find((category) => category._id === categoryId);
 
-const getVerbiage = (categoryId: string) => {
+const getVerbiage = (categoryId: string): ICategoryVerbiage => {
   const category = getCategory(categoryId);
-  return category ? category.verbiage : {};
+  return category ? category.verbiage : { season: '', episode: '' };
 };
 
 const isRecurring = (categoryId: string) => {
