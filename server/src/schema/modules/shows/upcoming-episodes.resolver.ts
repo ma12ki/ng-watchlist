@@ -14,8 +14,9 @@ const addLtDate = (condition, date) => {
   return condition;
 };
 
-const upcomingEpisodes = async (_root, {maxDate}, {user}) => {
+const upcomingEpisodes = async (_root, {maxDate, cursor}, {user}) => {
   const now = moment().endOf('day').toISOString();
+  const limit = 10;
   const userShows = await UserShowModel.find({
     userId: user._id,
     tracked: true,
@@ -24,10 +25,22 @@ const upcomingEpisodes = async (_root, {maxDate}, {user}) => {
   }).lean() as Array<any>;
   const userShowIds = userShows.map((s) => s.showId);
 
-  return EpisodeModel.find({
+  const episodes = await EpisodeModel.find({
     showId: { $in: userShowIds },
     premiereDate: addLtDate({ $gt: now }, maxDate),
-  }).lean();
+  }).sort({
+    premiereDate: 1,
+    _id: 1,
+  }).limit(maxDate ? null : limit)
+  .lean() as Array<any>;
+
+  // TODO: optimize finding by cursor
+  if (cursor) {
+    const cursorIndex = episodes.findIndex((episode) => '' + episode._id === cursor);
+    return episodes.slice(cursorIndex + 1, limit);
+  }
+
+  return episodes;
 };
 
 export default {

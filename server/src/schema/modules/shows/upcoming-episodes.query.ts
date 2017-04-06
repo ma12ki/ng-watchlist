@@ -1,3 +1,4 @@
 export default `upcomingEpisodes(
-  maxDate: String
+  maxDate: String,
+  cursor: String
 ): [Episode]`;
