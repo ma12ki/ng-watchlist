@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MomentModule } from 'angular2-moment';
 
 import { ValueToDateDirective } from './date-input-to-date/value-to-date.directive';
@@ -24,6 +25,7 @@ import { MainHeadingComponent } from './main-heading/main-heading.component';
     FormsModule,
     MaterialModule,
     FlexLayoutModule,
+    BrowserAnimationsModule,
     MomentModule,
     ValueToDateDirective,
     MainHeadingComponent,
