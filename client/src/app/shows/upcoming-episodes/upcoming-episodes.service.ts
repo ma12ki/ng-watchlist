@@ -9,10 +9,14 @@ export class UpcomingEpisodesService {
     private apollo: Apollo
   ) { }
 
-  loadUpcomingEpisodes() {
+  loadUpcomingEpisodes({maxDate = '', cursor = ''}) {
     const query = gql`
-      query UpcomingEpisodesQuery {
-        upcomingEpisodes {
+      query UpcomingEpisodesQuery(
+        $maxDate: String
+      ) {
+        upcomingEpisodes(
+          maxDate: $maxDate
+        ) {
           _id
           season
           episode
@@ -28,6 +32,9 @@ export class UpcomingEpisodesService {
     return this.apollo.watchQuery<any>({
       fetchPolicy: 'network-only',
       query: query,
+      variables: {
+        maxDate,
+      },
     }).map(({data}) => data.upcomingEpisodes);
   }
 

@@ -8,9 +8,13 @@ export class UpcomingEpisodesActions {
   static LOAD_SUCCEEDED = `${ACTION_PREFIX}LOAD_SUCCEEDED`;
   static LOAD_FAILED = `${ACTION_PREFIX}LOAD_FAILED`;
 
-  loadStart() {
+  loadStart({maxDate = '', cursor = ''}) {
     return {
-      type: UpcomingEpisodesActions.LOAD_START
+      type: UpcomingEpisodesActions.LOAD_START,
+      payload: {
+        maxDate,
+        cursor,
+      },
     };
   }
 

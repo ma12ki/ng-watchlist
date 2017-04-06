@@ -49,7 +49,7 @@ export class UpcomingEpisodesListComponent implements OnInit {
   }
 
   reload() {
-    this.ngRedux.dispatch(this.actions.loadStart());
+    this.ngRedux.dispatch(this.actions.loadStart({}));
   }
 
   getItemId(_index, item) {
