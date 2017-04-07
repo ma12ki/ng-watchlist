@@ -16,4 +16,7 @@
       </div>
     </md-list>
   </section>
+  <button *ngIf="hasEpisodes" md-icon-button (click)="loadMore()" [disabled]="isFetching$ | async" title="Load more">
+    <md-icon>expand_more</md-icon>
+  </button>
 </div>

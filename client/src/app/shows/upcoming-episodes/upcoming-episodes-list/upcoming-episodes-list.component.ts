@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { NgRedux } from '@angular-redux/store/lib/components/ng-redux';
 import { select } from '@angular-redux/store/lib/decorators/select';
-import { Observable } from 'rxjs/Rx';
+import { Observable, Subscription } from 'rxjs/Rx';
 import 'rxjs';
 import * as moment from 'moment';
 
@@ -14,11 +14,14 @@ import * as upcomingEpisodesSelectors from '../upcoming-episodes.selectors';
   styleUrls: ['./upcoming-episodes-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UpcomingEpisodesListComponent implements OnInit {
+export class UpcomingEpisodesListComponent implements OnInit, OnDestroy {
   @select(upcomingEpisodesSelectors.items) items$: Observable<any[]>;
   @select(upcomingEpisodesSelectors.error) error$;
   @select(upcomingEpisodesSelectors.isFetching) isFetching$;
   groupedItems$: Observable<any[]>;
+  private _subscriptions: Subscription[] = [];
+  hasEpisodes = false;
+  private _maxEpisodeId: string;
 
   constructor(
     private ngRedux: NgRedux<any>,
@@ -26,7 +29,7 @@ export class UpcomingEpisodesListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.reload();
+    this.load();
     const idFormat = 'YYYY-MM-DD';
     this.groupedItems$ = this.items$.map((items: any) => {
       return items.asMutable({deep: true}).reduce((groups, item) => {
@@ -46,13 +49,28 @@ export class UpcomingEpisodesListComponent implements OnInit {
         return a.date - b.date;
       });
     });
+
+    this._subscriptions.push(this.items$.subscribe((items: any[]) => {
+      this.hasEpisodes = items.length > 0;
+      if (this.hasEpisodes) {
+        this._maxEpisodeId = items[items.length - 1]._id;
+      }
+    }));
   }
 
-  reload() {
+  load() {
     this.ngRedux.dispatch(this.actions.loadStart({}));
+  }
+
+  loadMore() {
+    this.ngRedux.dispatch(this.actions.loadMoreStart({cursor: this._maxEpisodeId}));
   }
 
   getItemId(_index, item) {
     return item._id;
+  }
+
+  ngOnDestroy(): void {
+    this._subscriptions.forEach((s) => s.unsubscribe());
   }
 }

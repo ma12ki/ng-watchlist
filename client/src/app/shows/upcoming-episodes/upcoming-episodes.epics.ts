@@ -21,20 +21,29 @@ export class UpcomingEpisodesEpics {
     private actions: UpcomingEpisodesActions
   ) {
     this.epics = [
-      this.loadAllShows,
+      this.loadUpcomingEpisodes,
+      this.loadMoreUpcomingEpisodes,
       this.refreshOnTrack,
       this.refreshOnUntrack,
       this.refreshOnPostpone,
     ];
   }
 
-  loadAllShows = action$ => action$
+  loadUpcomingEpisodes = action$ => action$
     .ofType(UpcomingEpisodesActions.LOAD_START)
     .switchMap((action) => this.service.loadUpcomingEpisodes({
         maxDate: action.payload.maxDate,
       })
       .map(data => this.actions.loadSucceeded(data))
       .catch(err => of(this.actions.loadFailed(err))));
+
+  loadMoreUpcomingEpisodes = action$ => action$
+    .ofType(UpcomingEpisodesActions.LOAD_MORE_START)
+    .switchMap((action) => this.service.loadMoreUpcomingEpisodes({
+        cursor: action.payload.cursor,
+      })
+      .map(data => this.actions.loadMoreSucceeded(data))
+      .catch(err => of(this.actions.loadMoreFailed(err))));
 
   refreshOnTrack = (action$, store: ApolloStore) => action$
       .ofType(ShowActions.TRACK_SUCCEEDED)

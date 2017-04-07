@@ -32,6 +32,7 @@ export class UpcomingEpisodesReducer {
 export function upcomingEpisodesReducer(state = defaultState, action: FSA<any, any>): FlexibleImmutableObject<IUpcomingEpisodesState> {
   switch (action.type) {
     case UpcomingEpisodesActions.LOAD_START:
+    case UpcomingEpisodesActions.LOAD_MORE_START:
       return state.merge({
         isFetching: true,
         error: null
@@ -42,7 +43,14 @@ export function upcomingEpisodesReducer(state = defaultState, action: FSA<any, a
         error: null,
         isFetching: false
       }) as FlexibleImmutableObject<IUpcomingEpisodesState>;
+    case UpcomingEpisodesActions.LOAD_MORE_SUCCEEDED:
+      return state.merge({
+        items: state.items.concat(...action.payload),
+        error: null,
+        isFetching: false
+      }) as FlexibleImmutableObject<IUpcomingEpisodesState>;
     case UpcomingEpisodesActions.LOAD_FAILED:
+    case UpcomingEpisodesActions.LOAD_MORE_FAILED:
       return state.merge({
         error: action.error,
         isFetching: false
