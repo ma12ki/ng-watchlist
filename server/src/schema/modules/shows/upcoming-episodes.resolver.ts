@@ -31,13 +31,13 @@ const upcomingEpisodes = async (_root, {maxDate, cursor}, {user}) => {
   }).sort({
     premiereDate: 1,
     _id: 1,
-  }).limit(maxDate ? null : limit)
+  }).limit(maxDate || cursor ? null : limit)
   .lean() as Array<any>;
 
   // TODO: optimize finding by cursor
   if (cursor) {
     const cursorIndex = episodes.findIndex((episode) => '' + episode._id === cursor);
-    return episodes.slice(cursorIndex + 1, limit);
+    return episodes.slice(cursorIndex + 1, cursorIndex + 1 + limit);;
   }
 
   return episodes;
