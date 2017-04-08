@@ -36,7 +36,7 @@ const categories: ICategory[] = [
         _id: 'ANIME',
         label: 'Anime',
         recurring: true,
-        icon: 'tv',
+        icon: 'translate',
         verbiage: {
           season: 'Season',
           episode: 'Episode',
