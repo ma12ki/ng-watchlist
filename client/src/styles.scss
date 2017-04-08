@@ -17,3 +17,7 @@ body {
 .md-menu-content.md-menu-content {
   padding: 0;
 }
+
+wl-episode-list-item > .episode.episode > .mat-list-item-content.mat-list-item-content {
+  height: 56px;
+}

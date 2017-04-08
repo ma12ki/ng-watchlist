@@ -1,6 +1,6 @@
-<md-list-item>
+<md-list-item class="episode">
   <wl-show-avatar [category]="category" md-list-avatar></wl-show-avatar>
-  <h4 md-line>{{ name }}</h4>
-  <h6 md-line *ngIf="recurring">{{ seasonVerbiage }} {{ season }}, {{ episodeVerbiage }} {{ episode }}</h6>
+  <h4 md-line class="show-name">{{ name }}</h4>
+  <h6 md-line class="episode-number" *ngIf="recurring">{{ seasonVerbiage }} {{ season }}, {{ episodeVerbiage }} {{ episode }}</h6>
   <ng-content></ng-content>
 </md-list-item>
