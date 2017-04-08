@@ -7,12 +7,16 @@ import * as moment from 'moment';
 
 import { UpcomingEpisodesActions } from '../upcoming-episodes.actions';
 import * as upcomingEpisodesSelectors from '../upcoming-episodes.selectors';
+import { flyInOut } from '../../shared/animations';
 
 @Component({
   selector: 'wl-upcoming-episodes-list',
   templateUrl: './upcoming-episodes-list.component.html',
   styleUrls: ['./upcoming-episodes-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    flyInOut,
+  ],
 })
 export class UpcomingEpisodesListComponent implements OnInit, OnDestroy {
   @select(upcomingEpisodesSelectors.items) items$: Observable<any[]>;
@@ -68,6 +72,10 @@ export class UpcomingEpisodesListComponent implements OnInit, OnDestroy {
 
   getItemId(_index, item) {
     return item._id;
+  }
+
+  getGroupId(_index, group) {
+    return group.id;
   }
 
   ngOnDestroy(): void {

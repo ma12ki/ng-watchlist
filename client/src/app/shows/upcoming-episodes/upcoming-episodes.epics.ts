@@ -72,6 +72,6 @@ export class UpcomingEpisodesEpics {
   private getMaxPremiereDate(store: ApolloStore): string {
     return items(store.getState()).reduce((max, item) => {
       return max > item.premiereDate ? max : item.premiereDate;
-    }, new Date().toISOString());
+    }, null);
   }
 }

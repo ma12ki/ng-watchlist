@@ -4,10 +4,12 @@
   </header>
   <section>
     <md-list>
-      <div *ngFor="let group of groupedItems$ | async">
+      <div *ngFor="let group of groupedItems$ | async; trackBy:getGroupId"
+           [@flyInOut]="'in'">
         <wl-episode-date-divider [date]="group.date"></wl-episode-date-divider>
         <wl-episode-list-item
           *ngFor="let item of group.items; trackBy:getItemId"
+          [@flyInOut]="'in'"
           [name]="item.show.name"
           [category]="item.show.category"
           [season]="item.season"

@@ -7,12 +7,16 @@ import * as moment from 'moment';
 
 import { AvailableEpisodesActions } from '../available-episodes.actions';
 import * as selectors from '../available-episodes.selectors';
+import { flyInOut } from '../../shared/animations';
 
 @Component({
   selector: 'wl-available-episodes-list',
   templateUrl: './available-episodes-list.component.html',
   styleUrls: ['./available-episodes-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    flyInOut,
+  ],
 })
 export class AvailableEpisodesListComponent implements OnInit {
   @select(selectors.items) items$: Observable<any[]>;
@@ -53,6 +57,10 @@ export class AvailableEpisodesListComponent implements OnInit {
 
   getItemId(_index, item) {
     return item._id;
+  }
+
+  getGroupId(_index, group) {
+    return group.id;
   }
 
 }
