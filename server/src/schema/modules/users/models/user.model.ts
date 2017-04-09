@@ -1,11 +1,15 @@
 import { Schema, model, Document } from 'mongoose';
 
-import { IBaseUser } from '../interfaces/user.interface';
+import { IBaseUserWithPassword } from '../interfaces/user.interface';
 
-interface IUserModel extends IBaseUser, Document {};
+interface IUserModel extends IBaseUserWithPassword, Document {};
 
 const UserSchema = new Schema({
   login: {
+    type: String,
+    required: true,
+  },
+  passwordHash: {
     type: String,
     required: true,
   },
@@ -17,6 +21,7 @@ const UserSchema = new Schema({
 });
 
 UserSchema.index({ _id: 1, type: 1 });
+UserSchema.index({ login: 1, type: 1 });
 
 const UserModel = model<IUserModel>('User', UserSchema);
 
