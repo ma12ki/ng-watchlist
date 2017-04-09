@@ -9,8 +9,8 @@ import { config } from './config';
 import { connect as dbConnect } from './db';
 import { Schema } from './schema';
 
-export const GRAPHQL_ROUTE = "/graphql";
-export const GRAPHIQL_ROUTE = "/graphiql";
+export const GRAPHQL_ROUTE = '/graphql';
+export const GRAPHIQL_ROUTE = '/graphiql';
 const { port, production, mongoUri } = config;
 
 interface IMainOptions {
@@ -53,7 +53,7 @@ export function main(options: IMainOptions) {
       verbosePrint(options.port, !production);
 
       resolve(server);
-    }).on("error", (err: Error) => {
+    }).on('error', (err: Error) => {
       reject(err);
     });
   });
