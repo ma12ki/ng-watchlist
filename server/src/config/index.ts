@@ -14,6 +14,9 @@ const config = {
   get port(): number {
     return process.env.WL_PORT;
   },
+  get jwtSecret(): string {
+    return process.env.WL_JWT_SECRET;
+  },
 };
 
 export { config };

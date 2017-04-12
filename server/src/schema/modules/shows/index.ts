@@ -1,3 +1,5 @@
+import { IModule } from '../shared';
+
 import showTypeResolver from './show.resolver';
 import showType from './show.type';
 
@@ -86,7 +88,7 @@ const mutationResolvers = {
   ...postponeEpisodesMutationResolver,
 };
 
-export {
+export const showsModule: IModule = {
   typeDefs,
   typeResolvers,
   queries,

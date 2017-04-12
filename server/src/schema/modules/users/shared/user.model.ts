@@ -1,8 +1,8 @@
 import { Schema, model, Document } from 'mongoose';
 
-import { IBaseUserWithPassword } from '../interfaces/user.interface';
+import { IBaseUserWithPasswordHash } from './user.interface';
 
-interface IUserModel extends IBaseUserWithPassword, Document {};
+interface IUserModel extends IBaseUserWithPasswordHash, Document {};
 
 const UserSchema = new Schema({
   login: {
