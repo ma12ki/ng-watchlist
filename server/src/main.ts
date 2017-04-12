@@ -8,6 +8,8 @@ import * as morgan from 'morgan';
 import { config } from './config';
 import { connect as dbConnect } from './db';
 import { Schema } from './schema';
+import { bearerToken } from './helpers/bearer-token.middleware';
+import { extractUser } from './helpers/extract-user.middleware';
 
 export const GRAPHQL_ROUTE = '/graphql';
 export const GRAPHIQL_ROUTE = '/graphiql';
@@ -24,7 +26,7 @@ main({
   port,
   mongoUri,
 }).then(() => {
-  console.log('All services started successfully.');
+  console.log('////////// All services started successfully. \\\\\\\\\\');
 });
 
 export function main(options: IMainOptions) {
@@ -34,14 +36,16 @@ export function main(options: IMainOptions) {
   app.use(morgan('combined'));
 
   app.use(GRAPHQL_ROUTE, cors());
-
-  app.use(GRAPHQL_ROUTE, bodyParser.json(), graphqlExpress({
-    context: {
-      user: {
-        _id: 'a123456789a123456789a123',
+  app.use(GRAPHQL_ROUTE, bearerToken);
+  app.use(GRAPHQL_ROUTE, extractUser);
+  app.use(GRAPHQL_ROUTE, bodyParser.json(), graphqlExpress((request) => {
+    const { user } = <any> request;
+    return {
+      context: {
+        user,
       },
-    },
-    schema: Schema,
+      schema: Schema,
+    };
   }));
 
   if (!production) {
