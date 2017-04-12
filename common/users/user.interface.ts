@@ -7,7 +7,7 @@ export interface IBaseUser {
 
 export interface IUser extends IBaseUser {
   _id: string;
-  expirationDate: string;
+  exp: number; // unix timestamp (s) as per the JWT spec
 };
 
 export interface IUserCredentials {

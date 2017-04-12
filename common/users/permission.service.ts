@@ -2,7 +2,7 @@ import { UserRole } from './role.enum';
 import { IUser } from './user.interface';
 
 const isExpired = (user: IUser) => {
-  return !user || new Date(user.expirationDate) < new Date();
+  return !user || new Date(user.exp * 1000) < new Date();
 };
 
 const isValid = (user: IUser) => {
