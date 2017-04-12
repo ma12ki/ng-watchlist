@@ -2,7 +2,7 @@ import { Schema, model, Document } from 'mongoose';
 
 import { IUserEpisode } from './../interfaces/user-episode.interface';
 
-interface IUserEpisodeModel extends IUserEpisode, Document {};
+interface IUserEpisodeModel extends IUserEpisode, Document {}
 
 const UserEpisodeSchema = new Schema({
   userId: {

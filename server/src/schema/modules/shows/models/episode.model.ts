@@ -2,7 +2,7 @@ import { Schema, model, Document } from 'mongoose';
 
 import { IEpisode } from './../interfaces/episode.interface';
 
-interface IEpisodeModel extends IEpisode, Document {};
+interface IEpisodeModel extends IEpisode, Document {}
 
 const EpisodeSchema = new Schema({
   showId: {

@@ -15,7 +15,7 @@ async function unmarkEpisodeWatchedDb(episodeId, user) {
   const userEpisode = await UserEpisodeModel.findOne({
     userId: user._id,
     showId: episode.showId,
-    episodeId: episodeId,
+    episodeId,
   });
 
   if (!userEpisode) {
@@ -25,7 +25,7 @@ async function unmarkEpisodeWatchedDb(episodeId, user) {
   await UserEpisodeModel.findOneAndRemove({
     userId: user._id,
     showId: episode.showId,
-    episodeId: episodeId,
+    episodeId,
   });
 
   return episode.toObject();

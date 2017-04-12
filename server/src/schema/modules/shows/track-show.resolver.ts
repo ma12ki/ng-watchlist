@@ -14,13 +14,13 @@ async function trackShowDb(showId, user) {
 
   const userShow = await UserShowModel.findOne({
     userId: user._id,
-    showId: showId,
+    showId,
   });
 
   if (!userShow) {
     await UserShowModel.create({
       userId: user._id,
-      showId: showId,
+      showId,
       tracked: true,
     });
   } else {

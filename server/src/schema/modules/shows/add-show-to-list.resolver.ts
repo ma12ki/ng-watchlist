@@ -14,7 +14,7 @@ async function addShowToListDb(showId, user) {
 
   const userShow = await UserShowModel.findOne({
     userId: user._id,
-    showId: showId,
+    showId,
   });
 
   if (userShow) {
@@ -23,7 +23,7 @@ async function addShowToListDb(showId, user) {
 
   await UserShowModel.create({
     userId: user._id,
-    showId: showId,
+    showId,
   });
 
   return show.toObject();

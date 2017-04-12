@@ -2,7 +2,7 @@ import { Schema, model, Document } from 'mongoose';
 
 import { IShow } from './../interfaces/show.interface';
 
-interface IShowModel extends IShow, Document {};
+interface IShowModel extends IShow, Document {}
 
 const ShowSchema = new Schema({
   name: {

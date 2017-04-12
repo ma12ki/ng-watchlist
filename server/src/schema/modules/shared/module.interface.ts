@@ -17,4 +17,4 @@ export interface IModule {
   typeResolvers: {
     [key: string]: IResolvers,
   };
-};
+}

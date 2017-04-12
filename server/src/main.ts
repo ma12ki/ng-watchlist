@@ -8,8 +8,7 @@ import * as morgan from 'morgan';
 import { config } from './config';
 import { connect as dbConnect } from './db';
 import { Schema } from './schema';
-import { bearerToken } from './helpers/bearer-token.middleware';
-import { extractUser } from './helpers/extract-user.middleware';
+import { bearerToken, extractUser } from './helpers';
 
 export const GRAPHQL_ROUTE = '/graphql';
 export const GRAPHIQL_ROUTE = '/graphiql';
@@ -39,7 +38,7 @@ export function main(options: IMainOptions) {
   app.use(GRAPHQL_ROUTE, bearerToken);
   app.use(GRAPHQL_ROUTE, extractUser);
   app.use(GRAPHQL_ROUTE, bodyParser.json(), graphqlExpress((request) => {
-    const { user } = <any> request;
+    const { user } = request as any;
     return {
       context: {
         user,
@@ -54,7 +53,7 @@ export function main(options: IMainOptions) {
 
   const serverStart = () => new Promise((resolve, reject) => {
     const server = app.listen(options.port, () => {
-      verbosePrint(options.port, !production);
+      verbosePrint(!production);
 
       resolve(server);
     }).on('error', (err: Error) => {
@@ -66,7 +65,7 @@ export function main(options: IMainOptions) {
 }
 
 /* istanbul ignore next: no need to test verbose print */
-function verbosePrint(port, enableGraphiql) {
+function verbosePrint(enableGraphiql) {
   console.log(`GraphQL Server is now running on http://localhost:${port}${GRAPHQL_ROUTE}`);
   if (true === enableGraphiql) {
     console.log(`GraphiQL Server is now running on http://localhost:${port}${GRAPHIQL_ROUTE}`);

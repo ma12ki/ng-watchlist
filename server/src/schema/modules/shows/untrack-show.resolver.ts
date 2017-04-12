@@ -14,7 +14,7 @@ async function untrackShowDb(showId, user) {
 
   const userShow = await UserShowModel.findOne({
     userId: user._id,
-    showId: showId,
+    showId,
   });
 
   if (!userShow) {

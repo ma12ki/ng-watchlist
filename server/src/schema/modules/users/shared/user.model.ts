@@ -2,7 +2,7 @@ import { Schema, model, Document } from 'mongoose';
 
 import { IBaseUserWithPasswordHash } from './user.interface';
 
-interface IUserModel extends IBaseUserWithPasswordHash, Document {};
+interface IUserModel extends IBaseUserWithPasswordHash, Document {}
 
 const UserSchema = new Schema({
   login: {

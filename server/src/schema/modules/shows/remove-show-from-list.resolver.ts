@@ -14,7 +14,7 @@ async function removeShowFromListDb(showId, user) {
 
   await UserShowModel.findOneAndRemove({
     userId: user._id,
-    showId: showId,
+    showId,
   });
 
   return show.toObject();

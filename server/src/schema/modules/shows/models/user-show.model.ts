@@ -2,7 +2,7 @@ import { Schema, model, Document } from 'mongoose';
 
 import { IUserShow } from './../interfaces/user-show.interface';
 
-interface IUserShowModel extends IUserShow, Document {};
+interface IUserShowModel extends IUserShow, Document {}
 
 const UserShowSchema = new Schema({
   userId: {

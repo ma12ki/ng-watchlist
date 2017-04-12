@@ -14,7 +14,7 @@ const getRoles = (user: IUser) => {
 };
 
 const hasRole = (user: IUser, role: UserRole) => {
-  return isValid(user) && (<any>getRoles(user)).includes(UserRole[role]);
+  return isValid(user) && (getRoles(user) as any).includes(UserRole[role]);
 };
 
 const hasAdminRole = (user: IUser) => {

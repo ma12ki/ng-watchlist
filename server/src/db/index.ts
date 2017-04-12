@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-(<any>mongoose).Promise = global.Promise;
+(mongoose as any).Promise = global.Promise;
 
 const connect = (uri) => {
   console.log(`Attempting to connect to db at ${uri}...`);
@@ -11,5 +11,5 @@ const connect = (uri) => {
 };
 
 export {
-  connect
+  connect,
 };

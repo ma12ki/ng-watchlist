@@ -3,8 +3,8 @@ export interface INewEpisode {
   season: number;
   episode: number;
   premiereDate: string;
-};
+}
 
 export interface IEpisode extends INewEpisode {
   _id: any;
-};
+}

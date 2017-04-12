@@ -60,8 +60,9 @@ async function addEpisodes(
   );
 
   const createdEpisodes = await EpisodeModel.insertMany(eps);
+
   return createdEpisodes;
-};
+}
 
 function generateEpisodes(
   showId: string,
@@ -86,7 +87,7 @@ function generateEpisodes(
     for (let i = 0; i < episodes; i++) {
       items.push({
         showId,
-        premiereDate: moment(startDate).add( <any> (amount * i), unit).toISOString(),
+        premiereDate: moment(startDate).add( (amount * i) as any, unit).toISOString(),
         season,
         episode: i + 1,
       });

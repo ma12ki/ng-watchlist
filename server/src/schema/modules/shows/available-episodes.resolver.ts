@@ -12,7 +12,7 @@ const availableEpisodes = async (_root, _args, {user}) => {
     tracked: true,
   }).select({
     showId: 1,
-  }).lean() as Array<any>;
+  }).lean() as any[];
 
   const userShowIds = userShows.map((s) => s.showId);
 
@@ -20,7 +20,7 @@ const availableEpisodes = async (_root, _args, {user}) => {
     userId: user._id,
   }).select({
     episodeId: 1,
-  }).lean() as Array<any>;
+  }).lean() as any[];
 
   const userEpisodeIds = userEpisodes.map((ep) => ep.episodeId);
 

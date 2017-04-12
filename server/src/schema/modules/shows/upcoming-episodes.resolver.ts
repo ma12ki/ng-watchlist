@@ -22,7 +22,7 @@ const upcomingEpisodes = async (_root, {maxDate, cursor}, {user}) => {
     tracked: true,
   }).select({
     showId: 1,
-  }).lean() as Array<any>;
+  }).lean() as any[];
   const userShowIds = userShows.map((s) => s.showId);
 
   const episodes = await EpisodeModel.find({
@@ -32,12 +32,12 @@ const upcomingEpisodes = async (_root, {maxDate, cursor}, {user}) => {
     premiereDate: 1,
     _id: 1,
   }).limit(maxDate || cursor ? null : limit)
-  .lean() as Array<any>;
+  .lean() as any[];
 
   // TODO: optimize finding by cursor
   if (cursor) {
     const cursorIndex = episodes.findIndex((episode) => '' + episode._id === cursor);
-    return episodes.slice(cursorIndex + 1, cursorIndex + 1 + limit);;
+    return episodes.slice(cursorIndex + 1, cursorIndex + 1 + limit);
   }
 
   return episodes;
