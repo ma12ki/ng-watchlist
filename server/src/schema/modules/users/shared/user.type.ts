@@ -3,7 +3,7 @@ export const userType = `
 type User {
   _id: String
   login: String
-  expirationDate: String
+  exp: String
   roles: [USER_ROLE]
 }
 `;

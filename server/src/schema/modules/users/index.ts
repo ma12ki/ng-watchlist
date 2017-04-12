@@ -1,5 +1,6 @@
 import { IModule } from '../shared';
 import logIn from './log-in';
+import addUser from './add-user';
 import * as shared from './shared';
 
 // queries
@@ -20,10 +21,12 @@ const typeResolvers = {
 // mutations
 const mutations = `
   ${logIn.mutation}
+  ${addUser.mutation}
 `;
 
 const mutationResolvers = {
   ...logIn.resolver,
+  ...addUser.resolver,
 };
 
 export const usersModule: IModule = {
