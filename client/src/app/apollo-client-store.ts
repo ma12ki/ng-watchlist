@@ -3,6 +3,7 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { MiddlewareInterface, MiddlewareRequest } from 'apollo-client/transport/middleware';
 
 import { environment } from '../environments/environment';
+import { AuthService } from './core/auth/auth.service';
 
 export const networkInterface = createNetworkInterface({
   uri: environment.serverUrl,
@@ -10,7 +11,7 @@ export const networkInterface = createNetworkInterface({
 
 export const bearerTokenMiddleware: MiddlewareInterface = {
   applyMiddleware(this: HTTPFetchNetworkInterface, request: MiddlewareRequest, next: Function) {
-    const token = localStorage.getItem('AUTH_TOKEN');
+    const token = AuthService.token;
     request.options.headers.Authorization = `Bearer ${token}`;
     next();
   }

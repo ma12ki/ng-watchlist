@@ -7,6 +7,7 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
   imports: [
     RouterModule.forRoot([
       { path: '', loadChildren: 'app/shows/shows.module#ShowsModule' },
+      { path: 'login', loadChildren: 'app/login/login.module#LoginModule' },
       { path: '**', component: NotFoundComponent },
     ]),
   ],

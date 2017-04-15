@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
 
+import { UserModule } from '../user/user.module';
 import { ShowsModule } from '../shows/shows.module';
 
 import { FooterComponent } from './footer/footer.component';
@@ -16,6 +17,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CommonModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
+    UserModule,
     ShowsModule,
   ],
   declarations: [
@@ -28,6 +30,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
   exports: [
     MaterialModule,
     FlexLayoutModule,
+    UserModule,
     ShowsModule,
     FooterComponent,
     HeaderComponent,
