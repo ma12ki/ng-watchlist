@@ -12,6 +12,7 @@ export const networkInterface = createNetworkInterface({
 export const bearerTokenMiddleware: MiddlewareInterface = {
   applyMiddleware(this: HTTPFetchNetworkInterface, request: MiddlewareRequest, next: Function) {
     const token = AuthService.token;
+    request.options.headers = request.options.headers || {};
     request.options.headers.Authorization = `Bearer ${token}`;
     next();
   }
