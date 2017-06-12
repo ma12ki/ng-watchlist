@@ -1,23 +1,16 @@
-<div>
-  <header>
-    <wl-main-heading>Available now</wl-main-heading>
-  </header>
-  <section>
-    <md-list>
-      <div *ngFor="let group of groupedItems$ | async; trackBy:getGroupId"
-           [@flyInOut]="'in'">
-        <wl-episode-date-divider [date]="group.date"></wl-episode-date-divider>
-        <wl-episode-list-item
-          *ngFor="let item of group.items; trackBy:getItemId"
-          [@flyInOut]="'in'"
-          [name]="item.show.name"
-          [category]="item.show.category"
-          [season]="item.season"
-          [episode]="item.episode">
-          <wl-postpone [showId]="item.show._id" [episodeId]="item._id"></wl-postpone>
-          <wl-watched-toggle [showId]="item.show._id" [episodeId]="item._id" [watched]="item.watched"></wl-watched-toggle>
-        </wl-episode-list-item>
-      </div>
-    </md-list>
-  </section>
-</div>
+<md-list>
+  <div *ngFor="let group of groupedItems$ | async; trackBy:getGroupId"
+        [@flyInOut]="'in'">
+    <wl-episode-date-divider [date]="group.date"></wl-episode-date-divider>
+    <wl-episode-list-item
+      *ngFor="let item of group.items; trackBy:getItemId"
+      [@flyInOut]="'in'"
+      [name]="item.show.name"
+      [category]="item.show.category"
+      [season]="item.season"
+      [episode]="item.episode">
+      <wl-postpone [showId]="item.show._id" [episodeId]="item._id"></wl-postpone>
+      <wl-watched-toggle [showId]="item.show._id" [episodeId]="item._id" [watched]="item.watched"></wl-watched-toggle>
+    </wl-episode-list-item>
+  </div>
+</md-list>

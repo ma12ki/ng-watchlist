@@ -1,3 +1,7 @@
-<div>
-  <wl-available-episodes-list></wl-available-episodes-list>
-</div>
+<header>
+  <wl-main-heading>
+    Available now
+    <wl-loading-error-info [loading]="isFetching$ | async" [error]="error$ | async"></wl-loading-error-info>
+    </wl-main-heading>
+</header>
+<wl-available-episodes-list></wl-available-episodes-list>
