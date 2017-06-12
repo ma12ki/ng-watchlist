@@ -1,6 +1,7 @@
 <header>
   <wl-main-heading>
     All shows
+    <wl-loading-error-info [loading]="isFetching$ | async" [error]="error$ | async"></wl-loading-error-info>
     <button md-icon-button class="add-show-btn" title="Add new" (click)="navigateToNew()"><md-icon>add</md-icon></button>
   </wl-main-heading>
 </header>
