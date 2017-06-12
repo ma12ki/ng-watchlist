@@ -1,3 +1,7 @@
-<div>
-  <wl-upcoming-episodes-list></wl-upcoming-episodes-list>
-</div>
+<header>
+  <wl-main-heading>
+    Coming soon
+    <wl-loading-error-info [loading]="isFetching$ | async" [error]="error$ | async"></wl-loading-error-info>
+  </wl-main-heading>
+</header>
+<wl-upcoming-episodes-list></wl-upcoming-episodes-list>

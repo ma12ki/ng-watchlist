@@ -1,24 +1,17 @@
-<div>
-  <header>
-    <wl-main-heading>Coming soon</wl-main-heading>
-  </header>
-  <section>
-    <md-list>
-      <div *ngFor="let group of groupedItems$ | async; trackBy:getGroupId"
-           [@flyInOut]="'in'">
-        <wl-episode-date-divider [date]="group.date"></wl-episode-date-divider>
-        <wl-episode-list-item
-          *ngFor="let item of group.items; trackBy:getItemId"
-          [@flyInOut]="'in'"
-          [name]="item.show.name"
-          [category]="item.show.category"
-          [season]="item.season"
-          [episode]="item.episode">
-        </wl-episode-list-item>
-      </div>
-    </md-list>
-  </section>
-  <button class="load-more" *ngIf="hasEpisodes" md-button (click)="loadMore()" [disabled]="isFetching$ | async" title="Load more">
-    <md-icon>expand_more</md-icon>
-  </button>
-</div>
+<md-list>
+  <div *ngFor="let group of groupedItems$ | async; trackBy:getGroupId"
+        [@flyInOut]="'in'">
+    <wl-episode-date-divider [date]="group.date"></wl-episode-date-divider>
+    <wl-episode-list-item
+      *ngFor="let item of group.items; trackBy:getItemId"
+      [@flyInOut]="'in'"
+      [name]="item.show.name"
+      [category]="item.show.category"
+      [season]="item.season"
+      [episode]="item.episode">
+    </wl-episode-list-item>
+  </div>
+</md-list>
+<button class="load-more" *ngIf="hasEpisodes" md-button (click)="loadMore()" [disabled]="isFetching$ | async" title="Load more">
+  <md-icon>expand_more</md-icon>
+</button>

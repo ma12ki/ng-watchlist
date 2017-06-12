@@ -1,4 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { select } from '@angular-redux/store';
+
+import * as upcomingEpisodesSelectors from '../upcoming-episodes.selectors';
 
 @Component({
   selector: 'wl-upcoming-episodes',
@@ -6,4 +9,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./upcoming-episodes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UpcomingEpisodesComponent { }
+export class UpcomingEpisodesComponent {
+  @select(upcomingEpisodesSelectors.error) error$;
+  @select(upcomingEpisodesSelectors.isFetching) isFetching$;
+}
